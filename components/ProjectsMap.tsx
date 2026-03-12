@@ -24,58 +24,10 @@ interface Project {
 const ProjectsMap = ({ dict }: { dict: any }) => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [filter, setFilter] = useState<string>('all');
+  const [isExpanded, setIsExpanded] = useState(false);
 
   // Sample projects data - replace with real data
-  const projects: Project[] = [
-    {
-      id: 1,
-      title: 'Промышленный комплекс',
-      location: 'Московская область, РФ',
-      lat: 55.75,
-      lng: 37.62,
-      area: '15 Га',
-      type: 'industrial',
-      year: '2023',
-      image: '/carl-raw-f6wVRC7Y4aI-unsplash.jpg',
-      description: 'Крупный тепличный комплекс с полной автоматизацией',
-    },
-    {
-      id: 2,
-      title: 'Фермерское хозяйство',
-      location: 'Минская область, BY',
-      lat: 53.90,
-      lng: 27.56,
-      area: '3.5 Га',
-      type: 'farm',
-      year: '2022',
-      image: '/8cb72ba24912f6fc185c2ec5e97f8b3f3cce12eb.png',
-      description: 'Экологичное фермерское хозяйство',
-    },
-    {
-      id: 3,
-      title: 'Рассадный комплекс',
-      location: 'Алматы, KZ',
-      lat: 43.24,
-      lng: 76.92,
-      area: '8 Га',
-      type: 'seedling',
-      year: '2023',
-      image: '/22da4f7424356bc87bde97f4481b79932f1f4954.jpg',
-      description: 'Специализированный рассадный комплекс',
-    },
-    {
-      id: 4,
-      title: 'Салатная линия',
-      location: 'Санкт-Петербург, РФ',
-      lat: 59.93,
-      lng: 30.36,
-      area: '2 Га',
-      type: 'industrial',
-      year: '2021',
-      image: '/1287acee185014c2f581f67f2dfd56bafea7012e.jpg',
-      description: 'Высокотехнологичное производство салатов',
-    },
-  ];
+  const projects: Project[] = dict.items || [];
 
   const projectTypes = [
     { id: 'all', label: dict.all || 'Все проекты', color: 'bg-primary' },
@@ -87,6 +39,8 @@ const ProjectsMap = ({ dict }: { dict: any }) => {
   const filteredProjects = filter === 'all'
     ? projects
     : projects.filter(p => p.type === filter);
+
+  const visibleProjects = isExpanded ? filteredProjects : filteredProjects.slice(0, 6);
 
   return (
     <>
@@ -113,7 +67,10 @@ const ProjectsMap = ({ dict }: { dict: any }) => {
             {projectTypes.map((type) => (
               <Button
                 key={type.id}
-                onClick={() => setFilter(type.id)}
+                onClick={() => {
+                  setFilter(type.id);
+                  setIsExpanded(false);
+                }}
                 variant={filter === type.id ? 'default' : 'outline'}
                 className="rounded-full"
               >
@@ -157,25 +114,18 @@ const ProjectsMap = ({ dict }: { dict: any }) => {
 
                   {/* Project markers with better positioning */}
                   {filteredProjects.map((project, index) => {
-                    // Better positioning logic for CIS region
-                    let position = { x: 50, y: 50 };
-
-                    if (project.location.includes('Москов')) {
-                      position = { x: 35, y: 30 };
-                    } else if (project.location.includes('Минск')) {
-                      position = { x: 20, y: 35 };
-                    } else if (project.location.includes('Алматы')) {
-                      position = { x: 70, y: 55 };
-                    } else if (project.location.includes('Санкт-Петербург')) {
-                      position = { x: 30, y: 20 };
-                    }
+                    // Positioning markers on decorative map (representing CIS region)
+                    // Scale: lng [20 to 140] maps to x [10% to 90%], lat [40 to 65] maps to y [85% to 15%]
+                    const x = ((project.lng - 20) / (140 - 20)) * 80 + 10;
+                    const y = 100 - (((project.lat - 40) / (65 - 40)) * 70 + 15);
+                    const position = { x, y };
 
                     return (
                       <motion.div
                         key={project.id}
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
-                        transition={{ delay: index * 0.15, type: "spring", stiffness: 200 }}
+                        transition={{ delay: index * 0.05, type: "spring", stiffness: 200 }}
                         className="absolute cursor-pointer group z-10"
                         style={{ left: `${position.x}%`, top: `${position.y}%` }}
                         onClick={() => setSelectedProject(project)}
@@ -213,17 +163,18 @@ const ProjectsMap = ({ dict }: { dict: any }) => {
           </div>
 
           {/* Projects Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {filteredProjects.map((project, index) => (
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mt-20">
+            {visibleProjects.map((project, index) => (
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: (index % 6) * 0.1 }}
                 onClick={() => setSelectedProject(project)}
                 className="cursor-pointer"
               >
-                <Card className="h-full hover:border-primary/50 hover:shadow-xl transition-all group overflow-hidden">
+                <Card className="h-full hover:border-primary/50 hover:shadow-xl transition-all group overflow-hidden border-border/50 bg-card/50 backdrop-blur-sm">
                   <div className="relative h-48 w-full overflow-hidden">
                     <Image
                       src={project.image}
@@ -231,26 +182,47 @@ const ProjectsMap = ({ dict }: { dict: any }) => {
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <Badge className="absolute top-3 right-3">{project.year}</Badge>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
+                    <Badge className="absolute top-3 right-3 bg-primary/90 backdrop-blur-sm">{project.year}</Badge>
+                    <Badge variant="outline" className="absolute bottom-3 left-3 bg-background/80 backdrop-blur-sm border-none text-[10px] uppercase tracking-wider font-bold">
+                      {project.type === 'seedling' ? dict.seedling : project.type === 'industrial' ? dict.industrial : dict.farm}
+                    </Badge>
                   </div>
-                  <CardHeader>
-                    <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                  <CardHeader className="p-5">
+                    <CardTitle className="text-lg group-hover:text-primary transition-colors line-clamp-1 mb-2">
                       {project.title}
                     </CardTitle>
-                    <CardDescription className="space-y-1">
-                      <div className="flex items-center gap-2 text-sm">
-                        <MapPin className="w-4 h-4" />
+                    <CardDescription className="space-y-3">
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <MapPin className="w-3.5 h-3.5 text-primary" />
                         {project.location}
                       </div>
-                      <div className="text-sm font-bold text-foreground">
+                      <div className="text-sm font-semibold text-foreground flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                         {project.area}
                       </div>
+                      <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed italic border-l-2 border-primary/20 pl-3 py-1">
+                        {project.description}
+                      </p>
                     </CardDescription>
                   </CardHeader>
                 </Card>
               </motion.div>
             ))}
           </div>
+
+          {!isExpanded && filteredProjects.length > 6 && (
+            <div className="mt-12 text-center">
+              <Button
+                onClick={() => setIsExpanded(true)}
+                variant="outline"
+                size="lg"
+                className="rounded-full px-8 font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              >
+                {dict.showMore || 'Показать еще'}
+              </Button>
+            </div>
+          )}
         </div>
       </section>
 

@@ -18,17 +18,7 @@ const Impact = ({ dict }: { dict: any }) => {
     icon: statIcons[i]
   }));
 
-  // Sample top clients - replace with real data
-  const topClients = [
-    { name: 'АгроХолдинг', abbr: 'АХ' },
-    { name: 'ЭкоФерм', abbr: 'ЭФ' },
-    { name: 'ГринТех', abbr: 'ГТ' },
-    { name: 'ФудПро', abbr: 'ФП' },
-    { name: 'АгроСтар', abbr: 'АС' },
-    { name: 'ЭкоГарден', abbr: 'ЭГ' },
-    { name: 'МегаФерм', abbr: 'МФ' },
-    { name: 'ГринЛайн', abbr: 'ГЛ' },
-  ];
+  const topClients = dict.clients || [];
 
   return (
     <section id="impact" className="py-24 bg-primary text-primary-foreground relative overflow-hidden">

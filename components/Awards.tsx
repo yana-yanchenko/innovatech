@@ -16,7 +16,7 @@ interface AwardItem {
 }
 
 const Awards = ({ dict }: { dict: any }) => {
-  const [selectedAward, setSelectedAward] = useState<AwardItem | null>(null);
+  const [selectedAward, setSelectedAward] = useState<any | null>(null);
 
   const awardsData: AwardItem[] = [
     {
@@ -52,6 +52,17 @@ const Awards = ({ dict }: { dict: any }) => {
       color: 'bg-primary/10 text-primary',
     },
   ];
+
+  // Map projects to timeline items if provided
+  // const timelineItems = projects ? projects.map(p => ({
+  //   title: p.title,
+  //   organization: p.location,
+  //   year: p.year,
+  //   description: p.description,
+  //   icon: <Award className="w-8 h-8" />,
+  //   color: 'bg-primary text-primary-foreground'
+  // })).sort((a, b) => b.year.localeCompare(a.year)) : awardsData;
+  const timelineItems = awardsData;
 
   return (
     <>
@@ -108,29 +119,27 @@ const Awards = ({ dict }: { dict: any }) => {
             ))}
           </div>
 
-          {/* Timeline */}
+          {/* Timeline - Commented out as requested
           <div className="mt-20 max-w-4xl mx-auto">
             <h3 className="text-2xl md:text-3xl font-bold text-center mb-12 text-foreground">
               {dict.timeline || 'Временная шкала достижений'}
             </h3>
             <div className="relative">
-              {/* Timeline line - hidden on mobile */}
               <div className="absolute left-8 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-border" />
 
-              {/* Timeline items */}
               <div className="space-y-8 md:space-y-12">
-                {awardsData.map((award, index) => (
+                {timelineItems.map((award, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.2 }}
-                    className={`flex items-center gap-4 md:gap-8 ${
+                    transition={{ delay: Math.min(index * 0.1, 0.5) }}
+                    className={`flex items-center gap-4 md:gap-8 cursor-pointer ${
                       index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                     }`}
+                    onClick={() => setSelectedAward(award)}
                   >
-                    {/* Mobile/Tablet layout: dot on left, content on right */}
                     <div className="relative flex-shrink-0 md:hidden">
                       <div className={`w-4 h-4 ${award.color.split(' ')[0]} rounded-full border-4 border-background shadow-lg`} />
                     </div>
@@ -149,7 +158,6 @@ const Awards = ({ dict }: { dict: any }) => {
                       </div>
                     </div>
 
-                    {/* Desktop: Center dot */}
                     <div className="relative hidden md:block flex-shrink-0">
                       <div className={`w-4 h-4 ${award.color.split(' ')[0]} rounded-full border-4 border-background shadow-lg`} />
                     </div>
@@ -160,6 +168,7 @@ const Awards = ({ dict }: { dict: any }) => {
               </div>
             </div>
           </div>
+          */}
         </div>
       </section>
 

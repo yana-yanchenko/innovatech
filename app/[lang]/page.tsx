@@ -35,21 +35,21 @@ export default async function Home({
         <main>
           <Hero dict={dict.hero} />
           <Solutions dict={dict.solutions} />
-          <Innovation dict={dict.innovation} />
+          {/* <Innovation dict={dict.innovation} /> */}
           <Benefits dict={dict.benefits} />
           <Process dict={dict.process} />
           <Showcase dict={dict.showcase} />
-          <Testimonials dict={dict.testimonials} />
-        <Impact dict={dict.impact} />
-        <Awards dict={dict.awards} />
-        <TrustMetrics dict={dict.trustMetrics} />
-        <ProjectsMap dict={dict.projectsMap} />
-        <Partners dict={dict.partners} />
-        <FAQ dict={dict.faq} />
-        <ContactCTA dict={dict.contactCTA} region={region} />
-      </main>
-      <Footer dict={dict.footer} region={region} />
-    </div>
+          {/* <Testimonials dict={dict.testimonials} /> */}
+          {/* <Impact dict={dict.impact} /> */}
+          {/* <Awards dict={dict.awards} /> */}
+          <TrustMetrics dict={dict.trustMetrics} />
+          <ProjectsMap dict={dict.projectsMap} />
+          <Partners dict={dict.partners} />
+          <FAQ dict={dict.faq} />
+          <ContactCTA dict={dict.contactCTA} region={region} />
+        </main>
+        <Footer dict={dict.footer} region={region} />
+      </div>
     </ContactDialogProvider>
   );
 }

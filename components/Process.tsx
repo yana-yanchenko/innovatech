@@ -40,7 +40,7 @@ const Process = ({ dict }: { dict: any }) => {
 
         {/* Timeline */}
         <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-5 gap-8 md:gap-4 relative">
+          <div className="grid md:grid-cols-4 gap-8 md:gap-4 relative">
             {/* Connection line */}
             <div className="hidden md:block absolute top-12 left-0 right-0 h-0.5 bg-gradient-to-r from-primary/20 via-primary to-primary/20" style={{ top: '48px' }} />
             

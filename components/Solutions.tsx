@@ -13,7 +13,6 @@ const Solutions = ({ dict }: { dict: any }) => {
     { icon: <Sprout className="w-8 h-8" />, link: '/solutions/seedling', color: 'bg-green-500/10 text-green-500' },
     { icon: <LayoutGrid className="w-8 h-8" />, link: '/solutions/materials', color: 'bg-orange-500/10 text-orange-500' },
     { icon: <Home className="w-8 h-8" />, link: '/solutions/specialized', color: 'bg-amber-500/10 text-amber-500' },
-    { icon: <Settings className="w-8 h-8" />, link: '/solutions/service', color: 'bg-primary/10 text-primary' },
   ];
 
   const solutions = dict.items.map((item: any, i: number) => ({
@@ -36,7 +35,7 @@ const Solutions = ({ dict }: { dict: any }) => {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {solutions.map((item: any, index: number) => (
             <Link key={index} href={item.link} className="group">
               <Card className="h-full hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all">
