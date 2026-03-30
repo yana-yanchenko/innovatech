@@ -1,13 +1,13 @@
+import { headers } from "next/headers";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Solutions from "@/components/Solutions";
-import Innovation from "@/components/Innovation";
+// import Innovation from "@/components/Innovation";
 import Benefits from "@/components/Benefits";
 import Process from "@/components/Process";
-import Showcase from "@/components/Showcase";
-import Testimonials from "@/components/Testimonials";
-import Impact from "@/components/Impact";
-import Awards from "@/components/Awards";
+// import Testimonials from "@/components/Testimonials";
+// import Impact from "@/components/Impact";
+// import Awards from "@/components/Awards";
 import TrustMetrics from "@/components/TrustMetrics";
 import ProjectsMap from "@/components/ProjectsMap";
 import Partners from "@/components/Partners";
@@ -24,9 +24,19 @@ export default async function Home({
 }) {
   const { lang } = await params;
   const dict = await getDictionary(lang as 'en' | 'ru' | 'kk');
+  const headersList = await headers();
+  const country = headersList.get('x-vercel-ip-country');
   
   // Determine region for contact info
-  const region = (lang === 'by' ? 'by' : lang === 'kk' ? 'kk' : 'ru') as 'ru' | 'by' | 'kk';
+  let region: 'ru' | 'by' | 'kk' = (lang === 'kk' ? 'kk' : 'ru');
+  
+  if (lang === 'ru') {
+    if (country === 'BY') {
+      region = 'by';
+    } else if (country === 'KZ') {
+      region = 'kk';
+    }
+  }
 
   return (
     <ContactDialogProvider dict={dict}>
@@ -38,7 +48,6 @@ export default async function Home({
           {/* <Innovation dict={dict.innovation} /> */}
           <Benefits dict={dict.benefits} />
           <Process dict={dict.process} />
-          <Showcase dict={dict.showcase} />
           {/* <Testimonials dict={dict.testimonials} /> */}
           {/* <Impact dict={dict.impact} /> */}
           {/* <Awards dict={dict.awards} /> */}

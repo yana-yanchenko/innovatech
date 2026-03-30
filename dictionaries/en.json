@@ -169,11 +169,6 @@
       "integration": "Integration"
     }
   },
-  "showcase": {
-    "tag": "Our Portfolio",
-    "title": "Excellence in Every Detail",
-    "description": "Explore our completed projects and witness the integration of advanced engineering and nature. From industrial scale to private gardens."
-  },
   "impact": {
     "tag": "Our Global Impact",
     "title": "Establishing Standards of Excellence Across the CIS Market",
@@ -227,33 +222,41 @@
       {
         "name": "Republican Forest Breeding and Seed Center",
         "country": "Belarus",
-        "abbreviation": "RFSC"
+        "abbreviation": "RFSC",
+        "logo": "/logo/rlssc.png"
       },
       {
         "name": "Belarusian State Technological University",
         "country": "Belarus",
-        "abbreviation": "BSTU"
+        "abbreviation": "BSTU",
+        "logo": "/logo/bstu.png"
       },
       {
         "name": "Geevskaya Consulting Company",
         "country": "Belarus",
-        "abbreviation": "GC"
+        "abbreviation": "GC",
+        "logo": "/logo/geevskaya-consulting.png"
       },
       {
         "name": "Saint Petersburg Research Institute of Forestry",
         "country": "Russia",
-        "abbreviation": "SPbRIF"
+        "abbreviation": "SPbRIF",
+        "logo": "/logo/st-petersburg-institute.png"
       },
       {
         "name": "Central Asian Association of Plant Nurseries",
         "country": "Kazakhstan",
-        "abbreviation": "CAAPN"
+        "abbreviation": "CAAPN",
+        "logo": "/logo/central-asian-association.jpeg"
       }
     ],
     "associationTitle": "Professional Association Memberships",
     "associationDescription": "We are active members of leading industry associations",
     "associations": [
-      { "name": "ROSA — Russian Association of Planting Material Producers" }
+      { 
+        "name": "ROSA — Russian Association of Planting Material Producers",
+        "logo": "/logo/Logo-ROSA-png-belye-bukvy-1024x470.png"
+      }
     ]
   },
   "trustedBy": {

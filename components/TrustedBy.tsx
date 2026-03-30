@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Award } from 'lucide-react';
 
 const TrustedBy = ({ dict }: { dict: any }) => {
-  // Placeholder for client logos - можно заменить на реальные логотипы
+  // Placeholder for client logos - можно заменить на реальные logo
   const clients = dict.clients || [];
 
   return (

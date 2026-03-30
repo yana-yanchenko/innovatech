@@ -41,7 +41,6 @@ const Navbar = ({ lang, dict }: { lang: string, dict: any }) => {
 
   const navLinks = [
     { name: dict.technologies, href: '#innovation' },
-    { name: dict.projects, href: '#showcase' },
     { name: dict.company, href: '#impact' },
     { name: dict.contact, href: '#contact' },
   ];
