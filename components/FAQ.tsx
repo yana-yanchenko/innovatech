@@ -16,9 +16,9 @@ import { FAQJsonLd } from '@/components/SEO/JsonLd';
 const FAQ = ({ dict }: { dict: any }) => {
 
   return (
-    <section className="py-24 bg-background">
+    <section className="py-18 bg-background">
       <FAQJsonLd questions={dict.questions} />
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container mx-auto px-3 md:px-4 lg:px-6">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16 space-y-6">

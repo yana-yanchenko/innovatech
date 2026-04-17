@@ -24,7 +24,7 @@ const Impact = ({ dict }: { dict: any }) => {
     <section id="impact" className="py-24 bg-primary text-primary-foreground relative overflow-hidden">
       <div className="absolute top-0 right-0 w-1/2 h-full bg-white/5 skew-x-12 translate-x-32" />
       
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="container mx-auto px-3 md:px-4 lg:px-6 relative z-10">
         <div className="max-w-3xl mb-16">
           <h2 className="text-primary-foreground/80 font-bold tracking-wider uppercase text-sm mb-4">{dict.tag}</h2>
           <h3 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-[1.1]">

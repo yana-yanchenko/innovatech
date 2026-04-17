@@ -6,8 +6,8 @@ import { Quote, TrendingUp, Users } from 'lucide-react';
 
 const Testimonials = ({ dict }: { dict: any }) => {
   return (
-    <section className="py-24 bg-muted/30">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="pt-24 bg-muted/30">
+      <div className="container mx-auto px-3 md:px-4 lg:px-6">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-4 py-2 rounded-full text-primary text-sm font-semibold mb-6">
@@ -23,7 +23,7 @@ const Testimonials = ({ dict }: { dict: any }) => {
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {dict.testimonials.map((testimonial: any, index: number) => (
             <motion.div
               key={index}

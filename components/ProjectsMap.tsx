@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, Filter, X } from 'lucide-react';
+import { cn } from '@/lib/utils';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -44,8 +45,8 @@ const ProjectsMap = ({ dict }: { dict: any }) => {
 
   return (
     <>
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className=" bg-background">
+        <div className="container mx-auto px-3 md:px-4 lg:px-6">
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-6">
             <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-4 py-2 rounded-full text-primary text-sm font-semibold">
@@ -82,9 +83,9 @@ const ProjectsMap = ({ dict }: { dict: any }) => {
 
           {/* Map Visualization */}
           <div className="max-w-6xl mx-auto mb-12">
-            <Card className="overflow-hidden border shadow-sm">
+            <Card className="gap-0 overflow-hidden border py-0 shadow-sm">
               <CardContent className="p-0">
-                <div className="relative w-full h-[600px] bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+                <div className="relative h-[650px] w-full md:h-[720px] bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
 
                   {/* Professional grid pattern */}
                   <div
@@ -150,11 +151,11 @@ const ProjectsMap = ({ dict }: { dict: any }) => {
                   })}
 
                   {/* Minimalist Legend */}
-                  <div className="absolute bottom-6 left-6 bg-background/90 backdrop-blur-md border border-border/50 rounded-xl px-4 py-3 shadow-sm">
+                  <div className="absolute top-4 right-6 bg-background/90 backdrop-blur-md border border-border/50 rounded-xl px-6 py-3 shadow-sm">
                     <p className="text-xs font-medium mb-1.5 text-foreground/80">{dict.mapNote || 'География СНГ'}</p>
                     <div className="flex items-center gap-2 text-xs text-muted-foreground">
                       <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span className="font-medium">{filteredProjects.length} {dict.all || 'проектов'}</span>
+                      <span className="font-medium">{filteredProjects.length} {dict.countLabel || 'проектов'}</span>
                     </div>
                   </div>
                 </div>
@@ -172,7 +173,10 @@ const ProjectsMap = ({ dict }: { dict: any }) => {
                 viewport={{ once: true }}
                 transition={{ delay: (index % 6) * 0.1 }}
                 onClick={() => setSelectedProject(project)}
-                className="cursor-pointer"
+                className={cn(
+                  "cursor-pointer",
+                  !isExpanded && index >= 3 && "hidden md:block"
+                )}
               >
                 <Card className="h-full hover:border-primary/50 hover:shadow-xl transition-all group overflow-hidden border-border/50 bg-card/50 backdrop-blur-sm">
                   <div className="relative h-48 w-full overflow-hidden">
@@ -211,16 +215,28 @@ const ProjectsMap = ({ dict }: { dict: any }) => {
             ))}
           </div>
 
-          {!isExpanded && filteredProjects.length > 6 && (
+          {!isExpanded && (
             <div className="mt-12 text-center">
-              <Button
-                onClick={() => setIsExpanded(true)}
-                variant="outline"
-                size="lg"
-                className="rounded-full px-8 font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-              >
-                {dict.showMore || 'Показать еще'}
-              </Button>
+              {filteredProjects.length > 3 && filteredProjects.length <= 6 && (
+                <Button
+                  onClick={() => setIsExpanded(true)}
+                  variant="outline"
+                  size="lg"
+                  className="rounded-full px-8 font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 md:hidden"
+                >
+                  {dict.showMore || 'Показать еще'}
+                </Button>
+              )}
+              {filteredProjects.length > 6 && (
+                <Button
+                  onClick={() => setIsExpanded(true)}
+                  variant="outline"
+                  size="lg"
+                  className="rounded-full px-8 font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                >
+                  {dict.showMore || 'Показать еще'}
+                </Button>
+              )}
             </div>
           )}
         </div>
@@ -234,52 +250,56 @@ const ProjectsMap = ({ dict }: { dict: any }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedProject(null)}
-            className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 p-4 backdrop-blur-sm"
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-card border border-border rounded-3xl max-w-2xl w-full relative overflow-hidden"
+              className="relative max-h-[90vh] w-full max-w-2xl overflow-hidden rounded-3xl border border-border bg-card shadow-2xl"
             >
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 p-2 hover:bg-muted rounded-full transition-colors z-10"
+                className="absolute right-3 top-3 z-10 rounded-full bg-background/85 p-2 backdrop-blur-sm transition-colors hover:bg-muted sm:right-4 sm:top-4"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="relative h-64 w-full">
+              <div className="max-h-[90vh] overflow-y-auto">
+              <div className="relative h-44 w-full sm:h-64">
                 <Image
                   src={selectedProject.image}
                   alt={selectedProject.title}
                   fill
                   className="object-cover"
                 />
-                <Badge className="absolute top-4 left-4">{selectedProject.year}</Badge>
+                <Badge className="absolute left-4 top-4">{selectedProject.year}</Badge>
               </div>
 
-              <div className="p-8 space-y-4">
-                <h3 className="text-3xl font-bold text-foreground">
+              <div className="space-y-4 p-4 pb-6 sm:p-8">
+                <h3 className="pr-12 text-2xl font-bold text-foreground sm:text-3xl">
                   {selectedProject.title}
                 </h3>
 
-                <div className="flex items-center gap-4 text-muted-foreground">
-                  <div className="flex items-center gap-2">
+                <div className="flex flex-col gap-3 text-sm text-muted-foreground sm:flex-row sm:items-center sm:gap-4">
+                  <div className="flex items-start gap-2">
                     <MapPin className="w-4 h-4" />
-                    {selectedProject.location}
+                    <span>{selectedProject.location}</span>
                   </div>
-                  <Badge variant="outline">{selectedProject.area}</Badge>
+                  <Badge variant="outline" className="w-fit">
+                    {selectedProject.area}
+                  </Badge>
                 </div>
 
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
                   {selectedProject.description}
                 </p>
 
-                <Button className="w-full rounded-2xl">
-                  {dict.viewDetails || 'Подробнее о проекте'}
-                </Button>
+                {/*<Button className="w-full rounded-2xl">*/}
+                {/*  {dict.viewDetails || 'Подробнее о проекте'}*/}
+                {/*</Button>*/}
+              </div>
               </div>
             </motion.div>
           </motion.div>

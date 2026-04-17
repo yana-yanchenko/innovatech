@@ -1,53 +1,63 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Award, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
 
 const Partners = ({ dict }: { dict: any }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isVideoEnded, setIsVideoEnded] = useState(false);
 
   return (
-    <section id="partners" className="py-24 bg-gradient-to-b from-background to-muted/20">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="partners" className="pb-6 lg:py-24 bg-gradient-to-b from-background to-muted/20">
+      <div className="container mx-auto px-3 md:px-4 lg:px-6">
         {/* Video Header Section */}
-        <div className="relative w-full h-[600px] mb-24 overflow-hidden">
+        <div className="relative w-full lg:h-[600px] mb-12 lg:mb-24 overflow-hidden">
           {/* Video Layer - shifted right 60% */}
-          <div className="absolute right-0 top-0 w-full md:w-[60%] h-full">
+          <div className={cn(
+            "absolute right-0 top-0 w-full lg:w-[60%] h-full transition-all duration-[2000ms] hidden lg:block bg-muted"
+          )}>
             <video
               ref={videoRef}
-              className="w-full h-full object-cover"
+              className={cn(
+                "w-full h-full object-cover transition-opacity duration-[2000ms]",
+                isVideoEnded ? "opacity-0" : "opacity-100"
+              )}
               muted
               playsInline
               autoPlay
-              onEnded={(e) => {
-                const video = e.currentTarget;
-                video.pause();
-              }}
+              onEnded={() => setIsVideoEnded(true)}
               style={{ filter: 'brightness(0.9)' }}
             >
               <source src="/video/video.mp4" type="video/mp4" />
             </video>
           </div>
 
-          {/* Text Overlay - left 40%, overlapping video */}
-          <div className="absolute left-0 top-0 h-full w-full md:w-[45%] flex items-center z-10">
+          {/* Text Overlay - left 40%, overlapping video on large screens */}
+          <div className="pt-20 lg:absolute lg:left-0 lg:top-0 lg:h-full w-full lg:w-[50%] flex items-center justify-center lg:justify-start z-10">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="relative bg-background/95 backdrop-blur-xl p-8 md:p-12"
-              style={{
-                clipPath: 'polygon(0 0, 95% 0, 100% 100%, 0 100%)',
-                boxShadow: '20px 0 40px rgba(0, 0, 0, 0.3), 10px 0 20px rgba(0, 0, 0, 0.2)',
+              animate={{ 
+                opacity: 1, 
+                x: isVideoEnded ? 200 : 0
               }}
+              transition={{ 
+                duration: 0.8,
+                x: { duration: 1.5, ease: "easeInOut" }
+              }}
+              className={cn(
+                "relative lg:bg-background/95 lg:backdrop-blur-xl p-0 lg:p-16 text-center lg:text-left flex flex-col items-center lg:items-start",
+                "lg:shadow-[20px_0_40px_rgba(0,0,0,0.3),10px_0_20px_rgba(0,0,0,0.2)]",
+                "lg:[clip-path:polygon(0_0,_95%_0,_100%_100%,_0_100%)]"
+              )}
             >
-              <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-4 py-2 rounded-full text-primary text-sm font-semibold mb-6">
+              <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-4 py-2 rounded-full text-primary text-sm font-semibold mb-6 lg:mb-6">
                 <Award className="w-4 h-4" />
                 {dict.tag}
               </div>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 lg:mb-6">
                 {dict.title}
               </h2>
               <p className="text-muted-foreground text-base md:text-lg">
@@ -58,8 +68,8 @@ const Partners = ({ dict }: { dict: any }) => {
         </div>
 
         {/* Scientific Partners */}
-        <div className="mb-24">
-          <h3 className="text-2xl font-bold mb-8 text-center">{dict.scientificPartnersTitle}</h3>
+        <div className="mb-12 lg:mb-24">
+          <h3 className="text-2xl font-bold mb-6 lg:mb-8 text-center">{dict.scientificPartnersTitle}</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {dict.scientificPartners.map((partner: any, index: number) => (
               <motion.div
@@ -98,14 +108,14 @@ const Partners = ({ dict }: { dict: any }) => {
 
         {/* Association Membership */}
         <div className="max-w-6xl mx-auto">
-          <div className="bg-primary/5 border border-primary/20 rounded-[3rem] p-8 md:p-16 text-center">
+          <div className="bg-primary/5 border border-primary/20 rounded-[3rem] p-6 md:p-16 text-center">
             <div className="inline-flex items-center gap-3 mb-6">
               <div className="w-20 h-20 rounded-3xl bg-primary/20 flex items-center justify-center">
                 <Award className="w-10 h-10 text-primary" />
               </div>
             </div>
-            <h3 className="text-3xl md:text-4xl font-bold mb-4">{dict.associationTitle}</h3>
-            <p className="text-muted-foreground text-xl mb-12 max-w-2xl mx-auto">{dict.associationDescription}</p>
+            <h3 className="text-2xl md:text-4xl font-bold mb-4">{dict.associationTitle}</h3>
+            <p className="text-muted-foreground text-lg md:text-xl mb-8 lg:mb-12 max-w-2xl mx-auto">{dict.associationDescription}</p>
             <div className="flex flex-wrap justify-center gap-8">
               {dict.associations.map((assoc: any, index: number) => (
                 <div
@@ -122,7 +132,7 @@ const Partners = ({ dict }: { dict: any }) => {
                       />
                     </div>
                   )}
-                  <div className="font-bold text-lg max-w-xs">{assoc.name}</div>
+                  <div className="font-bold text-base md:text-lg max-w-xs">{assoc.name}</div>
                 </div>
               ))}
             </div>

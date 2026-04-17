@@ -39,16 +39,57 @@ const Footer = ({ dict, region }: { dict: any; region: 'ru' | 'by' | 'kk' }) => 
   };
 
   return (
-    <footer id="contact" className="bg-zinc-950 text-zinc-400 pt-24 pb-12">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="grid lg:grid-cols-4 gap-12 mb-16">
-          <div className="lg:col-span-1 space-y-6">
-            <Link href="/" className="block">
-              <Logo tagline={taglines[region]} inverted={true} />
-            </Link>
-            <p className="text-sm leading-relaxed">
-              {dict.description}
-            </p>
+    <footer id="contact" className="bg-zinc-950 text-zinc-400 pt-6 lg:pt-16 pb-12">
+      <div className="container mx-auto px-3 md:px-4 lg:px-6">
+        <div className="flex flex-col items-center lg:items-start mb-12">
+          <Link href="/" className="block">
+            <Logo tagline={taglines[region]} inverted={true} />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8 mb-16">
+          <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
+            <h4 className="text-white font-bold mb-6">{dict.solutions}</h4>
+            <ul className="space-y-4 text-sm">
+              <li><Link href="#solutions" className="hover:text-primary transition-colors">{dict.solutionsList.industrial}</Link></li>
+              <li><Link href="#solutions" className="hover:text-primary transition-colors">{dict.solutionsList.smartFarming}</Link></li>
+              <li><Link href="#solutions" className="hover:text-primary transition-colors">{dict.solutionsList.ecoResidential}</Link></li>
+              <li><Link href="#solutions" className="hover:text-primary transition-colors">{dict.solutionsList.support}</Link></li>
+            </ul>
+          </div>
+
+          <div className="hidden sm:flex flex-col items-center sm:items-start text-center sm:text-left">
+            <h4 className="text-white font-bold mb-6">{dict.quickLinks}</h4>
+            <ul className="space-y-4 text-sm">
+              <li><Link href="#innovation" className="hover:text-primary transition-colors">{dict.innovation}</Link></li>
+              <li><Link href="#impact" className="hover:text-primary transition-colors">{dict.impact}</Link></li>
+              <li><Link href="#partners" className="hover:text-primary transition-colors">{dict.partners}</Link></li>
+            </ul>
+          </div>
+
+          <div className="sm:col-span-2 lg:col-span-1 flex flex-col items-center lg:items-start text-center lg:text-left">
+            <h4 className="text-white font-bold mb-6">{dict.contact}</h4>
+            <div className="space-y-4 text-sm w-full flex flex-col items-center lg:items-start mb-8">
+              <p className="font-semibold text-white">{contact.company}</p>
+              {contact.phones.map((phone, index) => (
+                <a
+                  key={index}
+                  href={`tel:${phone.replace(/\s/g, '')}`}
+                  className="flex items-center gap-3 hover:text-primary transition-colors group"
+                >
+                  <Phone size={18} className="text-primary flex-shrink-0 group-hover:scale-110 transition-transform" />
+                  <span>{phone}</span>
+                </a>
+              ))}
+              <a
+                href={`mailto:${contact.email}`}
+                className="flex items-center gap-3 hover:text-primary transition-colors group"
+              >
+                <Mail size={18} className="text-primary flex-shrink-0 group-hover:scale-110 transition-transform" />
+                <span className="break-all">{contact.email}</span>
+              </a>
+            </div>
+
             <div className="flex gap-4">
               <a
                 href="https://www.instagram.com/innovatech.by?igsh=MWw0N2lxamliOHM3bA%3D%3D&utm_source=qr"
@@ -69,56 +110,13 @@ const Footer = ({ dict, region }: { dict: any; region: 'ru' | 'by' | 'kk' }) => 
               </div>
             </div>
           </div>
-
-          <div>
-            <h4 className="text-white font-bold mb-6">{dict.solutions}</h4>
-            <ul className="space-y-4 text-sm">
-              <li><Link href="#solutions" className="hover:text-primary transition-colors">{dict.solutionsList.industrial}</Link></li>
-              <li><Link href="#solutions" className="hover:text-primary transition-colors">{dict.solutionsList.smartFarming}</Link></li>
-              <li><Link href="#solutions" className="hover:text-primary transition-colors">{dict.solutionsList.ecoResidential}</Link></li>
-              <li><Link href="#solutions" className="hover:text-primary transition-colors">{dict.solutionsList.support}</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-white font-bold mb-6">{dict.quickLinks}</h4>
-            <ul className="space-y-4 text-sm">
-              <li><Link href="#innovation" className="hover:text-primary transition-colors">{dict.innovation}</Link></li>
-              <li><Link href="#impact" className="hover:text-primary transition-colors">{dict.impact}</Link></li>
-              <li><Link href="#partners" className="hover:text-primary transition-colors">{dict.partners}</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-white font-bold mb-6">{dict.contact}</h4>
-            <div className="space-y-4 text-sm">
-              <p className="font-semibold text-white">{contact.company}</p>
-              {contact.phones.map((phone, index) => (
-                <a
-                  key={index}
-                  href={`tel:${phone.replace(/\s/g, '')}`}
-                  className="flex items-center gap-3 hover:text-primary transition-colors"
-                >
-                  <Phone size={18} className="text-primary flex-shrink-0" />
-                  <span>{phone}</span>
-                </a>
-              ))}
-              <a
-                href={`mailto:${contact.email}`}
-                className="flex items-center gap-3 hover:text-primary transition-colors"
-              >
-                <Mail size={18} className="text-primary flex-shrink-0" />
-                <span className="break-all">{contact.email}</span>
-              </a>
-            </div>
-          </div>
         </div>
 
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs uppercase tracking-widest font-medium">
-          <p>© 2026 InnovaTech. {dict.rights}</p>
-          <div className="flex gap-8">
-            <Link href="#" className="hover:text-white transition-colors">{dict.privacy}</Link>
-            <Link href="#" className="hover:text-white transition-colors">{dict.terms}</Link>
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-xs uppercase tracking-widest font-medium text-center md:text-left">
+          <p className="opacity-60">© 2026 InnovaTech. {dict.rights}</p>
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-2">
+            <Link href="#" className="hover:text-white transition-colors py-1">{dict.privacy}</Link>
+            <Link href="#" className="hover:text-white transition-colors py-1">{dict.terms}</Link>
           </div>
         </div>
       </div>

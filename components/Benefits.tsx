@@ -23,11 +23,11 @@ const Benefits = ({ dict }: { dict: any }) => {
   }));
 
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
+    <section className="pb-24 bg-background relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-b from-muted/20 to-background pointer-events-none" />
       
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="container mx-auto px-3 md:px-4 lg:px-6 relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-6">
           <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-4 py-2 rounded-full text-primary text-sm font-semibold">
@@ -45,7 +45,7 @@ const Benefits = ({ dict }: { dict: any }) => {
         </div>
 
         {/* Benefits Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {benefits.map((benefit: any, index: number) => (
             <motion.div
               key={index}
@@ -70,7 +70,7 @@ const Benefits = ({ dict }: { dict: any }) => {
         </div>
 
         {/* Call to action */}
-        <div className="mt-16 text-center">
+        <div className="mt-19 text-center">
           <p className="text-muted-foreground mb-6 text-lg">{dict.cta}</p>
           <Button size="lg" className="rounded-2xl shadow-lg shadow-primary/25 text-lg px-8">
             {dict.ctaButton}

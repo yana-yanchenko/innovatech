@@ -10,7 +10,7 @@ const TrustedBy = ({ dict }: { dict: any }) => {
 
   return (
     <section className="py-16 bg-background border-y border-border overflow-hidden">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container mx-auto px-3 md:px-4 lg:px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-12">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">

@@ -74,9 +74,18 @@
         "description": "Supply and installation of professional equipment for modern greenhouses: from screening systems to lighting and heating.",
         "color": "#16a34a",
         "stats": [
-          { "label": "Projects", "value": "500+" },
-          { "label": "Manufacturers", "value": "20+" },
-          { "label": "Quality", "value": "ISO" }
+          {
+            "label": "Projects",
+            "value": "500+"
+          },
+          {
+            "label": "Manufacturers",
+            "value": "20+"
+          },
+          {
+            "label": "Quality",
+            "value": "ISO"
+          }
         ]
       },
       {
@@ -85,9 +94,18 @@
         "description": "Comprehensive technical support, spare parts supply, and high-quality consumables for the uninterrupted operation of your greenhouse business.",
         "color": "#0891b2",
         "stats": [
-          { "label": "Specialists", "value": "50+" },
-          { "label": "Response Time", "value": "< 4h" },
-          { "label": "24/7 Warehouse", "value": "Yes" }
+          {
+            "label": "Specialists",
+            "value": "50+"
+          },
+          {
+            "label": "Response Time",
+            "value": "< 4h"
+          },
+          {
+            "label": "24/7 Warehouse",
+            "value": "Yes"
+          }
         ]
       },
       {
@@ -96,9 +114,18 @@
         "description": "Implementation of intelligent control systems for climate, irrigation, and plant nutrition. Full control of all processes in one click.",
         "color": "#7c3aed",
         "stats": [
-          { "label": "IoT Sensors", "value": "1000+" },
-          { "label": "Accuracy", "value": "99%" },
-          { "label": "Savings", "value": "40%" }
+          {
+            "label": "IoT Sensors",
+            "value": "1000+"
+          },
+          {
+            "label": "Accuracy",
+            "value": "99%"
+          },
+          {
+            "label": "Savings",
+            "value": "40%"
+          }
         ]
       }
     ]
@@ -176,20 +203,56 @@
     "trustedBy": "Trusted By",
     "clientsNote": "And over 100 other companies in the CIS",
     "clients": [
-      { "name": "AgroHolding", "abbr": "AH" },
-      { "name": "EcoFarm", "abbr": "EF" },
-      { "name": "GreenTech", "abbr": "GT" },
-      { "name": "FoodPro", "abbr": "FP" },
-      { "name": "AgroStar", "abbr": "AS" },
-      { "name": "EcoGarden", "abbr": "EG" },
-      { "name": "MegaFarm", "abbr": "MF" },
-      { "name": "GreenLine", "abbr": "GL" }
+      {
+        "name": "AgroHolding",
+        "abbr": "AH"
+      },
+      {
+        "name": "EcoFarm",
+        "abbr": "EF"
+      },
+      {
+        "name": "GreenTech",
+        "abbr": "GT"
+      },
+      {
+        "name": "FoodPro",
+        "abbr": "FP"
+      },
+      {
+        "name": "AgroStar",
+        "abbr": "AS"
+      },
+      {
+        "name": "EcoGarden",
+        "abbr": "EG"
+      },
+      {
+        "name": "MegaFarm",
+        "abbr": "MF"
+      },
+      {
+        "name": "GreenLine",
+        "abbr": "GL"
+      }
     ],
     "stats": [
-      { "label": "Countries Served", "value": "12+" },
-      { "label": "Happy Clients", "value": "1,200+" },
-      { "label": "Industry Awards", "value": "25+" },
-      { "label": "Total Area (Ha)", "value": "850+" }
+      {
+        "label": "Countries Served",
+        "value": "12+"
+      },
+      {
+        "label": "Happy Clients",
+        "value": "1,200+"
+      },
+      {
+        "label": "Industry Awards",
+        "value": "25+"
+      },
+      {
+        "label": "Total Area (Ha)",
+        "value": "850+"
+      }
     ]
   },
   "benefits": {
@@ -253,7 +316,7 @@
     "associationTitle": "Professional Association Memberships",
     "associationDescription": "We are active members of leading industry associations",
     "associations": [
-      { 
+      {
         "name": "ROSA — Russian Association of Planting Material Producers",
         "logo": "/logo/Logo-ROSA-png-belye-bukvy-1024x470.png"
       }
@@ -311,8 +374,14 @@
         "position": "Director",
         "company": "AgroTech Plus, Moscow Region",
         "results": [
-          { "value": "-35%", "label": "Energy Costs" },
-          { "value": "+28%", "label": "Yield" }
+          {
+            "value": "-35%",
+            "label": "Energy Costs"
+          },
+          {
+            "value": "+28%",
+            "label": "Yield"
+          }
         ]
       },
       {
@@ -321,8 +390,14 @@
         "position": "Owner",
         "company": "Eco Farm, Minsk Region",
         "results": [
-          { "value": "4 mo.", "label": "To Launch" },
-          { "value": "100%", "label": "Automation" }
+          {
+            "value": "4 mo.",
+            "label": "To Launch"
+          },
+          {
+            "value": "100%",
+            "label": "Automation"
+          }
         ]
       },
       {
@@ -331,8 +406,14 @@
         "position": "Chief Agronomist",
         "company": "Green World, Almaty",
         "results": [
-          { "value": "×3", "label": "Productivity" },
-          { "value": "50K", "label": "Trays/month" }
+          {
+            "value": "×3",
+            "label": "Productivity"
+          },
+          {
+            "value": "50K",
+            "label": "Trays/month"
+          }
         ]
       }
     ],
@@ -439,239 +520,240 @@
   "projectsMap": {
     "tag": "Project Geography",
     "title": "Map of Our Achievements",
-    "description": "Implemented projects across the CIS region — from Moscow to Almaty",
+    "description": "Current and completed projects across Russia, Belarus, Kazakhstan, and Armenia.",
     "all": "All Projects",
     "industrial": "Industrial",
     "farm": "Farm",
     "seedling": "Seedling",
     "mapPlaceholder": "Interactive Project Map",
-    "mapNote": "CIS Geography: RF, BY, KZ, UZ, KG",
+    "mapNote": "Project geography: Russia, Belarus, Kazakhstan, Armenia",
+    "countLabel": "projects",
     "viewDetails": "View Details",
     "showMore": "Show More",
     "items": [
       {
         "id": 1,
         "title": "Belozerok (Vologda Region)",
-        "location": "RF, Vologda Reg.",
+        "location": "Russia, Vologda Region",
         "lat": 59.9,
         "lng": 37.9,
-        "area": "2.5M Seedlings",
+        "area": "2.5M seedlings",
         "type": "seedling",
         "year": "2023",
         "image": "/22da4f7424356bc87bde97f4481b79932f1f4954.jpg",
-        "description": "Seedling complex with 2.5 million capacity, two 16x90m greenhouses, climate control, and irrigation systems."
+        "description": "Seedling complex with a capacity of 2.5 million seedlings, two 16x90 m greenhouses, full equipment package, microclimate and shading systems, a 32x90 m irrigation boom, and preparation and sowing lines."
       },
       {
         "id": 2,
-        "title": "Vesiegonsk (Tver Region)",
-        "location": "RF, Tver Reg.",
-        "lat": 58.6,
-        "lng": 37.2,
-        "area": "4M Seedlings",
+        "title": "Vesyegonsk (Tver Region)",
+        "location": "Russia, Tver Region",
+        "lat": 58.63,
+        "lng": 37.25,
+        "area": "4M seedlings",
         "type": "seedling",
         "year": "2023",
         "image": "/c4f85a9b6c6c290cf23558c8df585c3b8596d2d0.jpg",
-        "description": "Complex with 4 million capacity, three 16x90m greenhouses, and substrate preparation lines."
+        "description": "Complex with a design capacity of 4 million seedlings, three fully equipped 16x90 m greenhouses, three 32x90 m hardening fields, and a substrate preparation and sowing line."
       },
       {
         "id": 3,
         "title": "Amur Region",
-        "location": "RF, Amur Reg.",
-        "lat": 53.3,
-        "lng": 127.8,
-        "area": "500k Seedlings",
+        "location": "Russia, Amur Region",
+        "lat": 53.55,
+        "lng": 127.95,
+        "area": "500K seedlings",
         "type": "seedling",
         "year": "2023",
         "image": "/7f3bfdbf1c2336b65ad044be78b623036e21c28c.jpg",
-        "description": "Complex with 500,000 capacity, greenhouse, hardening area, and seeding equipment."
+        "description": "Complex with a capacity of 500 thousand seedlings: greenhouse, hardening area, sowing line, and related equipment."
       },
       {
         "id": 4,
         "title": "Khabarovsk Krai",
-        "location": "RF, Khabarovsk",
-        "lat": 48.5,
-        "lng": 135.1,
-        "area": "1M Seedlings",
+        "location": "Russia, Khabarovsk Krai",
+        "lat": 48.54,
+        "lng": 135.08,
+        "area": "1M seedlings",
         "type": "seedling",
         "year": "2023",
         "image": "/1287acee185014c2f581f67f2dfd56bafea7012e.jpg",
-        "description": "Complex with 1 million capacity, two greenhouses, and hardening areas."
+        "description": "Complex for 1 million seedlings with two greenhouses, preparation and sowing equipment, and a hardening area."
       },
       {
         "id": 5,
         "title": "Khabarovsk Krai",
-        "location": "RF, Khabarovsk",
-        "lat": 48.4,
-        "lng": 135.0,
-        "area": "Equipment",
+        "location": "Russia, Khabarovsk Krai",
+        "lat": 48.42,
+        "lng": 135.2,
+        "area": "Preparation and tray washing",
         "type": "industrial",
         "year": "2023",
         "image": "/carl-raw-f6wVRC7Y4aI-unsplash.jpg",
-        "description": "Substrate preparation and seeding equipment, cassette washing systems."
+        "description": "Substrate preparation and sowing equipment, plus a tray washing line."
       },
       {
         "id": 6,
-        "title": "JAO",
-        "location": "RF, Jewish AO",
-        "lat": 48.7,
-        "lng": 132.9,
-        "area": "Equipment",
+        "title": "Jewish Autonomous Region",
+        "location": "Russia, Jewish AO",
+        "lat": 48.8,
+        "lng": 132.95,
+        "area": "Sowing and irrigation boom",
         "type": "industrial",
         "year": "2023",
         "image": "/8cb72ba24912f6fc185c2ec5e97f8b3f3cce12eb.png",
-        "description": "Substrate preparation and seeding lines, irrigation ramps."
+        "description": "Substrate preparation and sowing equipment with an irrigation boom."
       },
       {
         "id": 7,
         "title": "Nizhny Novgorod Region",
-        "location": "RF",
-        "lat": 56.3,
-        "lng": 44.0,
-        "area": "42x100m Ramp",
+        "location": "Russia, Nizhny Novgorod Region",
+        "lat": 56.33,
+        "lng": 44.02,
+        "area": "42x100 m boom",
         "type": "industrial",
         "year": "2023",
         "image": "/Greenhouse.webp",
-        "description": "Irrigation ramp for hardening areas 42x100 m."
+        "description": "Irrigation boom for 42x100 m hardening areas."
       },
       {
         "id": 8,
         "title": "Perm Krai",
-        "location": "RF, Perm",
-        "lat": 58.0,
-        "lng": 56.2,
-        "area": "Equipment",
+        "location": "Russia, Perm Krai",
+        "lat": 58.01,
+        "lng": 56.25,
+        "area": "Sowing and tray washing",
         "type": "industrial",
         "year": "2023",
         "image": "/c4f85a9b6c6c290cf23558c8df585c3b8596d2d0.jpg",
-        "description": "Substrate preparation and seeding equipment with cassette washing."
+        "description": "Substrate preparation and sowing equipment with tray washing."
       },
       {
         "id": 9,
         "title": "Akmola Region",
-        "location": "Kazakhstan",
-        "lat": 51.1,
-        "lng": 71.4,
-        "area": "Large Complex",
-        "type": "industrial",
-        "year": "2024",
+        "location": "Kazakhstan, Akmola Region",
+        "lat": 51.16,
+        "lng": 71.47,
+        "area": "2024-2025 complex",
+        "type": "seedling",
+        "year": "2024-2025",
         "image": "/22da4f7424356bc87bde97f4481b79932f1f4954.jpg",
-        "description": "Multiple greenhouses (16x80, 18x100), irrigation ramps, automated systems, and heating generators."
+        "description": "16x80 m greenhouse with irrigation boom, shading, and automation, 32x90 m ground boom, sowing line, heating generators, trays, stands, and substrate; plus an 18x100 m greenhouse with irrigation boom, shading, automation, and a 36x100 m ground boom."
       },
       {
         "id": 10,
         "title": "Volozhin District",
-        "location": "Belarus",
-        "lat": 54.0,
-        "lng": 26.5,
-        "area": "10x60 Greenhouse",
+        "location": "Belarus, Volozhin District",
+        "lat": 54.08,
+        "lng": 26.53,
+        "area": "10x60 m greenhouse",
         "type": "farm",
         "year": "2025",
         "image": "/7f3bfdbf1c2336b65ad044be78b623036e21c28c.jpg",
-        "description": "10x60m greenhouse with irrigation ramp and automation system."
+        "description": "10x60 m greenhouse with an irrigation boom and automation system."
       },
       {
         "id": 11,
         "title": "Minsk District",
-        "location": "Belarus",
-        "lat": 53.9,
-        "lng": 27.5,
-        "area": "10x40 Greenhouse",
+        "location": "Belarus, Minsk District",
+        "lat": 53.93,
+        "lng": 27.45,
+        "area": "10x40 m greenhouse",
         "type": "farm",
         "year": "2025",
         "image": "/8cb72ba24912f6fc185c2ec5e97f8b3f3cce12eb.png",
-        "description": "10x40m greenhouse with irrigation ramp and automation system."
+        "description": "10x40 m greenhouse with an irrigation boom and automation system."
       },
       {
         "id": 12,
         "title": "Myadel District",
-        "location": "Belarus",
-        "lat": 54.8,
-        "lng": 26.9,
-        "area": "2 Greenhouses",
+        "location": "Belarus, Myadel District",
+        "lat": 54.88,
+        "lng": 26.95,
+        "area": "Two 10x80 m greenhouses",
         "type": "farm",
         "year": "2025",
         "image": "/cover-scaled.webp",
-        "description": "Two 10x80m greenhouses, multiple irrigation ramps, and automation systems."
+        "description": "Two 10x80 m greenhouses, two greenhouse irrigation booms, two 22x80 m ground booms, and two automation systems."
       },
       {
         "id": 13,
         "title": "Moscow Region",
-        "location": "RF, Moscow Reg.",
-        "lat": 55.7,
-        "lng": 37.6,
-        "area": "25x50m Ramp",
+        "location": "Russia, Moscow Region",
+        "lat": 55.76,
+        "lng": 37.65,
+        "area": "25x50 m boom",
         "type": "industrial",
         "year": "2025",
         "image": "/1287acee185014c2f581f67f2dfd56bafea7012e.jpg",
-        "description": "Ground-based irrigation ramp 25x50 m."
+        "description": "Ground irrigation boom 25x50 m."
       },
       {
         "id": 14,
         "title": "Yekaterinburg",
-        "location": "RF, Sverdlovsk Reg.",
-        "lat": 56.8,
-        "lng": 60.6,
-        "area": "Seeding Line",
+        "location": "Russia, Sverdlovsk Region",
+        "lat": 56.84,
+        "lng": 60.65,
+        "area": "Sowing line",
         "type": "industrial",
         "year": "2025",
         "image": "/carl-raw-f6wVRC7Y4aI-unsplash.jpg",
-        "description": "Seeding line with dual fillers."
+        "description": "Sowing line with two fillers."
       },
       {
         "id": 15,
         "title": "Volgograd",
-        "location": "RF, Volgograd",
-        "lat": 48.7,
-        "lng": 44.5,
+        "location": "Russia, Volgograd Region",
+        "lat": 48.71,
+        "lng": 44.51,
         "area": "Substrate",
         "type": "industrial",
         "year": "2025",
         "image": "/c4f85a9b6c6c290cf23558c8df585c3b8596d2d0.jpg",
-        "description": "Substrate supply for agricultural projects."
+        "description": "Substrate supply."
       },
       {
         "id": 16,
         "title": "Petrozavodsk",
-        "location": "RF, Karelia",
-        "lat": 61.7,
-        "lng": 34.3,
-        "area": "16x60 Greenhouse",
+        "location": "Russia, Republic of Karelia",
+        "lat": 61.79,
+        "lng": 34.38,
+        "area": "16x60 m greenhouse",
         "type": "farm",
         "year": "2025",
         "image": "/Greenhouse.webp",
-        "description": "16x60m greenhouse with ramps and 32x120m ground irrigation field."
+        "description": "16x60 m greenhouse, greenhouse irrigation boom, and a 32x120 m ground irrigation boom."
       },
       {
         "id": 17,
         "title": "Tver Region",
-        "location": "RF, Tver Reg.",
-        "lat": 57.0,
-        "lng": 36.0,
-        "area": "25x100m Ramp",
+        "location": "Russia, Tver Region",
+        "lat": 56.95,
+        "lng": 35.95,
+        "area": "25x100 m boom",
         "type": "industrial",
         "year": "2025",
         "image": "/7f3bfdbf1c2336b65ad044be78b623036e21c28c.jpg",
-        "description": "Ground-based irrigation ramp 25x100 m."
+        "description": "Ground irrigation boom 25x100 m."
       },
       {
         "id": 18,
         "title": "Sverdlovsk Region",
-        "location": "RF, Sverdlovsk",
-        "lat": 56.9,
-        "lng": 60.7,
-        "area": "Irrigation Systems",
+        "location": "Russia, Sverdlovsk Region",
+        "lat": 56.92,
+        "lng": 60.78,
+        "area": "10x100 and 25x100 m booms",
         "type": "industrial",
         "year": "2025",
         "image": "/22da4f7424356bc87bde97f4481b79932f1f4954.jpg",
-        "description": "Greenhouse ramp 10x100m and ground irrigation ramp 25x100m."
+        "description": "Greenhouse boom 10x100 m and ground irrigation boom 25x100 m."
       },
       {
         "id": 19,
         "title": "Gomel Region",
-        "location": "Belarus",
-        "lat": 52.4,
-        "lng": 30.9,
-        "area": "Equipment",
+        "location": "Belarus, Gomel Region",
+        "lat": 52.43,
+        "lng": 30.99,
+        "area": "Substrate preparation",
         "type": "industrial",
         "year": "2025",
         "image": "/8cb72ba24912f6fc185c2ec5e97f8b3f3cce12eb.png",
@@ -680,62 +762,230 @@
       {
         "id": 20,
         "title": "Minsk District",
-        "location": "Belarus",
-        "lat": 53.8,
-        "lng": 27.4,
-        "area": "26x66m Ramp",
+        "location": "Belarus, Minsk District",
+        "lat": 53.84,
+        "lng": 27.33,
+        "area": "26x66 m boom",
         "type": "industrial",
         "year": "2025",
         "image": "/1287acee185014c2f581f67f2dfd56bafea7012e.jpg",
-        "description": "Ground-based irrigation ramp 26x66 m."
+        "description": "Ground irrigation boom 26x66 m."
       },
       {
         "id": 21,
         "title": "Minsk District",
-        "location": "Belarus",
-        "lat": 53.7,
-        "lng": 27.3,
-        "area": "Heating",
+        "location": "Belarus, Minsk District",
+        "lat": 53.74,
+        "lng": 27.22,
+        "area": "2 heat generators",
         "type": "industrial",
         "year": "2025",
         "image": "/carl-raw-f6wVRC7Y4aI-unsplash.jpg",
-        "description": "Two heating generator units."
+        "description": "Two heating generators."
       },
       {
         "id": 22,
         "title": "Gomel Region",
-        "location": "Belarus",
-        "lat": 52.3,
-        "lng": 30.8,
-        "area": "20x80m Ramp",
+        "location": "Belarus, Gomel Region",
+        "lat": 52.31,
+        "lng": 30.79,
+        "area": "20x80 m boom",
         "type": "industrial",
         "year": "2025",
         "image": "/cover-scaled.webp",
-        "description": "Ground-based irrigation ramp 20x80 m."
+        "description": "Ground irrigation boom 20x80 m."
       },
       {
         "id": 23,
-        "title": "Sverdlovsk Region",
-        "location": "RF",
-        "lat": 56.7,
-        "lng": 60.5,
-        "area": "35x100m Ramp",
+        "title": "Hrazdan",
+        "location": "Armenia, Hrazdan",
+        "lat": 40.51,
+        "lng": 44.77,
+        "area": "Forest nursery equipment",
         "type": "industrial",
-        "year": "2022",
-        "image": "/7f3bfdbf1c2336b65ad044be78b623036e21c28c.jpg",
-        "description": "Irrigation ramp for growing fields 35x100m. Project completed in August 2022."
+        "year": "2017-2020",
+        "image": "/Greenhouse.webp",
+        "description": "Equipment supplied for a forest nursery."
       },
       {
         "id": 24,
+        "title": "Minsk Region",
+        "location": "Belarus, Minsk Region",
+        "lat": 53.98,
+        "lng": 27.78,
+        "area": "Six 16x90 m greenhouses",
+        "type": "seedling",
+        "year": "2017-2020",
+        "image": "/22da4f7424356bc87bde97f4481b79932f1f4954.jpg",
+        "description": "Delivered in 2017-2020: six 16x90 m greenhouses with shading, supplemental lighting, irrigation booms, automation, dosing units, heat generators, and circulation fans; forest seed equipment, extraction and packaging line, and modernization of field booms."
+      },
+      {
+        "id": 25,
+        "title": "Mogilev Region",
+        "location": "Belarus, Mogilev Region",
+        "lat": 53.92,
+        "lng": 30.35,
+        "area": "5 booms and sowing line",
+        "type": "industrial",
+        "year": "2020-2021",
+        "image": "/c4f85a9b6c6c290cf23558c8df585c3b8596d2d0.jpg",
+        "description": "Completed in 2020-2021: five 30x140 m irrigation booms for growing fields and a fully equipped seed sowing line for trays with a capacity of 1,000 trays per hour."
+      },
+      {
+        "id": 26,
+        "title": "Irkutsk Region",
+        "location": "Russia, Irkutsk Region",
+        "lat": 52.34,
+        "lng": 104.18,
+        "area": "Separator and irrigation booms",
+        "type": "industrial",
+        "year": "2020-2023",
+        "image": "/7f3bfdbf1c2336b65ad044be78b623036e21c28c.jpg",
+        "description": "Projects delivered in 2020 and 2023: forest seed separator SN, irrigation boom for 18x90 m growing fields, and irrigation boom for 31x100 m growing fields."
+      },
+      {
+        "id": 27,
+        "title": "Irkutsk Region",
+        "location": "Russia, Irkutsk Region",
+        "lat": 52.26,
+        "lng": 104.38,
+        "area": "600 trays/h sowing line",
+        "type": "industrial",
+        "year": "2021",
+        "image": "/carl-raw-f6wVRC7Y4aI-unsplash.jpg",
+        "description": "Completed in 2021: seed sowing line for trays with a capacity of 600 trays per hour, plus trays."
+      },
+      {
+        "id": 28,
+        "title": "Vologda Region",
+        "location": "Russia, Vologda Region",
+        "lat": 59.25,
+        "lng": 39.72,
+        "area": "16x90 m greenhouse and 3 booms",
+        "type": "seedling",
+        "year": "2020-2022",
+        "image": "/1287acee185014c2f581f67f2dfd56bafea7012e.jpg",
+        "description": "Project delivered in 2020-2022: 16x90 m greenhouse with shading and automation systems, irrigation boom, three field irrigation booms, trays, and 25x100 m greenhouse booms."
+      },
+      {
+        "id": 29,
+        "title": "Irkutsk Region",
+        "location": "Russia, Irkutsk Region",
+        "lat": 52.18,
+        "lng": 104.52,
+        "area": "16x100 m greenhouse",
+        "type": "seedling",
+        "year": "06.2022",
+        "image": "/Greenhouse.webp",
+        "description": "Completed in June 2022: 16x100 m greenhouse with shading system, automation, and irrigation boom."
+      },
+      {
+        "id": 30,
+        "title": "Republic of Karelia",
+        "location": "Russia, Republic of Karelia",
+        "lat": 61.62,
+        "lng": 34.05,
+        "area": "16x60 m greenhouse",
+        "type": "farm",
+        "year": "05.2022",
+        "image": "/8cb72ba24912f6fc185c2ec5e97f8b3f3cce12eb.png",
+        "description": "Completed in May 2022: 16x60 m greenhouse with internal irrigation boom and automation system."
+      },
+      {
+        "id": 31,
+        "title": "Tver Region",
+        "location": "Russia, Tver Region",
+        "lat": 58.57,
+        "lng": 37.05,
+        "area": "Two 16x90 m greenhouses",
+        "type": "seedling",
+        "year": "08.2023",
+        "image": "/cover-scaled.webp",
+        "description": "Completed in August 2023: two 16x90 m greenhouses with shading, microclimate control, irrigation boom, circulation fans, and heat generators, plus a 32x90 m field boom, a 600 trays/h sowing line, and RKL-81 trays."
+      },
+      {
+        "id": 32,
+        "title": "Ivanovo Region",
+        "location": "Russia, Ivanovo Region",
+        "lat": 57.01,
+        "lng": 40.99,
+        "area": "16x100 m greenhouses and sowing line",
+        "type": "seedling",
+        "year": "06.2022",
+        "image": "/22da4f7424356bc87bde97f4481b79932f1f4954.jpg",
+        "description": "Completed in June 2022: 16x100 m greenhouses with shading, automation, irrigation boom, heat generators, and circulation fans, plus a 600 trays/h sowing line, tray washing line, 35x100 m field boom, and trays."
+      },
+      {
+        "id": 33,
+        "title": "Sverdlovsk Region",
+        "location": "Russia, Sverdlovsk Region",
+        "lat": 56.69,
+        "lng": 60.42,
+        "area": "35x100 m boom",
+        "type": "industrial",
+        "year": "08.2022",
+        "image": "/7f3bfdbf1c2336b65ad044be78b623036e21c28c.jpg",
+        "description": "Completed in August 2022: irrigation boom for 35x100 m growing fields."
+      },
+      {
+        "id": 34,
+        "title": "Tomsk Region",
+        "location": "Russia, Tomsk Region",
+        "lat": 56.52,
+        "lng": 84.97,
+        "area": "Three irrigation booms",
+        "type": "industrial",
+        "year": "2022-2023",
+        "image": "/c4f85a9b6c6c290cf23558c8df585c3b8596d2d0.jpg",
+        "description": "Projects delivered in 2022 and 2023: one 20x90 m irrigation boom and two 38x125 m booms for growing fields."
+      },
+      {
+        "id": 35,
+        "title": "Republic of Buryatia",
+        "location": "Russia, Republic of Buryatia",
+        "lat": 51.84,
+        "lng": 107.65,
+        "area": "12 m greenhouse and 2 booms",
+        "type": "seedling",
+        "year": "05.2023",
+        "image": "/Greenhouse.webp",
+        "description": "Completed in May 2023: 12 m greenhouse with automation and irrigation boom, row pneumatic seeder, trays, and two booms for growing fields."
+      },
+      {
+        "id": 36,
+        "title": "Khabarovsk Krai",
+        "location": "Russia, Khabarovsk Krai",
+        "lat": 48.35,
+        "lng": 135.42,
+        "area": "Booms and SN separator",
+        "type": "industrial",
+        "year": "04.2023",
+        "image": "/8cb72ba24912f6fc185c2ec5e97f8b3f3cce12eb.png",
+        "description": "Completed in April 2023: 25x100 m irrigation boom for growing fields, SN forest seed separator, and 38x130 m irrigation boom."
+      },
+      {
+        "id": 37,
+        "title": "Zabaykalsky Krai",
+        "location": "Russia, Zabaykalsky Krai",
+        "lat": 52.05,
+        "lng": 113.55,
+        "area": "Separator and sowing line",
+        "type": "industrial",
+        "year": "05.2023",
+        "image": "/carl-raw-f6wVRC7Y4aI-unsplash.jpg",
+        "description": "Completed in May 2023: SN forest seed separator and a sowing line with a capacity of 250 trays per hour."
+      },
+      {
+        "id": 38,
         "title": "Arkhangelsk Region",
-        "location": "RF, Arkhangelsk",
-        "lat": 64.5,
-        "lng": 40.5,
-        "area": "Two 25x110m Greenhouses",
+        "location": "Russia, Arkhangelsk Region",
+        "lat": 64.54,
+        "lng": 40.62,
+        "area": "Complex installation",
         "type": "seedling",
         "year": "2025",
         "image": "/Greenhouse.webp",
-        "description": "Equipment installation: 2 greenhouses 25x110m (shading, lighting, automation, irrigation ramps, circulation fans), 6 irrigation ramps 26x100m for growing fields, seeding line (600 trays/h), tray washing line."
+        "description": "Equipment installation: two 25x110 m greenhouses with shading, supplemental lighting, automation, irrigation booms, and circulation fans, six 26x100 m field booms, a 600 trays/h sowing line, and a tray washing line."
       }
     ]
   },

@@ -55,7 +55,7 @@ const Hero = ({ dict }: { dict: any }) => {
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl -z-10" />
         <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-[400px] h-[400px] bg-primary/10 rounded-full blur-3xl -z-10" />
 
-        <div className="container mx-auto" style={{ padding: 'clamp(1rem, 3vw, 1.5rem)' }}>
+        <div className="container mx-auto px-3 md:px-4 lg:px-6">
           <div className="grid lg:grid-cols-2 items-center" style={{ gap: 'clamp(2rem, 5vw, 3rem)' }}>
             <div className="flex flex-col z-10" style={{ gap: 'clamp(1.5rem, 4vw, 2rem)' }}>
               {/* Статичный H1 для SEO - НЕ меняется */}

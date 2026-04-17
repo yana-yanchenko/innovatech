@@ -73,8 +73,8 @@ const Showcase = ({ dict }: ShowcaseProps) => {
   ];
 
   return (
-    <section id="showcase" className="py-24 bg-muted/30">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="showcase" className="pt-24 bg-muted/30">
+      <div className="container mx-auto px-3 md:px-4 lg:px-6">
         <div className="max-w-3xl mb-16 space-y-6">
           <h2 className="text-primary font-bold tracking-wider uppercase text-sm">{dict.tag}</h2>
           <h3 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">

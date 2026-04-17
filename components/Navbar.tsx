@@ -65,7 +65,7 @@ const Navbar = ({ lang, dict }: { lang: string, dict: any }) => {
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-background/80 backdrop-blur-md border-b border-border py-2 sm:py-3' : 'bg-transparent py-3 sm:py-5'}`}>
-      <div className="container mx-auto px-3 sm:px-4 md:px-6">
+      <div className="container mx-auto px-3 md:px-4 lg:px-6">
         <div className="flex items-center justify-between gap-2">
           {/* Logo - tagline скрывается до 1280px для экономии места */}
           <Link href={`/${lang}`} className="group flex-shrink-0">

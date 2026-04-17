@@ -45,7 +45,7 @@ const Innovation = ({ dict }: InnovationProps) => {
 
   return (
     <section id="innovation" className="py-24 bg-background overflow-hidden">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container mx-auto px-3 md:px-4 lg:px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="relative">
             <div className="absolute -top-12 -left-12 w-64 h-64 bg-primary/10 rounded-full blur-3xl -z-10" />
