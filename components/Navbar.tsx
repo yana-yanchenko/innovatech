@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, Building2, Droplets, Sun, Bot, Sprout, Package, Salad, Wrench, MessageCircle } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 import Logo from './Logo';
@@ -27,9 +28,26 @@ import {
 } from '@/components/ui/drawer';
 import { Separator } from '@/components/ui/separator';
 
-const Navbar = ({ lang, dict }: { lang: string, dict: any }) => {
+interface NavbarSolutionItem {
+  name: string;
+  description: string;
+  href: string;
+}
+
+interface NavbarDict {
+  tagline?: string;
+  technologies: string;
+  company: string;
+  contact: string;
+  solutions: string;
+  solutionsList: NavbarSolutionItem[];
+  getQuote: string;
+}
+
+const Navbar = ({ lang, dict }: { lang: string, dict: NavbarDict }) => {
   const [scrolled, setScrolled] = useState(false);
   const { openDialog } = useContactDialog();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,10 +57,18 @@ const Navbar = ({ lang, dict }: { lang: string, dict: any }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isHomePage = pathname === `/${lang}` || pathname === `/${lang}/`;
+  const localizedPath = pathname?.replace(/^\/(en|ru|kk)(?=\/|$)/, '') || '';
+
+  const resolveHref = (href: string) => {
+    if (!href.startsWith('#')) return href;
+    return `${isHomePage ? '' : `/${lang}`}${href}`;
+  };
+
   const navLinks = [
-    { name: dict.technologies, href: '#innovation' },
-    { name: dict.company, href: '#impact' },
-    { name: dict.contact, href: '#contact' },
+    { name: dict.technologies, href: resolveHref('#innovation') },
+    { name: dict.company, href: resolveHref('#benefits') },
+    { name: dict.contact, href: resolveHref('#contact') },
   ];
 
   const languages = [
@@ -64,9 +90,11 @@ const Navbar = ({ lang, dict }: { lang: string, dict: any }) => {
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-background/80 backdrop-blur-md border-b border-border py-2 sm:py-3' : 'bg-transparent py-3 sm:py-5'}`}>
+    <nav
+      className={`fixed w-full z-50 transition-[background-color,border-color,backdrop-filter] duration-300 ${scrolled ? 'bg-background/80 backdrop-blur-md border-b border-border' : 'bg-transparent border-b border-transparent'}`}
+    >
       <div className="container mx-auto px-3 md:px-4 lg:px-6">
-        <div className="flex items-center justify-between gap-2">
+        <div className="flex min-h-[72px] sm:min-h-[84px] items-center justify-between gap-2">
           {/* Logo - tagline скрывается до 1280px для экономии места */}
           <Link href={`/${lang}`} className="group flex-shrink-0">
             <div className="hidden xl:block">
@@ -92,11 +120,11 @@ const Navbar = ({ lang, dict }: { lang: string, dict: any }) => {
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[500px] gap-2 p-4 md:grid-cols-2">
-                      {dict.solutionsList.map((solution: any, index: number) => (
+                      {dict.solutionsList.map((solution, index) => (
                         <ListItem
                           key={index}
                           title={solution.name}
-                          href={solution.href}
+                          href={resolveHref(solution.href)}
                           icon={solutionIcons[index]}
                         >
                           {solution.description}
@@ -138,7 +166,7 @@ const Navbar = ({ lang, dict }: { lang: string, dict: any }) => {
                 {languages.map((l) => (
                   <Link
                     key={l.code}
-                    href={`/${l.code}`}
+                    href={`/${l.code}${localizedPath}`}
                     className={`text-xs font-bold px-2 py-1 rounded whitespace-nowrap ${lang === l.code ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-primary'}`}
                     style={{ fontSize: 'clamp(0.688rem, 0.75vw, 0.75rem)' }}
                   >
@@ -173,7 +201,7 @@ const Navbar = ({ lang, dict }: { lang: string, dict: any }) => {
                 {languages.map((l) => (
                   <Link
                     key={l.code}
-                    href={`/${l.code}`}
+                    href={`/${l.code}${localizedPath}`}
                     className={`text-xs font-bold px-2 py-1 rounded ${lang === l.code ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:text-primary'}`}
                   >
                     {l.label}
@@ -207,10 +235,10 @@ const Navbar = ({ lang, dict }: { lang: string, dict: any }) => {
                         {dict.solutions}
                       </h3>
                       <div className="space-y-1">
-                        {dict.solutionsList.map((solution: any, index: number) => (
+                        {dict.solutionsList.map((solution, index) => (
                           <DrawerClose key={index} asChild>
                             <Link
-                              href={solution.href}
+                              href={resolveHref(solution.href)}
                               className="flex items-start gap-3 py-2.5 px-3 rounded-lg hover:bg-muted/50 transition-colors group"
                             >
                               <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 group-hover:bg-primary/20 transition-colors">
@@ -258,7 +286,7 @@ const Navbar = ({ lang, dict }: { lang: string, dict: any }) => {
                           {languages.map((l) => (
                             <Link
                               key={l.code}
-                              href={`/${l.code}`}
+                              href={`/${l.code}${localizedPath}`}
                               className={`text-sm font-bold px-3 py-2 rounded-lg flex-1 text-center ${
                                 lang === l.code
                                   ? 'bg-primary text-primary-foreground'

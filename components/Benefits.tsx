@@ -23,7 +23,7 @@ const Benefits = ({ dict }: { dict: any }) => {
   }));
 
   return (
-    <section className="pb-24 bg-background relative overflow-hidden">
+    <section id="benefits" className="scroll-mt-24 pb-24 bg-background relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-b from-muted/20 to-background pointer-events-none" />
       

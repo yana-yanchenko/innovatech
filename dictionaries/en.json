@@ -12,7 +12,7 @@
         "name": "Greenhouse Structures",
         "description": "Industrial and commercial greenhouses",
         "icon": "🏗️",
-        "href": "#solutions"
+        "href": "/en/greenhouse-structures"
       },
       {
         "name": "Climate Systems",
@@ -1012,5 +1012,97 @@
     },
     "successTitle": "Request Sent!",
     "successMessage": "We'll contact you shortly"
+  },
+  "greenhouseStructures": {
+    "heroTag": "Greenhouse Structures",
+    "heroTitle": "Next-Generation Industrial Greenhouses",
+    "heroDescription": "Four product lines for every need: from tunnel and multi-row greenhouses to berry tunnels and utility blocks. Explore 3D models and discover key structural nodes.",
+    "exploreHint": "Hover over the model nodes to explore details",
+    "getQuote": "Get Consultation",
+    "sections": [
+      {
+        "id": "tunnel",
+        "sectionNumber": "01",
+        "title": "Tunnel Greenhouses",
+        "description": "Hot-dip galvanized structures 8–18 m wide, 30–150 m long. Double-layer film with air inflation provides superior thermal protection. Wide range of ventilation solutions.",
+        "specs": [
+          "Width: 8–18 m, length: 30–150 m",
+          "EVA film with 5+ year service life",
+          "Double-layer film with air inflation",
+          "Hot-dip galvanized arches and posts",
+          "Top, side and combined ventilation",
+          "Anti-wind insect screen"
+        ],
+        "nodes": [
+          { "id": "arch",       "label": "Roof Arch",          "description": "EVA film with 5+ year service life. Hot-dip galvanized arches. Double-layer covering with air inflation for superior thermal insulation." },
+          { "id": "sideVent",   "label": "Side Ventilation",   "description": "Adjustable side vents with anti-wind insect screen. Provides even airflow along the entire length of the greenhouse." },
+          { "id": "foundation", "label": "Foundation / Posts",  "description": "Embedded posts made of hot-dip galvanized steel. Structure designed for 8–18 m span width and up to 150 m length." },
+          { "id": "ridge",      "label": "Ridge Ventilation",  "description": "Top ridge vents for natural hot-air convection. Double-layer film with air inflation between layers for thermal efficiency." },
+          { "id": "door",       "label": "End Doors",          "description": "End doors for machinery access and personnel passage. Various opening mechanisms available." }
+        ]
+      },
+      {
+        "id": "multirow",
+        "sectionNumber": "02",
+        "title": "Multi-Row Greenhouses",
+        "description": "Block structures 9.6 m wide with roof height of 4.7 m or 7.7 m. Connected into a single greenhouse complex via gutters. 8 mm cellular polycarbonate on gable ends.",
+        "specs": [
+          "Block width: 9.6 m",
+          "Height: 4.7 m (type 1) or 7.7 m (type 2)",
+          "Arch pitch: 2 m (type 1) / 2.5 m (type 2)",
+          "Gable ends: 8 mm cellular polycarbonate",
+          "Doors: 3.2×2.2 m or 3.2×3.4 m",
+          "Bilateral side and ridge ventilation"
+        ],
+        "nodes": [
+          { "id": "gutter",    "label": "Block Connecting Gutter", "description": "Aluminum gutter connects adjacent blocks into a single complex. Efficiently drains precipitation." },
+          { "id": "ridgeVent", "label": "Ridge Ventilation",       "description": "Single or double-sided ridge ventilation. Ensures thermal convection and removal of humid air." },
+          { "id": "sideVent",  "label": "Side Ventilation",        "description": "Double-sided side ventilation with insect screen. Ensures even air exchange across the full complex width." },
+          { "id": "door",      "label": "Doors",                   "description": "Type 1: 3.2×2.2 m doors. Type 2: 3.2×3.4 m doors. Designed for small agricultural machinery access." },
+          { "id": "endwall",   "label": "Polycarbonate End Walls", "description": "8 mm cellular polycarbonate. High light transmittance, excellent thermal insulation, long service life." }
+        ]
+      },
+      {
+        "id": "berry",
+        "sectionNumber": "03",
+        "title": "Berry Tunnels",
+        "description": "Specialized structures 8–9 m wide with a 5 m ridge height. Galvanized flat-oval tube 80×40 mm. Stainless steel posts Ø51 mm for maximum durability.",
+        "specs": [
+          "Width: 8–9 m",
+          "Ridge height: 5 m",
+          "Straight wall height: 1.75 m (type 1)",
+          "Hanging height: 3.3 m (type 2)",
+          "Stainless steel posts Ø51 mm",
+          "Polyester rope 6 mm film fastening"
+        ],
+        "nodes": [
+          { "id": "arch",   "label": "Arch Frame",         "description": "Galvanized flat-oval tube 80×40 mm. Provides high structural strength with minimal weight and shading." },
+          { "id": "column", "label": "Posts Ø51 mm",       "description": "Galvanized pipe posts Ø51 mm. Resistant to corrosion, mechanical loads and environmental exposure." },
+          { "id": "film",   "label": "Film Covering",      "description": "Single-layer film without anti-condensation coating. Optimal solution for growing berry crops." },
+          { "id": "rope",   "label": "Film Fastening",     "description": "6 mm polyester rope for film attachment. Ensures reliable film tension without damage." },
+          { "id": "ridge",  "label": "Ridge",              "description": "5 m ridge height. Optimal air volume for creating the right microclimate for berry crops." }
+        ]
+      },
+      {
+        "id": "utility",
+        "sectionNumber": "04",
+        "title": "Utility Block",
+        "description": "Multi-purpose greenhouse annexes 6.4 m or 9.6 m wide. Simultaneously serve as storage, technical room and sales area. Sliding doors for machinery access.",
+        "specs": [
+          "Width: 6.4 m or 9.6 m",
+          "Height: 6.94 m or 7.7 m",
+          "Sliding doors: 3.2×3.2 m (or 4.5×4.6 m)",
+          "Walls: 8 mm cellular polycarbonate",
+          "Dome: double-layer film with inflation",
+          "Arches: galvanized 80×40 mm tube"
+        ],
+        "nodes": [
+          { "id": "gate", "label": "Sliding Doors",   "description": "3.2×3.2 m (or 4.5×4.6 m) sliding doors. Provides convenient access for small machinery and loading operations." },
+          { "id": "wall", "label": "Wall Panels",     "description": "8 mm cellular polycarbonate around perimeter. Provides natural lighting and good thermal insulation." },
+          { "id": "roof", "label": "Dome Roof",       "description": "Polyethylene film in 2 layers with air inflation. High thermal insulation properties with low structural weight." },
+          { "id": "arch", "label": "Arch Frame",      "description": "Flat-oval galvanized steel tube 80×40 mm. High bending strength. Withstands significant snow and wind loads." }
+        ]
+      }
+    ]
   }
 }
