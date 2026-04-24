@@ -4,9 +4,9 @@ import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
-const Solutions = ({ dict }: { dict: any }) => {
+const Solutions = ({ dict, lang }: { dict: any; lang: string }) => {
   const solutionMeta = [
-    { icon: <Factory className="w-8 h-8" />, link: '/solutions/greenhouses', color: 'bg-primary/10 text-primary' },
+    { icon: <Factory className="w-8 h-8" />, link: `/${lang}/greenhouse-structures`, color: 'bg-primary/10 text-primary' },
     { icon: <Wind className="w-8 h-8" />, link: '/solutions/climate', color: 'bg-blue-500/10 text-blue-500' },
     { icon: <Droplets className="w-8 h-8" />, link: '/solutions/irrigation', color: 'bg-cyan-500/10 text-cyan-500' },
     { icon: <Cpu className="w-8 h-8" />, link: '/solutions/automation', color: 'bg-purple-500/10 text-purple-500' },

@@ -44,7 +44,7 @@ export default async function Home({
         <Navbar lang={lang} dict={dict.navbar} />
         <main>
           <Hero dict={dict.hero} />
-          <Solutions dict={dict.solutions} />
+          <Solutions dict={dict.solutions} lang={lang} />
           {/* <Innovation dict={dict.innovation} /> */}
           <Benefits dict={dict.benefits} />
           <Process dict={dict.process} />

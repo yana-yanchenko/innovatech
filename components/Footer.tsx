@@ -47,8 +47,8 @@ const Footer = ({ dict, region }: { dict: any; region: 'ru' | 'by' | 'kk' }) => 
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8 mb-16">
-          <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-16">
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
             <h4 className="text-white font-bold mb-6">{dict.solutions}</h4>
             <ul className="space-y-4 text-sm">
               <li><Link href="#solutions" className="hover:text-primary transition-colors">{dict.solutionsList.industrial}</Link></li>
@@ -58,7 +58,7 @@ const Footer = ({ dict, region }: { dict: any; region: 'ru' | 'by' | 'kk' }) => 
             </ul>
           </div>
 
-          <div className="hidden sm:flex flex-col items-center sm:items-start text-center sm:text-left">
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
             <h4 className="text-white font-bold mb-6">{dict.quickLinks}</h4>
             <ul className="space-y-4 text-sm">
               <li><Link href="#innovation" className="hover:text-primary transition-colors">{dict.innovation}</Link></li>
@@ -67,7 +67,7 @@ const Footer = ({ dict, region }: { dict: any; region: 'ru' | 'by' | 'kk' }) => 
             </ul>
           </div>
 
-          <div className="sm:col-span-2 lg:col-span-1 flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
             <h4 className="text-white font-bold mb-6">{dict.contact}</h4>
             <div className="space-y-4 text-sm w-full flex flex-col items-center lg:items-start mb-8">
               <p className="font-semibold text-white">{contact.company}</p>

@@ -90,11 +90,15 @@ function BerryTunnelScene({
   nodes,
   onNodeHover,
   color,
+  floorColor,
+  floorOpacity,
   pauseRotation,
 }: {
   nodes: NodeData[];
   onNodeHover: (info: { nodeId: string; label: string; description: string } | null) => void;
   color: string;
+  floorColor: string;
+  floorOpacity: number;
   pauseRotation: boolean;
 }) {
   const groupRef = useRef<THREE.Group>(null);
@@ -144,7 +148,7 @@ function BerryTunnelScene({
     <group ref={groupRef} position={[0, -1.1, 0]}>
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.05, 0]}>
         <planeGeometry args={[13, 15]} />
-        <meshStandardMaterial color="#101010" transparent opacity={0.28} />
+        <meshStandardMaterial color={floorColor} transparent opacity={floorOpacity} />
       </mesh>
 
       {zFrames.map((z, i) => (
@@ -186,6 +190,8 @@ export default function BerryTunnelModel({ nodes, onNodeHover, pauseRotation }: 
   const { resolvedTheme } = useTheme();
   const isDark = (resolvedTheme ?? 'light') === 'dark';
   const color = isDark ? '#58d1a5' : '#45c396';
+  const floorColor = isDark ? '#8ecb88' : '#b8e6b5';
+  const floorOpacity = isDark ? 0.38 : 0.45;
 
   return (
     <ResilientCanvas shadows dpr={[1, 2]} gl={{ antialias: true }}>
@@ -195,7 +201,7 @@ export default function BerryTunnelModel({ nodes, onNodeHover, pauseRotation }: 
       <pointLight position={[-6, 4, -4]} intensity={0.45} color={color} />
       <Environment preset={isDark ? 'night' : 'city'} />
       <fog attach="fog" args={[isDark ? '#0a0a0a' : '#edf9f5', 18, 45]} />
-      <BerryTunnelScene nodes={nodes} onNodeHover={onNodeHover} color={color} pauseRotation={pauseRotation} />
+      <BerryTunnelScene nodes={nodes} onNodeHover={onNodeHover} color={color} floorColor={floorColor} floorOpacity={floorOpacity} pauseRotation={pauseRotation} />
       <OrbitControls enableZoom={false} enablePan={false} minPolarAngle={Math.PI / 4} maxPolarAngle={Math.PI / 1.8} />
     </ResilientCanvas>
   );
