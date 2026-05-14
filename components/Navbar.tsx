@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, Building2, Droplets, Sun, Bot, Sprout, Package, Salad, Wrench, MessageCircle } from 'lucide-react';
+import { Menu, Building2, Droplets, Sun, Bot, Sprout, Package, Salad, Wrench, MessageCircle, Settings2 } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 import Logo from './Logo';
 import { Button } from '@/components/ui/button';
@@ -87,6 +87,7 @@ const Navbar = ({ lang, dict }: { lang: string, dict: NavbarDict }) => {
     5: <Package className="w-5 h-5" />,        // Materials
     6: <Salad className="w-5 h-5" />,          // Specialized Equipment
     7: <Wrench className="w-5 h-5" />,         // Service & Installation
+    8: <Settings2 className="w-5 h-5" />,      // Engineering Greenhouse Systems
   };
 
   return (

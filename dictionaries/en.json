@@ -15,6 +15,12 @@
         "href": "/en/greenhouse-structures"
       },
       {
+        "name": "Engineering Greenhouse Systems",
+        "description": "Ventilation, curtains, automation, heating",
+        "icon": "⚙️",
+        "href": "/en/engineering-systems"
+      },
+      {
         "name": "Climate Systems",
         "description": "Ventilation, heating, cooling",
         "icon": "🌡️",
@@ -1101,6 +1107,154 @@
           { "id": "wall", "label": "Wall Panels",     "description": "8 mm cellular polycarbonate around perimeter. Provides natural lighting and good thermal insulation." },
           { "id": "roof", "label": "Dome Roof",       "description": "Polyethylene film in 2 layers with air inflation. High thermal insulation properties with low structural weight." },
           { "id": "arch", "label": "Arch Frame",      "description": "Flat-oval galvanized steel tube 80×40 mm. High bending strength. Withstands significant snow and wind loads." }
+        ]
+      }
+    ]
+  },
+  "engineeringSystems": {
+    "heroTag": "Engineering Greenhouse Systems",
+    "heroTitle": "Engineering Solutions for Greenhouses",
+    "heroDescription": "Comprehensive equipment for optimal microclimate: from ventilation and curtain systems to automation and heating. Everything needed for high yields.",
+    "getQuote": "Get Consultation",
+    "comingSoon": "Section Under Development",
+    "comingSoonDescription": "Information on shading systems will be added soon. Contact us for current details.",
+    "tabs": [
+      { "id": "ventilation", "label": "Ventilation" },
+      { "id": "shading", "label": "Shading" },
+      { "id": "curtain", "label": "Curtain Systems" },
+      { "id": "automation", "label": "Automation" },
+      { "id": "heating", "label": "Heating" },
+      { "id": "airing", "label": "Airing" }
+    ],
+    "sections": [
+      {
+        "id": "ventilation",
+        "sectionNumber": "01",
+        "title": "Ventilation",
+        "type": "single",
+        "product": {
+          "name": "Circulation Fans",
+          "description": "Mix the air mass of the greenhouse in bi-directional mode, or ventilate the greenhouse space in single-direction mode.",
+          "images": ["/images/engineering/fan-photo.png", "/images/engineering/fan-drawing.png"],
+          "specs": [
+            "Capacity: 8,200–12,000 m³/h",
+            "Power supply: 380/400 V",
+            "Integrated automation control",
+            "Kit includes: fan, mounting bracket, cabling"
+          ]
+        }
+      },
+      {
+        "id": "shading",
+        "sectionNumber": "02",
+        "title": "Shading",
+        "type": "coming-soon"
+      },
+      {
+        "id": "curtain",
+        "sectionNumber": "03",
+        "title": "Curtain Systems",
+        "type": "two-products",
+        "description": "Curtain systems provide energy savings and light regulation. Available in cable and rack configurations for any greenhouse structure.",
+        "products": [
+          {
+            "name": "Cable System",
+            "image": "/images/engineering/motor-reducer.png",
+            "specs": [
+              "Fabric types: energy-saving, shading, combined",
+              "Drive system: geared motor",
+              "Mounting: cables or rails",
+              "Energy saving: 58%, shading: 55%, light transmission: 45%",
+              "Configurations: horizontal / trapezoidal / side"
+            ]
+          },
+          {
+            "name": "Rack System",
+            "image": null,
+            "specs": [
+              "Fabric types: energy-saving, shading, combined",
+              "Drive system: geared motor",
+              "Mounting: cables or rails",
+              "Energy saving: 58%, shading: 55%, light transmission: 45%",
+              "Configurations: horizontal / trapezoidal / side"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "automation",
+        "sectionNumber": "04",
+        "title": "Automation",
+        "type": "automation",
+        "description": "Automated management of all greenhouse systems. We offer budget, mid-range and premium-class solutions depending on the number of control zones.",
+        "image": "/images/engineering/control-panel.png",
+        "tiers": [
+          {
+            "name": "Budget Level",
+            "specs": [
+              "Control cabinet with controller",
+              "Weather station: rain, wind speed/direction, illumination, temperature sensors",
+              "Software in Russian"
+            ]
+          },
+          {
+            "name": "Mid & Premium Level",
+            "specs": [
+              "Everything in the budget system",
+              "External equipment control: irrigation, fans, heating, watering booms",
+              "Link up to 10 greenhouses into a complex",
+              "Admin console on a dedicated PC",
+              "Custom algorithm programming",
+              "Emergency alerts (GSM, WiFi)"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "heating",
+        "sectionNumber": "05",
+        "title": "Heating",
+        "type": "single",
+        "product": {
+          "name": "Heat Generators",
+          "description": "Heat energy source for industrial greenhouses, floor-standing or suspended, various capacities and fuels.",
+          "images": ["/images/engineering/heater-photo.png", "/images/engineering/heater-diagram.png"],
+          "specs": [
+            "Capacity: 100–280 kW",
+            "Air output: 7,000–16,200 m³/h",
+            "Fuel: natural gas / diesel",
+            "Kit includes: pre-heat filter, deaerator filter, moisture separator, manual control panel, thermostat, cable set",
+            "Efficiency: 92–94%"
+          ]
+        }
+      },
+      {
+        "id": "airing",
+        "sectionNumber": "06",
+        "title": "Airing",
+        "type": "two-products",
+        "description": "Climate control systems ensure, monitor and manage the microclimate in greenhouses. Maintaining key parameters is key to high yields.",
+        "products": [
+          {
+            "name": "Top Ventilation System",
+            "image": "/images/engineering/top-vent-system.png",
+            "specs": [
+              "Opening/closing via geared motor drive system",
+              "Manual and automatic opening available",
+              "Covering: single/double film or cellular polycarbonate",
+              "Optional bird protection net",
+              "Opening width from 2 m"
+            ]
+          },
+          {
+            "name": "Side Ventilation System",
+            "images": ["/images/engineering/side-vent-panels.png", "/images/engineering/side-vent-automated.png"],
+            "specs": [
+              "Motorized or manual gear opening",
+              "Multiple opening types: vertical, side-opening, roll-up",
+              "Optional bird protection net"
+            ]
+          }
         ]
       }
     ]
