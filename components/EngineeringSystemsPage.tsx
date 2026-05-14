@@ -258,20 +258,20 @@ function ProductCard({ product, getQuote }: { product: ProductCard; getQuote: st
         </div>
       ) : hasImages && images.length > 1 ? (
         // Multiple images - grid layout
-        <div className="grid grid-cols-2 gap-2 p-3">
+        <div className="grid grid-cols-2 gap-4 p-4">
           {images.map((src, i) =>
             src ? (
-              <div key={i} className="relative rounded-lg overflow-hidden border border-border/50 bg-muted/30 flex items-center justify-center" style={{ minHeight: '140px' }}>
+              <div key={i} className="relative rounded-lg overflow-hidden border border-border/50 bg-muted/30 flex items-center justify-center" style={{ minHeight: '200px' }}>
                 <Image
                   src={src}
                   alt={`${product.name} ${i + 1}`}
                   fill
-                  className="object-contain p-2"
+                  className="object-contain p-3"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
             ) : (
-              <div key={i} className="rounded-lg overflow-hidden border border-border/50 border-dashed bg-muted/20 flex items-center justify-center" style={{ minHeight: '140px' }}>
+              <div key={i} className="rounded-lg overflow-hidden border border-border/50 border-dashed bg-muted/20 flex items-center justify-center" style={{ minHeight: '200px' }}>
                 <p className="text-xs text-muted-foreground/50 text-center">{product.name}</p>
               </div>
             )

@@ -15,51 +15,57 @@
         "href": "/en/greenhouse-structures"
       },
       {
-        "name": "Engineering Greenhouse Systems",
+        "name": "Engineering Solutions for Greenhouses",
         "description": "Ventilation, curtains, automation, heating",
         "icon": "⚙️",
         "href": "/en/engineering-systems"
       },
       {
-        "name": "Climate Systems",
-        "description": "Ventilation, heating, cooling",
-        "icon": "🌡️",
-        "href": "#solutions"
-      },
-      {
-        "name": "Irrigation Systems",
-        "description": "Automated irrigation and fertigation",
+        "name": "Irrigation & Fertigation Systems",
+        "description": "Drip irrigation, automated nutrient application",
         "icon": "💧",
         "href": "#solutions"
       },
       {
-        "name": "Automation",
-        "description": "Climate control and AI systems",
-        "icon": "🤖",
-        "href": "#solutions"
-      },
-      {
-        "name": "Seedling Equipment",
-        "description": "Cultivation systems and seeding",
+        "name": "Peat Preparation Equipment",
+        "description": "Efficient equipment for extraction and processing of peat",
         "icon": "🌱",
         "href": "#solutions"
       },
       {
-        "name": "Materials & Covers",
-        "description": "Films, screens, fasteners",
+        "name": "Peat Filling Equipment",
+        "description": "Automated systems for filling containers with quality substrate",
         "icon": "📦",
         "href": "#solutions"
       },
       {
-        "name": "Specialized Equipment",
-        "description": "Crop-specific solutions",
-        "icon": "🥬",
+        "name": "Seeding Equipment",
+        "description": "Automatic seeding systems for uniform seed distribution",
+        "icon": "🌾",
         "href": "#solutions"
       },
       {
-        "name": "Service & Support",
-        "description": "Design, installation, 24/7 support",
-        "icon": "🛠️",
+        "name": "Cultivation Equipment",
+        "description": "Soil processing equipment for quality ground preparation",
+        "icon": "🚜",
+        "href": "#solutions"
+      },
+      {
+        "name": "Forest Restoration Equipment",
+        "description": "Specialized equipment for reforestation and landscaping projects",
+        "icon": "🌲",
+        "href": "#solutions"
+      },
+      {
+        "name": "Greenhouse Components",
+        "description": "Fasteners, pipelines, ventilation systems and other components",
+        "icon": "⚙️",
+        "href": "#solutions"
+      },
+      {
+        "name": "Vegetable Crop Equipment",
+        "description": "Specialized equipment for growing vegetables in controlled environments",
+        "icon": "🥬",
         "href": "#solutions"
       }
     ]
@@ -137,7 +143,7 @@
     ]
   },
   "solutions": {
-    "tag": "6 Core Directions",
+    "tag": "10 Core Directions",
     "title": "Comprehensive Growing Solutions",
     "description": "From greenhouse equipment to automation systems.",
     "learnMore": "Learn More",
@@ -147,19 +153,23 @@
         "description": "Industrial, farm, and specialized greenhouses with climate control for year-round production."
       },
       {
-        "title": "Heating & Ventilation Systems",
-        "description": "Automated top and side ventilation systems, heating, cooling, and air circulation."
+        "title": "Engineering Solutions for Greenhouses",
+        "description": "Ventilation, screening, automation, heating, and complete automation of greenhouse complexes."
       },
       {
         "title": "Irrigation & Fertigation Systems",
         "description": "Drip irrigation, hydroponics, micro-sprinkler systems, and automated fertilizer application."
       },
       {
-        "title": "Peat Primary Processing Equipment",
+        "title": "Peat Preparation Equipment",
         "description": "Efficient equipment for extraction and processing of peat"
       },
       {
-        "title": "Automatic Seeding Equipment",
+        "title": "Peat Filling Equipment",
+        "description": "Automated systems for filling containers and pots with quality substrate"
+      },
+      {
+        "title": "Seeding Equipment",
         "description": "Automatic seeding systems for uniform seed distribution and resource saving"
       },
       {
@@ -167,8 +177,16 @@
         "description": "Soil processing equipment ensuring quality ground preparation for sowing"
       },
       {
-        "title": "Consumables",
-        "description": "UV-stabilized greenhouse films, mounting systems, shading and energy-saving screens."
+        "title": "Forest Restoration Equipment",
+        "description": "Specialized equipment for implementing reforestation and landscaping projects"
+      },
+      {
+        "title": "Greenhouse Components",
+        "description": "Fasteners, pipelines, ventilation systems, shading screens and other components"
+      },
+      {
+        "title": "Vegetable Crop Equipment",
+        "description": "Specialized equipment for growing vegetables and other crops in controlled environments"
       }
     ]
   },
