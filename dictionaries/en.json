@@ -1166,7 +1166,34 @@
         "id": "shading",
         "sectionNumber": "02",
         "title": "Shading",
-        "type": "coming-soon"
+        "type": "detailed",
+        "introTitle": "Greenhouse shading system: plant protection from overheating",
+        "intro": "Plants suffer from excessive sun: overheating occurs, and leaves, flowers, and fruits can get burned, especially in shade-loving crops. In hot weather, moisture evaporates faster, so shading is useful even for light-loving plants during sustained heat. The system is effective both in greenhouses and in open-field growing.",
+        "images": [
+          "/images/engineering/shading/shading-3.png"
+        ],
+        "detailGroups": [
+          {
+            "title": "Benefits",
+            "items": [
+              "Temperature reduction by 5–10°C — combined with ventilation and drip misting, it creates an optimal microclimate for crops and rooting cuttings",
+              "Breathable structure — the material lets air and water through and does not create a greenhouse effect. Ideal for protection against early-spring burns",
+              "Season-long use — a universal solution from February to October for a wide range of tasks"
+            ]
+          },
+          {
+            "title": "Materials and Durability",
+            "text": "The mesh is made from modern polymers: polypropylene, nylon, and most often high-density polyethylene (HDPE). Knot weave prevents the fabric from unraveling when cut. It is resistant to ultraviolet radiation, precipitation, and frost. Service life is 3–5 seasons with careful use."
+          },
+          {
+            "title": "Shading Percentage",
+            "text": "This parameter shows how much sunlight the material blocks. The higher the percentage, the less light the plant receives. The range is from 15–20% to 80–90%, selected according to crop requirements."
+          },
+          {
+            "title": "Installation",
+            "text": "The mesh is attached to the greenhouse frame using ties, clips, and other fastening systems. Installation is quick and does not require complex equipment."
+          }
+        ]
       },
       {
         "id": "curtain",
@@ -1188,7 +1215,11 @@
           },
           {
             "name": "Rack System",
-            "image": null,
+            "images": [
+              "/images/engineering/curtain/rack-system-9049.png",
+              "/images/engineering/curtain/rack-system-9051.png",
+              "/images/engineering/curtain/rack-system-9050.png"
+            ],
             "specs": [
               "Fabric types: energy-saving, shading, combined",
               "Drive system: geared motor",
@@ -1205,7 +1236,12 @@
         "title": "Automation",
         "type": "automation",
         "description": "Automated management of all greenhouse systems. We offer budget, mid-range and premium-class solutions depending on the number of control zones.",
-        "image": "/images/engineering/control-panel.png",
+        "image": "/images/engineering/automation/control-panel.png",
+        "images": [
+          "/images/engineering/automation/control-panel.png",
+          "/images/engineering/automation/weather-station.png",
+          "/images/engineering/automation/control-panel-detail-cropped.png"
+        ],
         "tiers": [
           {
             "name": "Budget Level",

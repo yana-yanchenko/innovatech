@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { CheckCircle2, ArrowRight, Clock } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -33,6 +33,12 @@ interface TierItem {
   specs: string[];
 }
 
+interface DetailGroup {
+  title: string;
+  items?: string[];
+  text?: string;
+}
+
 interface Section {
   id: string;
   sectionNumber: string;
@@ -46,6 +52,11 @@ interface Section {
   // automation
   image?: string;
   tiers?: TierItem[];
+  // detailed
+  introTitle?: string;
+  intro?: string;
+  detailGroups?: DetailGroup[];
+  images?: string[];
 }
 
 interface EngineeringSystemsDict {
@@ -158,13 +169,13 @@ function SectionHeader({
 
 function ProductImage({ src, alt }: { src: string; alt: string }) {
   return (
-    <div className="relative rounded-2xl overflow-hidden border border-border bg-muted/30 flex items-center justify-center"
-      style={{ minHeight: '220px' }}>
+    <div className="group relative rounded-2xl overflow-hidden border border-border bg-muted/30 flex items-center justify-center"
+      style={{ minHeight: '280px' }}>
       <Image
         src={src}
         alt={alt}
         fill
-        className="object-contain p-4"
+        className="object-contain p-4 transition-transform duration-500 ease-out group-hover:scale-110"
         sizes="(max-width: 768px) 100vw, 50vw"
       />
     </div>
@@ -174,7 +185,7 @@ function ProductImage({ src, alt }: { src: string; alt: string }) {
 function ImagePlaceholder({ label }: { label: string }) {
   return (
     <div className="relative rounded-2xl overflow-hidden border border-border border-dashed bg-muted/20 flex items-center justify-center"
-      style={{ minHeight: '220px' }}>
+      style={{ minHeight: '280px' }}>
       <p className="text-xs text-muted-foreground/60 text-center px-4">{label}</p>
     </div>
   );
@@ -236,18 +247,20 @@ function ProductCard({ product, getQuote }: { product: ProductCard; getQuote: st
   const { openDialog } = useContactDialog();
   const images = product.images || (product.image ? [product.image] : []);
   const hasImages = images.length > 0 && images.some(img => img);
+  const isRackSystemGallery = images.length > 1 && images.every(src => src?.includes('/curtain/rack-system-'));
+  const isCableSystemImage = images.length === 1 && images[0]?.includes('/engineering/motor-reducer.');
 
   return (
     <div className="flex flex-col rounded-2xl border border-border bg-background overflow-hidden">
       {hasImages && images.length === 1 ? (
         // Single image - original layout
-        <div className="h-48 relative">
+        <div className="group h-48 md:h-56 relative overflow-hidden">
           {images[0] ? (
             <Image
               src={images[0]}
               alt={product.name}
               fill
-              className="object-contain p-4"
+              className={`${isCableSystemImage ? 'object-contain p-8 md:p-10' : 'object-contain p-4'} transition-transform duration-500 ease-out group-hover:scale-110`}
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           ) : (
@@ -257,21 +270,25 @@ function ProductCard({ product, getQuote }: { product: ProductCard; getQuote: st
           )}
         </div>
       ) : hasImages && images.length > 1 ? (
-        // Multiple images - grid layout
-        <div className="grid grid-cols-2 gap-4 p-4">
+        // Multiple images
+        <div className={isRackSystemGallery ? 'flex flex-col gap-4 p-4' : 'grid grid-cols-2 gap-4 p-4'}>
           {images.map((src, i) =>
             src ? (
-              <div key={i} className="relative rounded-lg overflow-hidden border border-border/50 bg-muted/30 flex items-center justify-center" style={{ minHeight: '200px' }}>
+              <div
+                key={i}
+                className="group relative w-full rounded-lg overflow-hidden border border-border/50 bg-muted/30 flex items-center justify-center"
+                style={{ minHeight: isRackSystemGallery ? '160px' : '260px', height: isRackSystemGallery ? 'clamp(160px, 18vw, 180px)' : undefined }}
+              >
                 <Image
                   src={src}
                   alt={`${product.name} ${i + 1}`}
                   fill
-                  className="object-contain p-3"
+                  className={`${isRackSystemGallery ? 'object-cover' : 'object-contain p-3'} transition-transform duration-500 ease-out group-hover:scale-110`}
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
             ) : (
-              <div key={i} className="rounded-lg overflow-hidden border border-border/50 border-dashed bg-muted/20 flex items-center justify-center" style={{ minHeight: '200px' }}>
+              <div key={i} className="rounded-lg overflow-hidden border border-border/50 border-dashed bg-muted/20 flex items-center justify-center" style={{ minHeight: '260px' }}>
                 <p className="text-xs text-muted-foreground/50 text-center">{product.name}</p>
               </div>
             )
@@ -279,7 +296,7 @@ function ProductCard({ product, getQuote }: { product: ProductCard; getQuote: st
         </div>
       ) : (
         // No images
-        <div className="h-48 relative">
+        <div className="h-64 md:h-72 relative">
           <div className="absolute inset-0 bg-muted/20 flex items-center justify-center border-b border-dashed border-border/50">
             <p className="text-xs text-muted-foreground/50">Фото оборудования</p>
           </div>
@@ -326,22 +343,31 @@ function AutomationSection({
   section,
   getQuote,
 }: {
-  section: Section & { image: string; tiers: TierItem[]; description: string };
+  section: Section & { image: string; images?: string[]; tiers: TierItem[]; description: string };
   getQuote: string;
 }) {
   const { openDialog } = useContactDialog();
+  const images = section.images?.length ? section.images : [section.image];
 
   return (
     <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
       {/* Image */}
-      <div className="rounded-2xl overflow-hidden border border-border" style={{ minHeight: '300px', position: 'relative' }}>
-        <Image
-          src={section.image}
-          alt={section.title}
-          fill
-          className="object-cover"
-          sizes="(max-width: 1024px) 100vw, 50vw"
-        />
+      <div className="grid grid-cols-2 gap-3 sm:gap-4">
+        {images.map((src, i) => (
+          <div
+            key={`${src}-${i}`}
+            className={`group relative rounded-2xl overflow-hidden border border-border bg-muted/30 ${i === 0 ? 'col-span-2' : ''}`}
+            style={{ height: i === 0 ? '380px' : '260px' }}
+          >
+            <Image
+              src={src}
+              alt={`${section.title} ${i + 1}`}
+              fill
+              className={`object-contain p-3 transition-transform duration-500 ease-out group-hover:scale-110 ${i > 0 ? 'object-top' : ''}`}
+              sizes={i === 0 ? '(max-width: 1024px) 100vw, 50vw' : '(max-width: 1024px) 50vw, 25vw'}
+            />
+          </div>
+        ))}
       </div>
 
       {/* Tiers */}
@@ -364,6 +390,74 @@ function AutomationSection({
           <ArrowRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
         </Button>
       </div>
+    </div>
+  );
+}
+
+// ── Detailed Section (Затенение) ────────────────────────────────────────────
+
+function DetailedSection({
+  section,
+  getQuote,
+}: {
+  section: Section & { introTitle: string; intro: string; detailGroups: DetailGroup[]; images: string[] };
+  getQuote: string;
+}) {
+  const { openDialog } = useContactDialog();
+
+  return (
+    <div className="space-y-8">
+      <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-8 lg:gap-12 items-start">
+        <div>
+          <div className="rounded-2xl border border-border bg-background p-5 md:p-6">
+            <h3
+              className="font-bold text-foreground mb-3"
+              style={{ fontSize: 'clamp(1.2rem, 2vw, 1.6rem)' }}
+            >
+              {section.introTitle}
+            </h3>
+            <p className="text-muted-foreground leading-relaxed text-sm">
+              {section.intro}
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+          {section.images.map((src, i) => (
+            <div
+              key={src}
+              className={`group relative rounded-2xl overflow-hidden border border-border bg-muted/30 ${i === 0 ? 'col-span-2' : ''}`}
+              style={{ minHeight: i === 0 ? '360px' : '220px' }}
+            >
+              <Image
+                src={src}
+                alt={`${section.title} ${i + 1}`}
+                fill
+                className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                sizes={i === 0 ? '(max-width: 1024px) 100vw, 50vw' : '(max-width: 1024px) 50vw, 25vw'}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
+        {section.detailGroups.map((group) => (
+          <div key={group.title} className="rounded-xl border border-border bg-background p-5">
+            <h4 className="font-semibold text-foreground text-sm mb-3">{group.title}</h4>
+            {group.items ? (
+              <SpecList specs={group.items} />
+            ) : (
+              <p className="text-sm text-muted-foreground leading-relaxed">{group.text}</p>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <Button onClick={openDialog} className="rounded-full group" size="lg">
+        {getQuote}
+        <ArrowRight size={16} className="ml-1 transition-transform group-hover:translate-x-1" />
+      </Button>
     </div>
   );
 }
@@ -517,7 +611,14 @@ export default function EngineeringSystemsPage({ dict }: { dict: EngineeringSyst
 
               {section.type === 'automation' && section.image && section.tiers && section.description && (
                 <AutomationSection
-                  section={section as Section & { image: string; tiers: TierItem[]; description: string }}
+                  section={section as Section & { image: string; images?: string[]; tiers: TierItem[]; description: string }}
+                  getQuote={dict.getQuote}
+                />
+              )}
+
+              {section.type === 'detailed' && section.introTitle && section.intro && section.detailGroups && section.images && (
+                <DetailedSection
+                  section={section as Section & { introTitle: string; intro: string; detailGroups: DetailGroup[]; images: string[] }}
                   getQuote={dict.getQuote}
                 />
               )}
