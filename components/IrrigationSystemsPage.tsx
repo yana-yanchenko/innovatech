@@ -338,7 +338,7 @@ function ControlPanelGallery({
           {/* Main slide */}
           <div
             className="relative rounded-2xl overflow-hidden border border-border bg-muted/30 select-none cursor-grab active:cursor-grabbing"
-            style={{ height: '540px' }}
+            style={{ height: '600px' }}
             onMouseDown={(e) => { e.preventDefault(); onDragStart(e.clientX); }}
             onMouseUp={(e) => onDragEnd(e.clientX)}
             onTouchStart={(e) => onDragStart(e.touches[0].clientX)}
@@ -391,7 +391,7 @@ function ControlPanelGallery({
           </div>
 
           {/* Thumbnail strip */}
-          <div className="flex gap-2 overflow-x-auto py-2 scrollbar-hide mt-2">
+          <div className="flex gap-2 overflow-x-auto py-2 scrollbar-hide mt-2 justify-center">
             {images.map((src, i) => (
               <button
                 key={i}
