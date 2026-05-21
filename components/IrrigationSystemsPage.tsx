@@ -338,7 +338,7 @@ function ControlPanelGallery({
           {/* Main slide */}
           <div
             className="relative rounded-2xl overflow-hidden border border-border bg-muted/30 select-none cursor-grab active:cursor-grabbing"
-            style={{ height: '600px' }}
+            style={{ height: '580px' }}
             onMouseDown={(e) => { e.preventDefault(); onDragStart(e.clientX); }}
             onMouseUp={(e) => onDragEnd(e.clientX)}
             onTouchStart={(e) => onDragStart(e.touches[0].clientX)}
