@@ -99,6 +99,18 @@ export default async function RootLayout({
       <head>
         <OrganizationJsonLd lang={lang as 'ru' | 'en' | 'kk'} />
         <WebsiteJsonLd lang={lang as 'ru' | 'en' | 'kk'} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('scrollRestoration' in window.history) {
+                window.history.scrollRestoration = 'manual';
+              }
+              window.addEventListener('load', function() {
+                window.scrollTo(0, 0);
+              });
+            `,
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

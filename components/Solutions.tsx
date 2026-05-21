@@ -1,21 +1,39 @@
 import React from 'react';
-import { LayoutGrid, Factory, Home, Settings, Wind, Droplets, Cpu, Sprout, Wrench, ArrowUpRight } from 'lucide-react';
+import { LayoutGrid, Factory, Home, Wind, Droplets, Cpu, Sprout, ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 
-const Solutions = ({ dict, lang }: { dict: any; lang: string }) => {
+interface SolutionItem {
+  title: string;
+  description: string;
+}
+
+interface SolutionDict {
+  items: SolutionItem[];
+  tag: string;
+  title: string;
+  description: string;
+  learnMore: string;
+}
+
+interface SolutionWithMeta extends SolutionItem {
+  icon: React.ReactNode;
+  link: string;
+  color: string;
+}
+
+const Solutions = ({ dict, lang }: { dict: SolutionDict; lang: string }) => {
   const solutionMeta = [
     { icon: <Factory className="w-8 h-8" />, link: `/${lang}/greenhouse-structures`, color: 'bg-primary/10 text-primary' },
     { icon: <Wind className="w-8 h-8" />, link: '/solutions/climate', color: 'bg-blue-500/10 text-blue-500' },
-    { icon: <Droplets className="w-8 h-8" />, link: '/solutions/irrigation', color: 'bg-cyan-500/10 text-cyan-500' },
+    { icon: <Droplets className="w-8 h-8" />, link: `/${lang}/irrigation-systems`, color: 'bg-cyan-500/10 text-cyan-500' },
     { icon: <Cpu className="w-8 h-8" />, link: '/solutions/automation', color: 'bg-purple-500/10 text-purple-500' },
     { icon: <Sprout className="w-8 h-8" />, link: '/solutions/seedling', color: 'bg-green-500/10 text-green-500' },
     { icon: <LayoutGrid className="w-8 h-8" />, link: '/solutions/materials', color: 'bg-orange-500/10 text-orange-500' },
     { icon: <Home className="w-8 h-8" />, link: '/solutions/specialized', color: 'bg-amber-500/10 text-amber-500' },
   ];
 
-  const solutions = dict.items.map((item: any, i: number) => ({
+  const solutions: SolutionWithMeta[] = dict.items.map((item, i) => ({
     ...item,
     ...solutionMeta[i % solutionMeta.length]
   }));
@@ -36,7 +54,7 @@ const Solutions = ({ dict, lang }: { dict: any; lang: string }) => {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {solutions.map((item: any, index: number) => (
+          {solutions.map((item, index) => (
             <Link key={index} href={item.link} className="group">
               <Card className="h-full hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all">
                 <CardHeader>

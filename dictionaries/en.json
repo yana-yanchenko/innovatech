@@ -24,7 +24,7 @@
         "name": "Irrigation & Fertigation Systems",
         "description": "Drip irrigation, automated nutrient application",
         "icon": "💧",
-        "href": "#solutions"
+        "href": "/en/irrigation-systems"
       },
       {
         "name": "Peat Preparation Equipment",
@@ -1308,6 +1308,86 @@
               "Multiple opening types: vertical, side-opening, roll-up",
               "Optional bird protection net"
             ]
+          }
+        ]
+      }
+    ]
+  },
+  "irrigationSystems": {
+    "heroTag": "Manufactured by Innovatech",
+    "heroTitle": "Irrigation & Fertigation Systems",
+    "heroDescription": "Automated irrigation booms for industrial greenhouses and growing fields — precise fertilizer dosing, sectional watering, and multi-function control.",
+    "getQuote": "Get a Consultation",
+    "controlPanelTitle": "Control Panel",
+    "controlPanelDescription": "Multi-function control unit — various irrigation mode settings, algorithm programming, and system parameter monitoring.",
+    "controlPanelImages": [
+      "/images/irrigation/control-panel/panel-1.png",
+      "/images/irrigation/control-panel/panel-2.png",
+      "/images/irrigation/control-panel/panel-3.png",
+      "/images/irrigation/control-panel/panel-4.png",
+      "/images/irrigation/control-panel/panel-5.png",
+      "/images/irrigation/control-panel/panel-6.png",
+      "/images/irrigation/control-panel/panel-7.png"
+    ],
+    "tabs": [
+      { "id": "greenhouse-ramp", "label": "Greenhouse Boom" },
+      { "id": "field-ramp", "label": "Field Growing Boom" },
+      { "id": "control-panel", "label": "Control Panel" }
+    ],
+    "sections": [
+      {
+        "id": "greenhouse-ramp",
+        "sectionNumber": "01",
+        "title": "Irrigation Boom for Industrial Greenhouses",
+        "type": "single",
+        "product": {
+          "name": "Irrigation Boom for Industrial Greenhouses (manufactured by Innovatech)",
+          "description": "Watering boom (greenhouse type) — a fully automatic device installed in a greenhouse for watering, fertilizer application, and microclimate regulation. Equipment functionality: organized plant watering on a scheduled basis. Precise liquid fertilizer application. Use of nozzles of varying dispersion. The boom supports phytolamp installation for supplemental plant lighting.",
+          "images": [
+            "/images/irrigation/greenhouse-ramp-render.png",
+            "/images/irrigation/control-panel.png"
+          ],
+          "specs": [
+            "length: from 20 to 150 m",
+            "width: from 7 to 25 m",
+            "working pressure: 3 to 6 bar",
+            "sectional watering (left/right section shutoff)",
+            "precision fertilizer dosing system «DOSATRON» or equivalent",
+            "multi-function control unit with controller and panel"
+          ]
+        }
+      },
+      {
+        "id": "field-ramp",
+        "sectionNumber": "02",
+        "title": "Irrigation Boom for Growing Fields",
+        "type": "split-content",
+        "pairs": [
+          {
+            "image": "/images/irrigation/field-ramp.png",
+            "title": "Irrigation Boom for Growing Fields",
+            "description": "Equipment functionality: organized watering and liquid fertilizer application on hardening platforms. The built-in control system allows selecting irrigation algorithms. Triple nozzles provide watering, feeding, and fine-mist spraying for plant cooling. Side sprinklers additionally irrigate edge rows exposed to moisture evaporation.",
+            "specs": [
+              "frame material: hot-dip galvanized steel profiles",
+              "working length: from 30 to 190 m",
+              "working width: from 10 to 38 m",
+              "power supply: 220/230 V, 1-phase, 50 Hz",
+              "irrigation boom water consumption: from 3 to 16 m³/h",
+              "working pressure: from 3 to 6 bar",
+              "water connection: PEM 40-50 mm",
+              "fertilizer application system",
+              "number of sprayers per nozzle: 3",
+              "side nozzles",
+              "pressure gauge for water pressure monitoring in the system",
+              "sectional boom operation - left and right",
+              "multi-function control unit in Russian language"
+            ]
+          },
+          {
+            "image": "/images/irrigation/control-panel.png",
+            "title": "Construction & Control",
+            "description": "The trolley with polyurethane guides travels along rails. Rail material: hot-dip galvanized steel. The trolley is driven by an electric gear motor. Watering is performed through nozzles and additional edge sprinklers (side watering). Liquids, fertilizers and chemicals are fed to the nozzles through plastic pipes. The fertilizer dosing device is a special tank with a mechanical dosator. Irrigation is controlled via the control panel. This panel supports various irrigation mode settings.",
+            "specs": []
           }
         ]
       }
