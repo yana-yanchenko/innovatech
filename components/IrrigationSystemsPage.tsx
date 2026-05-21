@@ -503,7 +503,7 @@ export default function IrrigationSystemsPage({ dict }: { dict: IrrigationSystem
           <section
             key={section.id}
             id={section.id}
-            className={`py-10 md:py-10 lg:py-10 scroll-mt-[140px] ${
+            className={`py-16 md:py-10 lg:py-20 scroll-mt-[140px] ${
               idx < dict.sections.length - 1 ? 'border-b border-border' : ''
             }`}
           >
