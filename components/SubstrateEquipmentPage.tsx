@@ -251,65 +251,77 @@ function LG2400Section({
 
   return (
     <div className="space-y-10">
-      {/* Image + Purpose */}
-      <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-        <ProductImage src={detail.image} alt={section.title} />
-        <p
-          className="text-muted-foreground leading-relaxed text-sm"
-          style={{ wordBreak: 'break-word', hyphens: 'auto' }}
-        >
-          {detail.purpose}
-        </p>
-      </div>
+      {/* Image + Purpose + Specs */}
+      <div className="grid lg:grid-cols-[minmax(0,420px)_1fr] gap-10 lg:gap-16 items-start">
+        {/* Vertical (portrait) product image */}
+        <div className="group relative rounded-2xl overflow-hidden border border-border bg-muted/30 w-full max-w-[420px] mx-auto lg:mx-0 aspect-[3/4]">
+          <Image
+            src={detail.image}
+            alt={section.title}
+            fill
+            className="object-contain p-4 transition-transform duration-500 ease-out group-hover:scale-105"
+            sizes="(max-width: 1024px) 100vw, 420px"
+          />
+        </div>
 
-      {/* Tech spec table */}
-      <div className="overflow-x-auto rounded-xl border border-border">
-        <table className="w-full text-sm min-w-[480px]">
-          <thead>
-            <tr className="bg-muted/50 text-left">
-              <th className="px-4 py-3 font-semibold text-foreground">
-                {techSpecHeaders.param}
-              </th>
-              <th className="px-4 py-3 font-semibold text-foreground whitespace-nowrap">
-                {techSpecHeaders.unit}
-              </th>
-              <th className="px-4 py-3 font-semibold text-foreground whitespace-nowrap">
-                {techSpecHeaders.value}
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {detail.techSpecs.map((row, i) => (
-              <tr key={i} className={i % 2 === 0 ? 'bg-background' : 'bg-muted/20'}>
-                <td
-                  className="px-4 py-3 text-muted-foreground"
-                  style={{ wordBreak: 'break-word', hyphens: 'auto' }}
-                >
-                  {row.param}
-                </td>
-                <td className="px-4 py-3 text-muted-foreground whitespace-nowrap">
-                  {row.unit}
-                </td>
-                <td className="px-4 py-3 text-foreground font-medium whitespace-nowrap">
-                  {row.value}
-                </td>
-              </tr>
+        {/* Purpose + tech spec table */}
+        <div className="space-y-6">
+          <p
+            className="text-muted-foreground leading-relaxed text-sm"
+            style={{ wordBreak: 'break-word', hyphens: 'auto' }}
+          >
+            {detail.purpose}
+          </p>
+
+          <div className="overflow-x-auto rounded-xl border border-border">
+            <table className="w-full text-sm min-w-[480px]">
+              <thead>
+                <tr className="bg-muted/50 text-left">
+                  <th className="px-4 py-3 font-semibold text-foreground">
+                    {techSpecHeaders.param}
+                  </th>
+                  <th className="px-4 py-3 font-semibold text-foreground whitespace-nowrap">
+                    {techSpecHeaders.unit}
+                  </th>
+                  <th className="px-4 py-3 font-semibold text-foreground whitespace-nowrap">
+                    {techSpecHeaders.value}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {detail.techSpecs.map((row, i) => (
+                  <tr key={i} className={i % 2 === 0 ? 'bg-background' : 'bg-muted/20'}>
+                    <td
+                      className="px-4 py-3 text-muted-foreground"
+                      style={{ wordBreak: 'break-word', hyphens: 'auto' }}
+                    >
+                      {row.param}
+                    </td>
+                    <td className="px-4 py-3 text-muted-foreground whitespace-nowrap">
+                      {row.unit}
+                    </td>
+                    <td className="px-4 py-3 text-foreground font-medium whitespace-nowrap">
+                      {row.value}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Features */}
+          <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
+            {detail.features.map((feature, i) => (
+              <li key={i} className="flex items-start gap-2.5 text-sm text-foreground">
+                <CheckCircle2 size={16} className="text-primary mt-0.5 flex-shrink-0" />
+                <span style={{ wordBreak: 'break-word', hyphens: 'auto' }}>
+                  {feature}
+                </span>
+              </li>
             ))}
-          </tbody>
-        </table>
+          </ul>
+        </div>
       </div>
-
-      {/* Features */}
-      <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
-        {detail.features.map((feature, i) => (
-          <li key={i} className="flex items-start gap-2.5 text-sm text-foreground">
-            <CheckCircle2 size={16} className="text-primary mt-0.5 flex-shrink-0" />
-            <span style={{ wordBreak: 'break-word', hyphens: 'auto' }}>
-              {feature}
-            </span>
-          </li>
-        ))}
-      </ul>
 
       {/* CTA */}
       <Button onClick={openDialog} className="rounded-full group" size="lg">

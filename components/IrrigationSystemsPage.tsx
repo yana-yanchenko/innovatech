@@ -334,82 +334,101 @@ function ControlPanelGallery({
         <p className="text-muted-foreground leading-relaxed text-sm ">{description}</p>
 
         {/* Slider column */}
-        <div>
-          {/* Main slide */}
-          <div
-            className="relative rounded-2xl overflow-hidden border border-border bg-muted/30 select-none cursor-grab active:cursor-grabbing"
-            style={{ aspectRatio: '1057 / 630' }}
-            onMouseDown={(e) => { e.preventDefault(); onDragStart(e.clientX); }}
-            onMouseUp={(e) => onDragEnd(e.clientX)}
-            onTouchStart={(e) => onDragStart(e.touches[0].clientX)}
-            onTouchEnd={(e) => onDragEnd(e.changedTouches[0].clientX)}
-          >
-
-            <Image
-              key={currentIndex}
-              src={images[currentIndex]}
-              alt={`${title} ${currentIndex + 1}`}
-              fill
-              className="object-cover"
-              sizes="100%"
-              draggable={false}
-            />
-
-            {/* Counter */}
-            <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-background/70 border border-border backdrop-blur-sm text-xs font-medium z-10">
-              {currentIndex + 1} / {images.length}
+        <div className="w-full max-w-[984px] mx-auto">
+          <div className="relative">
+            {/* Ambient gradient glow behind the panel */}
+            <div aria-hidden className="pointer-events-none absolute -inset-16 -z-10 overflow-hidden">
+              <div className="absolute left-1/3 -top-8 h-48 w-48 -translate-x-1/2 rounded-full bg-primary/20 blur-3xl" />
+              <div className="absolute right-1/3 -bottom-8 h-48 w-48 translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
             </div>
 
-            {/* Prev */}
-            <button
-              onClick={(e) => { e.stopPropagation(); prev(); }}
-              className="absolute left-2 top-1/2 -translate-y-1/2 flex items-center justify-center w-8 h-8 rounded-full bg-background/70 border border-border backdrop-blur-sm hover:bg-background/90 transition z-10"
-            >
-              <ChevronLeft size={18} />
-            </button>
-
-            {/* Next */}
-            <button
-              onClick={(e) => { e.stopPropagation(); next(); }}
-              className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center justify-center w-8 h-8 rounded-full bg-background/70 border border-border backdrop-blur-sm hover:bg-background/90 transition z-10"
-            >
-              <ChevronRight size={18} />
-            </button>
-
-            {/* Dots */}
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
-              {images.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={(e) => { e.stopPropagation(); goTo(i); }}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === currentIndex ? 'w-4 bg-primary' : 'w-1.5 bg-foreground/30 hover:bg-foreground/50'
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Thumbnail strip */}
-          <div className="flex gap-2 overflow-x-auto py-2 scrollbar-hide mt-2 justify-center">
-            {images.map((src, i) => (
-              <button
-                key={i}
-                ref={(el) => { thumbRefs.current[i] = el; }}
-                onClick={() => goTo(i)}
-                className={`relative shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
-                  i === currentIndex ? 'border-primary' : 'border-transparent hover:border-border'
-                }`}
+            {/* Frosted-glass backing */}
+            <div className="relative rounded-[2.25rem] p-8 sm:p-16 border border-border/50 bg-gradient-to-br from-primary/[0.06] via-background/40 to-muted/20 backdrop-blur-xl shadow-[0_24px_70px_-20px_rgba(0,0,0,0.35)]">
+              {/* Main slide */}
+              <div
+                className="group relative rounded-2xl overflow-hidden border border-border/60 bg-muted/30 shadow-lg ring-1 ring-black/5 select-none cursor-grab active:cursor-grabbing"
+                style={{ aspectRatio: '1057 / 630' }}
+                onMouseDown={(e) => { e.preventDefault(); onDragStart(e.clientX); }}
+                onMouseUp={(e) => onDragEnd(e.clientX)}
+                onTouchStart={(e) => onDragStart(e.touches[0].clientX)}
+                onTouchEnd={(e) => onDragEnd(e.changedTouches[0].clientX)}
               >
                 <Image
-                  src={src}
-                  alt={`${title} ${i + 1}`}
+                  key={currentIndex}
+                  src={images[currentIndex]}
+                  alt={`${title} ${currentIndex + 1}`}
                   fill
-                  className="object-cover"
-                  sizes="64px"
+                  className="object-cover scale-[1.01]"
+                  sizes="100%"
+                  draggable={false}
                 />
-              </button>
-            ))}
+
+                {/* Bottom vignette for control legibility */}
+                <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-16" />
+
+                {/* Counter */}
+                <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-background/60 border border-border/50 backdrop-blur-md text-xs font-medium tabular-nums z-10">
+                  {currentIndex + 1} / {images.length}
+                </div>
+
+                {/* Prev */}
+                <button
+                  onClick={(e) => { e.stopPropagation(); prev(); }}
+                  aria-label="Previous slide"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full bg-background/70 border border-border/50 backdrop-blur-md shadow-md hover:bg-background hover:scale-105 transition-all duration-200 opacity-0 group-hover:opacity-100 focus-visible:opacity-100 z-10"
+                >
+                  <ChevronLeft size={18} />
+                </button>
+
+                {/* Next */}
+                <button
+                  onClick={(e) => { e.stopPropagation(); next(); }}
+                  aria-label="Next slide"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full bg-background/70 border border-border/50 backdrop-blur-md shadow-md hover:bg-background hover:scale-105 transition-all duration-200 opacity-0 group-hover:opacity-100 focus-visible:opacity-100 z-10"
+                >
+                  <ChevronRight size={18} />
+                </button>
+
+                {/* Dots */}
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                  {images.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={(e) => { e.stopPropagation(); goTo(i); }}
+                      aria-label={`Go to slide ${i + 1}`}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        i === currentIndex ? 'w-5 bg-primary' : 'w-1.5 bg-white/50 hover:bg-white/80'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Thumbnail strip */}
+              <div className="flex gap-2.5 overflow-x-auto py-1 scrollbar-hide mt-4 justify-center">
+                {images.map((src, i) => (
+                  <button
+                    key={i}
+                    ref={(el) => { thumbRefs.current[i] = el; }}
+                    onClick={() => goTo(i)}
+                    aria-label={`Thumbnail ${i + 1}`}
+                    className={`relative shrink-0 w-20 h-12 rounded-xl overflow-hidden transition-all duration-200 ${
+                      i === currentIndex
+                        ? 'ring-2 ring-primary ring-offset-2 ring-offset-background scale-[1.04]'
+                        : 'opacity-50 hover:opacity-100 ring-1 ring-border/50'
+                    }`}
+                  >
+                    <Image
+                      src={src}
+                      alt={`${title} ${i + 1}`}
+                      fill
+                      className="object-cover"
+                      sizes="80px"
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
