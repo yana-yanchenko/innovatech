@@ -251,16 +251,16 @@ function ProductCard({ product, getQuote }: { product: ProductCard; getQuote: st
   const isCableSystemImage = images.length === 1 && images[0]?.includes('/engineering/motor-reducer.');
 
   return (
-    <div className="flex flex-col rounded-2xl border border-border bg-background overflow-hidden">
+    <div className="flex flex-col rounded-2xl border border-border bg-background overflow-hidden rounded-lg">
       {hasImages && images.length === 1 ? (
         // Single image - original layout
-        <div className="group h-48 md:h-56 relative overflow-hidden">
+        <div className="group h-48 md:h-56 relative overflow-hidden rounded-lg">
           {images[0] ? (
             <Image
               src={images[0]}
               alt={product.name}
               fill
-              className={`${isCableSystemImage ? 'object-contain p-8 md:p-10' : 'object-contain p-4'} transition-transform duration-500 ease-out group-hover:scale-110`}
+              className={`${isCableSystemImage ? 'object-contain p-8 md:p-10' : 'object-contain p-4'} transition-transform duration-500 ease-out group-hover:scale-110 `}
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           ) : (
@@ -547,12 +547,7 @@ export default function EngineeringSystemsPage({ dict }: { dict: EngineeringSyst
               className="font-bold tracking-tight text-foreground leading-[1.08] mb-6"
               style={{ fontSize: 'clamp(2.2rem, 5vw, 4rem)' }}
             >
-              <span
-                className="bg-clip-text text-transparent"
-                style={{ backgroundImage: 'linear-gradient(135deg, var(--color-foreground) 0%, color-mix(in oklch, var(--color-foreground) 60%, transparent) 100%)' }}
-              >
-                {dict.heroTitle}
-              </span>
+              {dict.heroTitle}
             </h1>
 
             <p

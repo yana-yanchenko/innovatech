@@ -27,7 +27,7 @@ const Solutions = ({ dict, lang }: { dict: SolutionDict; lang: string }) => {
     { icon: <Factory className="w-8 h-8" />, link: `/${lang}/greenhouse-structures`, color: 'bg-primary/10 text-primary' },
     { icon: <Wind className="w-8 h-8" />, link: '/solutions/climate', color: 'bg-blue-500/10 text-blue-500' },
     { icon: <Droplets className="w-8 h-8" />, link: `/${lang}/irrigation-systems`, color: 'bg-cyan-500/10 text-cyan-500' },
-    { icon: <Cpu className="w-8 h-8" />, link: '/solutions/automation', color: 'bg-purple-500/10 text-purple-500' },
+    { icon: <Cpu className="w-8 h-8" />, link: `/${lang}/substrate-equipment`, color: 'bg-purple-500/10 text-purple-500' },
     { icon: <Sprout className="w-8 h-8" />, link: '/solutions/seedling', color: 'bg-green-500/10 text-green-500' },
     { icon: <LayoutGrid className="w-8 h-8" />, link: '/solutions/materials', color: 'bg-orange-500/10 text-orange-500' },
     { icon: <Home className="w-8 h-8" />, link: '/solutions/specialized', color: 'bg-amber-500/10 text-amber-500' },

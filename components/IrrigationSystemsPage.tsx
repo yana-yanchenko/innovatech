@@ -338,7 +338,7 @@ function ControlPanelGallery({
           {/* Main slide */}
           <div
             className="relative rounded-2xl overflow-hidden border border-border bg-muted/30 select-none cursor-grab active:cursor-grabbing"
-            style={{ height: '580px' }}
+            style={{ aspectRatio: '1057 / 630' }}
             onMouseDown={(e) => { e.preventDefault(); onDragStart(e.clientX); }}
             onMouseUp={(e) => onDragEnd(e.clientX)}
             onTouchStart={(e) => onDragStart(e.touches[0].clientX)}
@@ -351,7 +351,7 @@ function ControlPanelGallery({
               alt={`${title} ${currentIndex + 1}`}
               fill
               className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              sizes="100%"
               draggable={false}
             />
 

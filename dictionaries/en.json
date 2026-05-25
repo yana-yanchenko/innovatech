@@ -27,10 +27,10 @@
         "href": "/en/irrigation-systems"
       },
       {
-        "name": "Peat Preparation Equipment",
-        "description": "Efficient equipment for extraction and processing of peat",
+        "name": "Peat Substrate Preparation Equipment",
+        "description": "Equipment for loosening, fluffing and blending peat substrate",
         "icon": "🌱",
-        "href": "#solutions"
+        "href": "/en/substrate-equipment"
       },
       {
         "name": "Peat Filling Equipment",
@@ -161,8 +161,8 @@
         "description": "Drip irrigation, hydroponics, micro-sprinkler systems, and automated fertilizer application."
       },
       {
-        "title": "Peat Preparation Equipment",
-        "description": "Efficient equipment for extraction and processing of peat"
+        "title": "Peat Substrate Preparation Equipment",
+        "description": "Equipment for loosening, fluffing and blending peat substrate"
       },
       {
         "title": "Peat Filling Equipment",
@@ -1204,7 +1204,7 @@
         "products": [
           {
             "name": "Cable System",
-            "image": "/images/engineering/motor-reducer.png",
+            "image": "/images/engineering/curtain/cable-system.png",
             "specs": [
               "Fabric types: energy-saving, shading, combined",
               "Drive system: geared motor",
@@ -1321,13 +1321,15 @@
     "controlPanelTitle": "Control Panel",
     "controlPanelDescription": "Multi-function control unit — various irrigation mode settings, algorithm programming, and system parameter monitoring.",
     "controlPanelImages": [
-      "/images/irrigation/control-panel/panel-1.png",
-      "/images/irrigation/control-panel/panel-2.png",
-      "/images/irrigation/control-panel/panel-3.png",
-      "/images/irrigation/control-panel/panel-4.png",
-      "/images/irrigation/control-panel/panel-5.png",
-      "/images/irrigation/control-panel/panel-6.png",
-      "/images/irrigation/control-panel/panel-7.png"
+      "/images/irrigation/control-panel/panel-v2-1.png",
+      "/images/irrigation/control-panel/panel-v2-2.png",
+      "/images/irrigation/control-panel/panel-v2-3.png",
+      "/images/irrigation/control-panel/panel-v2-4.png",
+      "/images/irrigation/control-panel/panel-v2-5.png",
+      "/images/irrigation/control-panel/panel-v2-6.png",
+      "/images/irrigation/control-panel/panel-v2-7.png",
+      "/images/irrigation/control-panel/panel-v2-8.png",
+      "/images/irrigation/control-panel/panel-v2-9.png"
     ],
     "tabs": [
       { "id": "greenhouse-ramp", "label": "Greenhouse Boom" },
@@ -1390,6 +1392,145 @@
             "specs": []
           }
         ]
+      }
+    ]
+  },
+  "substratEquipment": {
+    "heroTag": "Manufactured by Innovatech",
+    "heroTitle": "Peat Substrate Preparation Equipment",
+    "heroDescription": "Equipment for loosening, careful fluffing and blending substrate with various components: peat, fertilizers, perlite, starch. Suitable for forest and flower nurseries, greenhouse facilities, and seed production centers.",
+    "getQuote": "Get a Consultation",
+    "techSpecHeaders": {
+      "param": "Parameter",
+      "unit": "Unit",
+      "value": "Value"
+    },
+    "tabs": [
+      { "id": "bale-fluffer", "label": "Big Bale Fluffer" },
+      { "id": "briquette-fluffer", "label": "Briquette Fluffer" },
+      { "id": "mixer", "label": "Substrate Mixer" },
+      { "id": "blender", "label": "Substrate Blender" },
+      { "id": "loosener", "label": "Substrate Loosener" },
+      { "id": "lg2400", "label": "LG2400 Loosener" }
+    ],
+    "sections": [
+      {
+        "id": "bale-fluffer",
+        "sectionNumber": "01",
+        "title": "Big Bale Substrate Fluffer",
+        "type": "single",
+        "product": {
+          "name": "Big Bale Substrate Fluffer",
+          "description": "Specialized equipment for unpacking and fluffing substrate vacuum-pressed into large bales of 6 m³.",
+          "images": ["/images/substrat/__1.png.webp"],
+          "specs": [
+            "Suitable for flower, vegetable and forest substrates",
+            "Designed for unpacking vacuum-pressed substrate with volume of 6 m³",
+            "Fluffs substrate without destroying its composition and structure",
+            "Equipped with a forklift",
+            "Cycle duration 10–20 minutes"
+          ]
+        }
+      },
+      {
+        "id": "briquette-fluffer",
+        "sectionNumber": "02",
+        "title": "Briquette Substrate Fluffers",
+        "type": "single",
+        "product": {
+          "name": "Briquette Substrate Fluffers",
+          "description": "Equipment for unpacking and fluffing substrates vacuum-pressed with volume up to 300 L.",
+          "images": ["/images/substrat/_____2.png.webp"],
+          "specs": [
+            "Suitable for flower, vegetable and forest substrates",
+            "Designed for unpacking vacuum-pressed substrates with volume up to 300 L",
+            "Fluffs substrate without destroying its composition and structure",
+            "Maximum capacity: 6,000 liters per hour"
+          ]
+        }
+      },
+      {
+        "id": "mixer",
+        "sectionNumber": "03",
+        "title": "Substrate Mixer",
+        "type": "single",
+        "product": {
+          "name": "Substrate Mixer",
+          "description": "Equipment for blending various substrate ingredients with automatic lifting and unloading.",
+          "images": ["/images/substrat/3_.png.webp"],
+          "specs": [
+            "Designed for mixing various substrate ingredients",
+            "Capacity up to 2,000 L per cycle",
+            "Automatic substrate lifting and unloading",
+            "Uniformly mixes without destroying substrate composition and structure",
+            "Allows moisture regulation of substrate",
+            "Compatible with seed sowing line",
+            "Mixing duration from 3 to 10 minutes"
+          ]
+        }
+      },
+      {
+        "id": "blender",
+        "sectionNumber": "04",
+        "title": "Substrate Blender",
+        "type": "single",
+        "product": {
+          "name": "Substrate Blender",
+          "description": "Professional blender for mixing peat, fertilizers, perlite, starch and other bulk components.",
+          "images": ["/images/substrat/4.webp"],
+          "specs": [
+            "Suitable for flower, vegetable and forest substrates",
+            "Capacity up to 7 m³/hour",
+            "Blender volume: 1,120 liters",
+            "Mixes peat, fertilizers, perlite, starch and other bulk products",
+            "Uniformly mixes without destroying substrate composition and structure"
+          ]
+        }
+      },
+      {
+        "id": "loosener",
+        "sectionNumber": "05",
+        "title": "Substrate Loosener",
+        "type": "single",
+        "product": {
+          "name": "Substrate Loosener",
+          "description": "Equipment for layer-by-layer loosening of peat substrate with automatic level control in the receiving hopper.",
+          "images": ["/images/substrat/5.webp"],
+          "specs": [
+            "Suitable for flower, vegetable and forest substrates",
+            "Capacity up to 10 bales/hour",
+            "Maximum weight of processed bale — 1,400 kg",
+            "Automatic control of fluffed peat level in the receiving hopper",
+            "Scraper chain performs layer-by-layer peat removal and feeding to the fluffing device"
+          ]
+        }
+      },
+      {
+        "id": "lg2400",
+        "sectionNumber": "06",
+        "title": "LG2400 Lift-Type Peat Loosener",
+        "type": "lg2400",
+        "lg2400": {
+          "purpose": "The Big Bale fluffer is specifically designed for automatic processing of large compressed bales. Peat is restored to its original structure and volume. Suitable for Big Bales up to 1200×1200×2400 mm. The fluffer has proven its versatility in practice and requires modest investment with rapid return.",
+          "image": "/images/substrat/lg2400-lift-loosener.jpg",
+          "techSpecs": [
+            { "param": "Maximum hourly output", "unit": "Bales/hour", "value": "5" },
+            { "param": "Maximum bale size", "unit": "mm", "value": "1200×1200" },
+            { "param": "Maximum bale height", "unit": "mm", "value": "2400" },
+            { "param": "Weight", "unit": "kg", "value": "1500" },
+            { "param": "Installed power", "unit": "kW", "value": "3" }
+          ],
+          "features": [
+            "All protruding or rotating machine parts are maximally safe for the operator",
+            "Automatic chain tensioning device",
+            "Machine is fully PLC-controlled with all functions displayed on screen",
+            "Variable frequency drive lift control provides medium speed pulling, minimum processing speed and fast return",
+            "High homogeneity and uniformity of processed soil through combined vertical and horizontal operation",
+            "No peat collapse due to scraper effect during horizontal mowing",
+            "Bale secured inside the machine retains required moisture level during idle periods",
+            "Optical sensor for automatic load level monitoring"
+          ]
+        }
       }
     ]
   }
