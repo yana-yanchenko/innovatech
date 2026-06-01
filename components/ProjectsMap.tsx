@@ -22,7 +22,22 @@ interface Project {
   description: string;
 }
 
-const ProjectsMap = ({ dict }: { dict: any }) => {
+interface ProjectsMapDict {
+  tag: string;
+  title: string;
+  description: string;
+  items?: Project[];
+  all?: string;
+  industrial?: string;
+  farm?: string;
+  seedling?: string;
+  mapNote?: string;
+  countLabel?: string;
+  showMore?: string;
+  viewDetails?: string;
+}
+
+const ProjectsMap = ({ dict }: { dict: ProjectsMapDict }) => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [filter, setFilter] = useState<string>('all');
   const [isExpanded, setIsExpanded] = useState(false);
@@ -45,7 +60,7 @@ const ProjectsMap = ({ dict }: { dict: any }) => {
 
   return (
     <>
-      <section className=" bg-background">
+      <section id="projects-map" className=" bg-background">
         <div className="container mx-auto px-3 md:px-4 lg:px-6">
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-6">

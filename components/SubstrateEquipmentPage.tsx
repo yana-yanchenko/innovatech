@@ -113,7 +113,7 @@ function SpecList({ specs }: { specs: string[] }) {
       {specs.map((spec, i) => (
         <li key={i} className="flex items-start gap-2.5 text-sm text-foreground">
           <CheckCircle2 size={16} className="text-primary mt-0.5 flex-shrink-0" />
-          <span className="break-words" style={{ wordBreak: 'break-word', hyphens: 'auto' }}>
+          <span className="break-words" style={{ overflowWrap: 'break-word' }}>
             {spec}
           </span>
         </li>
@@ -144,8 +144,7 @@ function SectionHeader({
           className="font-bold tracking-tight text-foreground leading-tight"
           style={{
             fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)',
-            wordBreak: 'break-word',
-            hyphens: 'auto',
+            overflowWrap: 'break-word',
           }}
         >
           {title}
@@ -212,15 +211,14 @@ function SingleProductSection({
             className="font-bold text-foreground"
             style={{
               fontSize: 'clamp(1.2rem, 2vw, 1.6rem)',
-              wordBreak: 'break-word',
-              hyphens: 'auto',
+              overflowWrap: 'break-word',
             }}
           >
             {product.name}
           </h3>
           <p
             className="text-muted-foreground leading-relaxed text-sm"
-            style={{ wordBreak: 'break-word', hyphens: 'auto' }}
+            style={{ overflowWrap: 'break-word' }}
           >
             {product.description}
           </p>
@@ -268,7 +266,7 @@ function LG2400Section({
         <div className="space-y-6">
           <p
             className="text-muted-foreground leading-relaxed text-sm"
-            style={{ wordBreak: 'break-word', hyphens: 'auto' }}
+            style={{ overflowWrap: 'break-word' }}
           >
             {detail.purpose}
           </p>
@@ -293,7 +291,7 @@ function LG2400Section({
                   <tr key={i} className={i % 2 === 0 ? 'bg-background' : 'bg-muted/20'}>
                     <td
                       className="px-4 py-3 text-muted-foreground"
-                      style={{ wordBreak: 'break-word', hyphens: 'auto' }}
+                      style={{ overflowWrap: 'break-word' }}
                     >
                       {row.param}
                     </td>
@@ -314,7 +312,7 @@ function LG2400Section({
             {detail.features.map((feature, i) => (
               <li key={i} className="flex items-start gap-2.5 text-sm text-foreground">
                 <CheckCircle2 size={16} className="text-primary mt-0.5 flex-shrink-0" />
-                <span style={{ wordBreak: 'break-word', hyphens: 'auto' }}>
+                <span style={{ overflowWrap: 'break-word' }}>
                   {feature}
                 </span>
               </li>
@@ -396,8 +394,7 @@ export default function SubstrateEquipmentPage({
               className="font-bold tracking-tight text-foreground leading-tight"
               style={{
                 fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
-                wordBreak: 'break-word',
-                hyphens: 'auto',
+                overflowWrap: 'break-word',
               }}
             >
               {dict.heroTitle}
@@ -406,8 +403,7 @@ export default function SubstrateEquipmentPage({
               className="text-muted-foreground leading-relaxed"
               style={{
                 fontSize: 'clamp(1rem, 1.4vw, 1.2rem)',
-                wordBreak: 'break-word',
-                hyphens: 'auto',
+                overflowWrap: 'break-word',
               }}
             >
               {dict.heroDescription}

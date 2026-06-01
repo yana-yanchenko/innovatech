@@ -1,47 +1,66 @@
 'use client';
 
-import React, { useRef, useEffect, useState } from 'react';
-import { useScroll, motion, useSpring, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ShieldCheck, Zap, ChevronDown } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence, animate } from 'framer-motion';
+import { ArrowRight, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
 
-import Greenhouse3D from './Greenhouse3D';
+import SproutAnimation from './SproutAnimation';
 import { AnimatedCounter } from './AnimatedCounter';
 import { useContactDialog } from './ContactDialogProvider';
 
-const Hero = ({ dict }: { dict: any }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+const slideVariants = {
+  enter: (dir: number) => ({ opacity: 0, x: dir >= 0 ? 60 : -60 }),
+  center: { opacity: 1, x: 0 },
+  exit: (dir: number) => ({ opacity: 0, x: dir >= 0 ? -60 : 60 }),
+};
+
+interface HeroDirection {
+  badge: string;
+  title: string;
+  description: string;
+  color?: string;
+  stats?: { value: string; label: string }[];
+}
+
+interface HeroDict {
+  title: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
+  scrollHint: string;
+  directions?: HeroDirection[];
+}
+
+const Hero = ({ dict }: { dict: HeroDict }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [growth, setGrowth] = useState(0);
   const { openDialog } = useContactDialog();
 
   const directions = dict.directions || [];
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
-
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
-
+  // Анимация роста проигрывается один раз при загрузке и не зависит от прокрутки.
   useEffect(() => {
-    if (directions.length === 0) return;
-
-    const unsubscribe = smoothProgress.on("change", (latest) => {
-      setScrollProgress(latest);
-      const index = Math.min(
-        Math.floor(latest * directions.length),
-        directions.length - 1
-      );
-      if (index !== currentIndex && index >= 0) {
-        setCurrentIndex(index);
-      }
+    const controls = animate(0, 1, {
+      duration: 4,
+      ease: 'easeInOut',
+      onUpdate: (v) => setGrowth(v),
     });
-    return () => unsubscribe();
-  }, [smoothProgress, currentIndex, directions.length]);
+    return () => controls.stop();
+  }, []);
+
+  // Слайдер направлений переключается только вручную (точки + стрелки).
+  const goToSlide = (index: number) => {
+    setDirection(index > currentIndex ? 1 : -1);
+    setCurrentIndex(index);
+  };
+  const prevSlide = () => {
+    setDirection(-1);
+    setCurrentIndex((i) => (i - 1 + directions.length) % directions.length);
+  };
+  const nextSlide = () => {
+    setDirection(1);
+    setCurrentIndex((i) => (i + 1) % directions.length);
+  };
 
   if (directions.length === 0) {
     return null;
@@ -50,8 +69,8 @@ const Hero = ({ dict }: { dict: any }) => {
   const currentDirection = directions[currentIndex] || directions[0];
 
   return (
-    <section ref={containerRef} className="relative h-[400vh] bg-background">
-      <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden pt-24 md:pt-28 lg:pt-20">
+    <section className="relative bg-background">
+      <div className="min-h-screen w-full flex items-center overflow-hidden pt-24 md:pt-28 lg:pt-20">
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl -z-10" />
         <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-[400px] h-[400px] bg-primary/10 rounded-full blur-3xl -z-10" />
 
@@ -61,14 +80,16 @@ const Hero = ({ dict }: { dict: any }) => {
               {/* Статичный H1 для SEO - НЕ меняется */}
               <h1 className="sr-only">{dict.title}</h1>
 
-              {/* Меняющийся контент при скролле */}
-              <AnimatePresence mode="wait">
+              {/* Контент слайдера направлений */}
+              <AnimatePresence mode="wait" custom={direction}>
                 <motion.div
                   key={currentIndex}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 30 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{ duration: 0.5, ease: "easeOut" }}
                   style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(1rem, 3vw, 1.5rem)' }}
                 >
                   {/* Badge с названием направления */}
@@ -122,7 +143,7 @@ const Hero = ({ dict }: { dict: any }) => {
                       <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                     </button>
                     <a
-                      href="#showcase"
+                      href="#projects-map"
                       className="border-2 border-border rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-muted/50 transition-all group"
                       style={{
                         fontSize: 'clamp(0.875rem, 2vw, 1.125rem)',
@@ -142,7 +163,7 @@ const Hero = ({ dict }: { dict: any }) => {
                       paddingTop: 'clamp(1rem, 3vw, 2rem)'
                     }}
                   >
-                    {currentDirection.stats?.map((stat: any, i: number) => {
+                    {currentDirection.stats?.map((stat, i: number) => {
                       const numericValue = parseInt(stat.value.replace(/[^0-9]/g, ''));
                       const suffix = stat.value.replace(/[0-9]/g, '');
 
@@ -174,9 +195,42 @@ const Hero = ({ dict }: { dict: any }) => {
                   </div>
                 </motion.div>
               </AnimatePresence>
+
+              {/* Управление слайдером: стрелки + точки */}
+              <div className="flex items-center gap-4 pt-2">
+                <button
+                  onClick={prevSlide}
+                  aria-label="Предыдущее направление"
+                  className="flex items-center justify-center w-10 h-10 rounded-full border border-border text-foreground hover:bg-muted/60 hover:border-primary/40 transition-colors"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+
+                <div className="flex items-center gap-2">
+                  {directions.map((_: unknown, i: number) => (
+                    <button
+                      key={i}
+                      onClick={() => goToSlide(i)}
+                      aria-label={`Направление ${i + 1}`}
+                      aria-current={i === currentIndex}
+                      className={`h-2 rounded-full transition-all duration-300 ${
+                        i === currentIndex ? 'w-8 bg-primary' : 'w-2 bg-border hover:bg-primary/50'
+                      }`}
+                    />
+                  ))}
+                </div>
+
+                <button
+                  onClick={nextSlide}
+                  aria-label="Следующее направление"
+                  className="flex items-center justify-center w-10 h-10 rounded-full border border-border text-foreground hover:bg-muted/60 hover:border-primary/40 transition-colors"
+                >
+                  <ChevronRight size={20} />
+                </button>
+              </div>
             </div>
             
-            {/* 3D Model + Floating cards */}
+            {/* Анимация ростка */}
             <div className="relative hidden md:flex items-center justify-center lg:h-[600px]">
               <div
                 className="relative w-full rounded-[2rem] overflow-hidden"
@@ -185,52 +239,10 @@ const Hero = ({ dict }: { dict: any }) => {
                   maxWidth: 'clamp(350px, 45vw, 600px)'
                 }}
               >
-                <Greenhouse3D
-                  progress={scrollProgress}
+                <SproutAnimation
+                  progress={growth}
                   color={currentDirection.color}
                 />
-
-                {/* Floating card - Quality */}
-                <motion.div
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute bg-background/90 backdrop-blur rounded-2xl shadow-xl flex items-center border border-border"
-                  style={{
-                    top: 'clamp(1rem, 3vw, 2rem)',
-                    left: 'clamp(1rem, 3vw, 2rem)',
-                    padding: 'clamp(0.5rem, 1.5vw, 0.75rem)',
-                    gap: 'clamp(0.5rem, 1.5vw, 0.75rem)'
-                  }}
-                >
-                  <div className="bg-primary/20 p-2 rounded-lg text-primary">
-                    <ShieldCheck size={20} />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-xs text-muted-foreground">{dict.quality}</span>
-                    <span className="text-sm font-bold text-foreground">{dict.qualityStandards}</span>
-                  </div>
-                </motion.div>
-
-                {/* Floating card - Innovation */}
-                <motion.div
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                  className="absolute bg-background/90 backdrop-blur rounded-2xl shadow-xl flex items-center border border-border"
-                  style={{
-                    bottom: 'clamp(2rem, 4vw, 3rem)',
-                    right: 'clamp(1rem, 3vw, 2rem)',
-                    padding: 'clamp(0.5rem, 1.5vw, 0.75rem)',
-                    gap: 'clamp(0.5rem, 1.5vw, 0.75rem)'
-                  }}
-                >
-                  <div className="bg-primary/20 p-2 rounded-lg text-primary">
-                    <Zap size={20} />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-xs text-muted-foreground">{dict.innovation}</span>
-                    <span className="text-sm font-bold text-foreground">{dict.aiDriven}</span>
-                  </div>
-                </motion.div>
               </div>
             </div>
           </div>

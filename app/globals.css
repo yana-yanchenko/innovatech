@@ -80,6 +80,9 @@
   --sidebar-ring: oklch(0.708 0 0);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
+  /* Fallbacks; overridden at runtime by next/font loader on <body>. */
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-geist-mono: ui-monospace, SFMono-Regular, monospace;
 }
 
 .dark {
@@ -127,6 +130,10 @@
 
   body {
     @apply bg-background text-foreground;
+    /* Не допускаем горизонтальную прокрутку от декоративных/анимированных
+       блоков (hero, размытые круги, слайдер). clip — в отличие от hidden —
+       не создаёт scroll-контейнер и не ломает sticky-элементы (табы). */
+    overflow-x: clip;
   }
 }
 

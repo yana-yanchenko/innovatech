@@ -7,599 +7,324 @@ interface SproutAnimationProps {
   color?: string;
 }
 
-export default function SproutAnimation({ progress, color = '#4CAF50' }: SproutAnimationProps) {
-  // Линейный цвет для всех элементов
-  const lineColor = color;
+// Плавный под-прогресс: маппит глобальный progress в локальный 0..1 на отрезке [a, b].
+const sub = (p: number, a: number, b: number) =>
+  Math.max(0, Math.min(1, (p - a) / (b - a)));
 
-  // СТАДИИ РОСТА (технологичный стиль):
-  // 0.0 - 0.2: Семя (технологичная структура)
-  // 0.2 - 0.5: Рост стебля (многослойная структура)
-  // 0.5 - 0.75: Листья (псевдо-3D)
-  // 0.75 - 1.0: Цветок (сложная геометрия)
+const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
+const easeInOut = (t: number) =>
+  t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
-  // Вычисляем значения напрямую из progress
-  const currentProgress = Math.max(0, Math.min(1, progress));
+// Монохромная палитра sage-teal (как в референсе).
+const SAGE = '#84aa9b';
+const SAGE_DARK = '#557f72';
+const SAGE_LIGHT = '#bcd5cb';
 
-  // 1. Семя (0.0 - 0.2)
-  const seedVisible = currentProgress < 0.25;
-  const seedPulseScale = 1 + Math.sin(currentProgress * 20) * 0.03;
+// Силуэт ланцетного листа (единичный), основание в (0,0), кончик вдоль +x.
+const LANCE = 'M0 0 C 11 -5, 28 -6, 42 -2 C 28 2.5, 12 4.5, 0 0 Z';
+const LANCE_MIDRIB = 'M2 0 C 16 -2, 30 -3, 40 -2.4';
+const LANCE_VEINS = [
+  'M9 -1 L 14 -4',
+  'M17 -2 L 23 -4.6',
+  'M25 -2.4 L 31 -4.4',
+  'M32 -2.4 L 37 -3.8',
+];
+const LANCE_DEW: [number, number, number][] = [
+  [19, -3, 0.9],
+  [27, -2, 0.8],
+  [33, -3.4, 0.7],
+];
 
-  // 2. Стебель (0.2 - 0.5)
-  const stemLength = currentProgress < 0.2 ? 0 : currentProgress < 0.5 ? (currentProgress - 0.2) / 0.3 : 1;
+// Лепесток лотоса (единичный), основание в (0,0), кончик вверх (-y).
+const PETAL = 'M0 0 C -4.5 -9, -3 -21, 0 -27 C 3 -21, 4.5 -9, 0 0 Z';
 
-  // 3. Листья (0.5 - 0.75)
-  const leavesVisible = currentProgress < 0.5 ? 0 : currentProgress < 0.75 ? (currentProgress - 0.5) / 0.25 : 1;
+// Бутон-капля (единичный), основание в (0,0), вдоль +x.
+const BUD = 'M0 0 C 3 -2.6, 8 -2.2, 10.5 0 C 8 2.2, 3 2.6, 0 0 Z';
 
-  // 4. Цветок (0.75 - 1.0)
-  const flowerVisible = currentProgress < 0.75 ? 0 : (currentProgress - 0.75) / 0.25;
+// Корневая система — мелкая, тонкая, симметричная, компактным веером; кончики затухают через градиент.
+const ROOTS: { d: string; w: number; delay: number; op: number }[] = [
+  // центральный стержневой корень
+  { d: 'M100 135 C 99 140, 100 146, 100 153', w: 0.8, delay: 0, op: 1 },
+  // внутренние почти вертикальные
+  { d: 'M100 136 C 98 141, 96 147, 95 153', w: 0.5, delay: 0.03, op: 0.95 },
+  { d: 'M100 136 C 102 141, 104 147, 105 153', w: 0.5, delay: 0.03, op: 0.95 },
+  // средние боковые
+  { d: 'M100 136 C 96 140, 93 145, 91 151', w: 0.45, delay: 0.05, op: 0.9 },
+  { d: 'M100 136 C 104 140, 107 145, 109 151', w: 0.45, delay: 0.05, op: 0.9 },
+  // внешние боковые (узкий веер)
+  { d: 'M100 135 C 95 139, 91 143, 88 149', w: 0.38, delay: 0.08, op: 0.8 },
+  { d: 'M100 135 C 105 139, 109 143, 112 149', w: 0.38, delay: 0.08, op: 0.8 },
+  // тонкие волоски
+  { d: 'M94 145 C 93 147, 92 149, 92 152', w: 0.26, delay: 0.11, op: 0.6 },
+  { d: 'M106 145 C 107 147, 108 149, 108 152', w: 0.26, delay: 0.11, op: 0.6 },
+];
 
-  // Технологичные элементы
-  const scanLinePosition = 145 - (currentProgress * 115);
-  const gridVisible = 0.15 + (Math.sin(currentProgress * Math.PI) * 0.2);
-  const structureVisible = currentProgress > 0.25 ? Math.min(1, (currentProgress - 0.25) / 0.2) : 0;
+const STEM_D = 'M100 135 C 99 110, 101 78, 100 44';
 
-  // Для 3D эффекта
-  const perspective = 0.3; // Коэффициент перспективы
+type LeafCfg = {
+  id: string;
+  ax: number;
+  ay: number;
+  len: number;
+  fold: number;
+  open: number;
+  start: number;
+  span: number;
+};
+
+// start-тайминги привязаны к высоте крепления: нижние листья раскрываются раньше — рост идёт снизу вверх.
+const LEAVES: LeafCfg[] = [
+  { id: 'lf-low-l', ax: 100, ay: 124, len: 0.66, fold: -98, open: -148, start: 0.14, span: 0.26 },
+  { id: 'lf-low-r', ax: 100, ay: 117, len: 0.6, fold: -82, open: -38, start: 0.2, span: 0.26 },
+  { id: 'lf-mid-l', ax: 100, ay: 103, len: 1.15, fold: -98, open: -150, start: 0.3, span: 0.3 },
+  { id: 'lf-up-r', ax: 100, ay: 80, len: 1.2, fold: -82, open: -32, start: 0.44, span: 0.3 },
+];
+
+type BudCfg = { id: string; ax: number; ay: number; ang: number; len: number; start: number };
+
+const BUDS: BudCfg[] = [
+  { id: 'bud-low', ax: 100, ay: 137, ang: -122, len: 0.85, start: 0.12 },
+  { id: 'bud-r', ax: 100, ay: 119, ang: -42, len: 0.95, start: 0.22 },
+  { id: 'bud-l', ax: 100, ay: 98, ang: -140, len: 0.95, start: 0.36 },
+  { id: 'bud-top', ax: 100, ay: 60, ang: -46, len: 0.85, start: 0.52 },
+];
+
+const PETAL_ROWS = [
+  { angles: [-78, -52, -27, 0, 27, 52, 78], scale: 1.06, opacity: 0.38, fill: 'url(#petalPale)' },
+  { angles: [-46, -22, 0, 22, 46], scale: 0.92, opacity: 0.58, fill: 'url(#petalLight)' },
+  { angles: [-16, 0, 16], scale: 0.6, opacity: 0.72, fill: 'url(#petalLight)' },
+];
+
+const PARTICLES = [
+  { left: '40%', top: '54%', size: 3, dur: '8s', delay: '0s' },
+  { left: '58%', top: '44%', size: 2.5, dur: '9.5s', delay: '1.4s' },
+  { left: '50%', top: '34%', size: 3.5, dur: '8.5s', delay: '0.7s' },
+  { left: '46%', top: '64%', size: 2.5, dur: '10s', delay: '2.3s' },
+  { left: '62%', top: '58%', size: 3, dur: '9s', delay: '3.1s' },
+];
+
+function Leaf({ cfg, p }: { cfg: LeafCfg; p: number }) {
+  const s = easeOut(sub(p, cfg.start, cfg.start + cfg.span));
+  if (s <= 0.001) return null;
+  const angle = lerp(cfg.fold, cfg.open, s);
+  const scale = s * cfg.len;
+  return (
+    <g
+      transform={`translate(${cfg.ax} ${cfg.ay}) rotate(${angle}) scale(${scale})`}
+      style={{ opacity: Math.min(1, s * 1.6) }}
+    >
+      <path d={LANCE} fill="url(#leafGrad)" stroke={SAGE_DARK} strokeWidth={0.4} strokeOpacity={0.4} />
+      <path d={LANCE_MIDRIB} fill="none" stroke={SAGE_DARK} strokeWidth={0.45} strokeOpacity={0.55} strokeLinecap="round" />
+      {LANCE_VEINS.map((d, i) => (
+        <path key={i} d={d} fill="none" stroke={SAGE_DARK} strokeWidth={0.3} strokeOpacity={0.4} strokeLinecap="round" />
+      ))}
+      {LANCE_DEW.map(([dx, dy, r], i) => (
+        <circle key={i} cx={dx} cy={dy} r={r} fill="#ffffff" opacity={0.7} />
+      ))}
+    </g>
+  );
+}
+
+function Bud({ cfg, p }: { cfg: BudCfg; p: number }) {
+  const s = easeOut(sub(p, cfg.start, cfg.start + 0.26));
+  if (s <= 0.001) return null;
+  const stalk = 9 * cfg.len;
+  return (
+    <g
+      transform={`translate(${cfg.ax} ${cfg.ay}) rotate(${cfg.ang}) scale(${s * cfg.len})`}
+      style={{ opacity: Math.min(1, s * 1.8) }}
+    >
+      <path d={`M0 0 L ${stalk} 0`} stroke={SAGE_DARK} strokeWidth={0.7} strokeOpacity={0.55} strokeLinecap="round" />
+      <g transform={`translate(${stalk} 0)`}>
+        <path d={BUD} fill="url(#budGrad)" stroke={SAGE_DARK} strokeWidth={0.4} strokeOpacity={0.5} />
+        <path d="M2 0 L 9 0" stroke={SAGE_DARK} strokeWidth={0.3} strokeOpacity={0.4} strokeLinecap="round" />
+      </g>
+    </g>
+  );
+}
+
+export default function SproutAnimation({ progress }: SproutAnimationProps) {
+  const p = Math.max(0, Math.min(1, progress));
+
+  // Стебель тянется вверх на протяжении почти всего роста, корни — вниз параллельно, цветок раскрывается последним.
+  const stemGrow = easeInOut(sub(p, 0.05, 0.62));
+  const rootBase = sub(p, 0, 0.55);
+  const bloomT = easeOut(sub(p, 0.64, 1));
+  const particlesOpacity = sub(p, 0.55, 0.9);
 
   return (
-    <div className="w-full h-full flex items-center justify-center relative bg-muted/10 rounded-[2rem] overflow-hidden">
-      <svg
-        viewBox="0 0 200 200"
-        className="w-full h-full"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* Фоновая сетка - более плотная */}
-        <g opacity={gridVisible}>
-          {[20, 40, 60, 80, 100, 120, 140, 160, 180].map((x) => (
-            <line
-              key={`v-${x}`}
-              x1={x}
-              y1="0"
-              x2={x}
-              y2="200"
-              stroke={lineColor}
-              strokeWidth="0.15"
-              opacity="0.08"
-            />
-          ))}
-          {[20, 40, 60, 80, 100, 120, 140, 160].map((y) => (
-            <line
-              key={`h-${y}`}
-              x1="0"
-              y1={y}
-              x2="200"
-              y2={y}
-              stroke={lineColor}
-              strokeWidth="0.15"
-              opacity="0.08"
-            />
-          ))}
+    <div className="w-full h-full relative flex items-center justify-center rounded-[2rem] overflow-hidden">
+      <style>{`
+        @keyframes sproutSway { 0%,100% { transform: rotate(-0.9deg); } 50% { transform: rotate(0.9deg); } }
+        @keyframes sproutDrift {
+          0% { transform: translateY(6px); opacity: 0; }
+          30% { opacity: 0.8; }
+          70% { opacity: 0.5; }
+          100% { transform: translateY(-40px); opacity: 0; }
+        }
+        .sprout-sway { animation: sproutSway 7s ease-in-out infinite; transform-box: view-box; transform-origin: 100px 135px; }
+        .sprout-particle { animation-name: sproutDrift; animation-timing-function: ease-in-out; animation-iteration-count: infinite; }
+        @media (prefers-reduced-motion: reduce) {
+          .sprout-sway { animation: none; }
+          .sprout-particle { animation: none; opacity: 0.4; }
+        }
+      `}</style>
+
+      <svg viewBox="0 0 200 200" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="glassGrad" cx="42%" cy="34%" r="68%">
+            <stop offset="0%" stopColor="#f2f7f5" stopOpacity="0.55" />
+            <stop offset="60%" stopColor={SAGE_LIGHT} stopOpacity="0.18" />
+            <stop offset="100%" stopColor={SAGE} stopOpacity="0.1" />
+          </radialGradient>
+          <linearGradient id="leafGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor={SAGE} stopOpacity="0.7" />
+            <stop offset="100%" stopColor={SAGE_LIGHT} stopOpacity="0.6" />
+          </linearGradient>
+          <linearGradient id="budGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor={SAGE} stopOpacity="0.75" />
+            <stop offset="100%" stopColor={SAGE_LIGHT} stopOpacity="0.65" />
+          </linearGradient>
+          <linearGradient id="stemGrad" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stopColor={SAGE_DARK} />
+            <stop offset="100%" stopColor={SAGE} />
+          </linearGradient>
+          <radialGradient id="petalLight" cx="50%" cy="90%" r="80%">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.85" />
+            <stop offset="100%" stopColor={SAGE} stopOpacity="0.6" />
+          </radialGradient>
+          <radialGradient id="petalPale" cx="50%" cy="90%" r="80%">
+            <stop offset="0%" stopColor={SAGE_LIGHT} stopOpacity="0.7" />
+            <stop offset="100%" stopColor={SAGE} stopOpacity="0.45" />
+          </radialGradient>
+          <radialGradient id="soilGrad" cx="50%" cy="30%" r="80%">
+            <stop offset="0%" stopColor={SAGE_LIGHT} stopOpacity="0.55" />
+            <stop offset="100%" stopColor={SAGE} stopOpacity="0.4" />
+          </radialGradient>
+          <linearGradient id="rootFade" gradientUnits="userSpaceOnUse" x1="0" y1="133" x2="0" y2="154">
+            <stop offset="0%" stopColor={SAGE} stopOpacity="0.6" />
+            <stop offset="55%" stopColor={SAGE} stopOpacity="0.4" />
+            <stop offset="100%" stopColor={SAGE} stopOpacity="0" />
+          </linearGradient>
+          <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" />
+          </filter>
+        </defs>
+
+        {/* Стеклянная сфера (статичная — растёт только растение) */}
+        <g>
+          <ellipse cx="100" cy="100" rx="78" ry="94" fill="url(#glassGrad)" />
+          <ellipse cx="100" cy="120" rx="74" ry="86" fill={SAGE_DARK} opacity="0.05" filter="url(#soft)" />
+          <ellipse cx="100" cy="100" rx="78" ry="94" fill="none" stroke={SAGE_LIGHT} strokeWidth="0.8" strokeOpacity="0.45" />
         </g>
 
-        {/* Линия уровня земли с технологичными маркерами */}
-        <line
-          x1="0"
-          y1="145"
-          x2="200"
-          y2="145"
-          stroke={lineColor}
-          strokeWidth="0.8"
-          opacity="0.4"
-          strokeDasharray="5 3"
-        />
-        {/* Маркеры на линии земли */}
-        {[30, 60, 90, 120, 150, 170].map((x) => (
-          <line
-            key={`ground-${x}`}
-            x1={x}
-            y1="143"
-            x2={x}
-            y2="147"
-            stroke={lineColor}
-            strokeWidth="0.5"
-            opacity="0.3"
-          />
-        ))}
-
-        {/* Семя - технологичная структура */}
-        {seedVisible && (
-          <g opacity={1 - currentProgress * 4}>
-            {/* Внешние кольца */}
-            {[12, 10, 8, 6].map((r, i) => (
-              <circle
-                key={`seed-ring-${i}`}
-                cx="100"
-                cy="160"
-                r={r * seedPulseScale}
-                fill="none"
-                stroke={lineColor}
-                strokeWidth="0.4"
-                opacity={0.3 - i * 0.05}
-              />
-            ))}
-            {/* Внутренняя структура */}
-            <circle cx="100" cy="160" r="3" fill="none" stroke={lineColor} strokeWidth="0.6" opacity="0.6" />
-            {/* Лучи от центра */}
-            {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => {
-              const rad = (angle * Math.PI) / 180;
-              const x = 100 + Math.cos(rad) * 5;
-              const y = 160 + Math.sin(rad) * 5;
-              return (
-                <line
-                  key={`seed-ray-${angle}`}
-                  x1="100"
-                  y1="160"
-                  x2={x}
-                  y2={y}
-                  stroke={lineColor}
-                  strokeWidth="0.3"
-                  opacity="0.4"
-                />
-              );
-            })}
-          </g>
-        )}
-
-        {/* Стебель - многослойная структура */}
-        {stemLength > 0 && (
-          <g>
-            {/* Центральная линия (толще) */}
-            <path
-              d="M 100 160 C 98 140, 102 120, 100 100 C 98 80, 102 60, 100 30"
-              stroke={lineColor}
-              strokeWidth="1.2"
-              strokeLinecap="round"
-              fill="none"
-              opacity="0.7"
-              strokeDasharray="130"
-              strokeDashoffset={130 * (1 - stemLength)}
-            />
-
-            {/* Параллельные структурные линии (тоньше) */}
-            {[-3, -1.5, 1.5, 3].map((offset, i) => (
+        {/* Корни (растут вниз) */}
+        <g>
+          {ROOTS.map((r, i) => {
+            const g = easeInOut(sub(p, r.delay, 0.5 + r.delay));
+            if (g <= 0.001) return null;
+            return (
               <path
-                key={`stem-line-${i}`}
-                d={`M ${100 + offset} 160 C ${98 + offset} 140, ${102 + offset} 120, ${100 + offset} 100 C ${98 + offset} 80, ${102 + offset} 60, ${100 + offset} 30`}
-                stroke={lineColor}
-                strokeWidth="0.3"
+                key={i}
+                d={r.d}
+                fill="none"
+                stroke="url(#rootFade)"
+                strokeWidth={r.w}
+                strokeOpacity={r.op}
                 strokeLinecap="round"
-                fill="none"
-                opacity={0.25}
-                strokeDasharray="130"
-                strokeDashoffset={130 * (1 - stemLength)}
+                pathLength={1}
+                strokeDasharray="1 1"
+                strokeDashoffset={1 - g}
               />
-            ))}
-
-            {/* Диагональные пересекающиеся линии для структуры */}
-            {stemLength > 0.3 && (
-              <>
-                {[140, 120, 100, 80, 60, 40].map((y, i) => (
-                  <g key={`cross-${i}`} opacity={structureVisible * 0.2}>
-                    <line x1="97" y1={y} x2="103" y2={y - 5} stroke={lineColor} strokeWidth="0.2" />
-                    <line x1="103" y1={y} x2="97" y2={y - 5} stroke={lineColor} strokeWidth="0.2" />
-                  </g>
-                ))}
-              </>
-            )}
-          </g>
-        )}
-
-        {/* Структурные узлы на стебле - более детализированные */}
-        {structureVisible > 0 && (
-          <g opacity={structureVisible}>
-            {[140, 120, 100, 80, 60, 40].map((y, i) => (
-              <g key={`node-${i}`}>
-                {/* Концентрические кольца */}
-                <circle cx="100" cy={y} r="1.5" fill="none" stroke={lineColor} strokeWidth="0.5" opacity="0.5" />
-                <circle cx="100" cy={y} r="3" fill="none" stroke={lineColor} strokeWidth="0.3" opacity="0.3" />
-                <circle cx="100" cy={y} r="5" fill="none" stroke={lineColor} strokeWidth="0.2" opacity="0.2" />
-                {/* Крестообразные маркеры */}
-                <line x1="95" y1={y} x2="105" y2={y} stroke={lineColor} strokeWidth="0.3" opacity="0.3" />
-                <line x1="100" y1={y - 5} x2="100" y2={y + 5} stroke={lineColor} strokeWidth="0.3" opacity="0.3" />
-              </g>
-            ))}
-          </g>
-        )}
-
-        {/* Листья - псевдо-3D структура */}
-        {leavesVisible > 0 && (
-          <>
-            {/* Нижний уровень листьев (y=95) */}
-            {/* Левый лист с 3D эффектом */}
-            <g opacity={leavesVisible} transform="translate(100, 95)">
-              {/* Передний край листа (основной контур) */}
-              <path
-                d="M 0 0 C -18 -3, -32 -10, -35 -22 C -32 -15, -20 -8, 0 0"
-                stroke={lineColor}
-                strokeWidth="0.8"
-                fill="none"
-                opacity="0.7"
-                strokeDasharray="60"
-                strokeDashoffset={60 * (1 - leavesVisible)}
-              />
-              {/* Задний край (смещенный для 3D) */}
-              <path
-                d="M 0 0 C -16 -4, -28 -12, -30 -23 C -28 -17, -18 -10, 0 0"
-                stroke={lineColor}
-                strokeWidth="0.4"
-                fill="none"
-                opacity="0.3"
-                strokeDasharray="55"
-                strokeDashoffset={55 * (1 - leavesVisible)}
-              />
-              {/* Прожилки (множественные) */}
-              {[0.3, 0.5, 0.7, 0.9].map((t, i) => {
-                const x = -35 * t;
-                const y = -22 * t;
-                return (
-                  <line
-                    key={`left-vein-${i}`}
-                    x1="0"
-                    y1="0"
-                    x2={x}
-                    y2={y}
-                    stroke={lineColor}
-                    strokeWidth="0.2"
-                    opacity="0.3"
-                  />
-                );
-              })}
-              {/* Края листа (дополнительные линии) */}
-              <path
-                d="M -10 -5 Q -15 -8, -18 -12"
-                stroke={lineColor}
-                strokeWidth="0.25"
-                opacity="0.25"
-              />
-            </g>
-
-            {/* Правый лист с 3D эффектом */}
-            <g opacity={leavesVisible} transform="translate(100, 95)">
-              {/* Передний край */}
-              <path
-                d="M 0 0 C 18 -3, 32 -10, 35 -22 C 32 -15, 20 -8, 0 0"
-                stroke={lineColor}
-                strokeWidth="0.8"
-                fill="none"
-                opacity="0.7"
-                strokeDasharray="60"
-                strokeDashoffset={60 * (1 - leavesVisible)}
-              />
-              {/* Задний край */}
-              <path
-                d="M 0 0 C 16 -4, 28 -12, 30 -23 C 28 -17, 18 -10, 0 0"
-                stroke={lineColor}
-                strokeWidth="0.4"
-                fill="none"
-                opacity="0.3"
-                strokeDasharray="55"
-                strokeDashoffset={55 * (1 - leavesVisible)}
-              />
-              {/* Прожилки */}
-              {[0.3, 0.5, 0.7, 0.9].map((t, i) => {
-                const x = 35 * t;
-                const y = -22 * t;
-                return (
-                  <line
-                    key={`right-vein-${i}`}
-                    x1="0"
-                    y1="0"
-                    x2={x}
-                    y2={y}
-                    stroke={lineColor}
-                    strokeWidth="0.2"
-                    opacity="0.3"
-                  />
-                );
-              })}
-            </g>
-
-            {/* Верхний уровень листьев (y=70) - меньше */}
-            <g opacity={leavesVisible} transform="translate(100, 70)">
-              {/* Левый */}
-              <path
-                d="M 0 0 C -14 -2, -25 -7, -28 -16 C -25 -11, -15 -6, 0 0"
-                stroke={lineColor}
-                strokeWidth="0.6"
-                fill="none"
-                opacity="0.6"
-                strokeDasharray="45"
-                strokeDashoffset={45 * (1 - leavesVisible)}
-              />
-              <path
-                d="M 0 0 C -12 -3, -22 -9, -24 -17 C -22 -13, -13 -7, 0 0"
-                stroke={lineColor}
-                strokeWidth="0.3"
-                fill="none"
-                opacity="0.25"
-              />
-              {[0.4, 0.7].map((t, i) => {
-                const x = -28 * t;
-                const y = -16 * t;
-                return (
-                  <line
-                    key={`upper-left-vein-${i}`}
-                    x1="0"
-                    y1="0"
-                    x2={x}
-                    y2={y}
-                    stroke={lineColor}
-                    strokeWidth="0.2"
-                    opacity="0.25"
-                  />
-                );
-              })}
-            </g>
-
-            <g opacity={leavesVisible} transform="translate(100, 70)">
-              {/* Правый */}
-              <path
-                d="M 0 0 C 14 -2, 25 -7, 28 -16 C 25 -11, 15 -6, 0 0"
-                stroke={lineColor}
-                strokeWidth="0.6"
-                fill="none"
-                opacity="0.6"
-                strokeDasharray="45"
-                strokeDashoffset={45 * (1 - leavesVisible)}
-              />
-              <path
-                d="M 0 0 C 12 -3, 22 -9, 24 -17 C 22 -13, 13 -7, 0 0"
-                stroke={lineColor}
-                strokeWidth="0.3"
-                fill="none"
-                opacity="0.25"
-              />
-              {[0.4, 0.7].map((t, i) => {
-                const x = 28 * t;
-                const y = -16 * t;
-                return (
-                  <line
-                    key={`upper-right-vein-${i}`}
-                    x1="0"
-                    y1="0"
-                    x2={x}
-                    y2={y}
-                    stroke={lineColor}
-                    strokeWidth="0.2"
-                    opacity="0.25"
-                  />
-                );
-              })}
-            </g>
-
-            {/* Самый верхний уровень (y=50) - еще меньше */}
-            <g opacity={leavesVisible * 0.8} transform="translate(100, 50)">
-              <path
-                d="M 0 0 C -10 -1, -18 -4, -20 -10"
-                stroke={lineColor}
-                strokeWidth="0.5"
-                fill="none"
-                opacity="0.5"
-              />
-              <path
-                d="M 0 0 C 10 -1, 18 -4, 20 -10"
-                stroke={lineColor}
-                strokeWidth="0.5"
-                fill="none"
-                opacity="0.5"
-              />
-            </g>
-          </>
-        )}
-
-        {/* Цветок - сложная 3D геометрия */}
-        {flowerVisible > 0 && (
-          <g opacity={flowerVisible} transform="translate(100, 30)">
-            {/* 8 лепестков с псевдо-3D эффектом */}
-            {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, i) => {
-              const rad = (angle * Math.PI) / 180;
-              const x1 = Math.cos(rad) * 6;
-              const y1 = Math.sin(rad) * 6;
-              const x2 = Math.cos(rad) * 16;
-              const y2 = Math.sin(rad) * 16;
-
-              // 3D смещение для заднего края
-              const perspectiveShift = 0.3;
-              const x1b = Math.cos(rad) * 5.5 + perspectiveShift;
-              const y1b = Math.sin(rad) * 5.5 + perspectiveShift;
-              const x2b = Math.cos(rad) * 15 + perspectiveShift;
-              const y2b = Math.sin(rad) * 15 + perspectiveShift;
-
-              return (
-                <g key={`petal-${i}`}>
-                  {/* Задний край лепестка (тоньше, прозрачнее) */}
-                  <path
-                    d={`M 0 0 Q ${x1b * 1.2} ${y1b * 1.2}, ${x2b} ${y2b}`}
-                    stroke={lineColor}
-                    strokeWidth="0.3"
-                    fill="none"
-                    opacity="0.2"
-                  />
-
-                  {/* Центральная линия лепестка (основная) */}
-                  <line
-                    x1="0"
-                    y1="0"
-                    x2={x2}
-                    y2={y2}
-                    stroke={lineColor}
-                    strokeWidth="0.8"
-                    opacity="0.6"
-                  />
-
-                  {/* Передний край лепестка (левый) */}
-                  <path
-                    d={`M ${x1} ${y1} Q ${x1 * 1.3 - y1 * 0.4} ${y1 * 1.3 + x1 * 0.4}, ${x2 - y2 * 0.2} ${y2 + x2 * 0.2}`}
-                    stroke={lineColor}
-                    strokeWidth="0.5"
-                    fill="none"
-                    opacity="0.5"
-                  />
-
-                  {/* Передний край лепестка (правый) */}
-                  <path
-                    d={`M ${x1} ${y1} Q ${x1 * 1.3 + y1 * 0.4} ${y1 * 1.3 - x1 * 0.4}, ${x2 + y2 * 0.2} ${y2 - x2 * 0.2}`}
-                    stroke={lineColor}
-                    strokeWidth="0.5"
-                    fill="none"
-                    opacity="0.5"
-                  />
-
-                  {/* Внутренние структурные линии */}
-                  <line
-                    x1={x1}
-                    y1={y1}
-                    x2={x2 * 0.6}
-                    y2={y2 * 0.6}
-                    stroke={lineColor}
-                    strokeWidth="0.2"
-                    opacity="0.3"
-                  />
-                </g>
-              );
-            })}
-
-            {/* Внутренние слои цветка */}
-            {[10, 8, 6].map((radius, i) => (
-              <circle
-                key={`inner-${i}`}
-                cx="0"
-                cy="0"
-                r={radius}
-                fill="none"
-                stroke={lineColor}
-                strokeWidth="0.4"
-                opacity={0.4 - i * 0.1}
-              />
-            ))}
-
-            {/* Центр цветка - сложная структура */}
-            <g>
-              {/* Концентрические кольца */}
-              <circle cx="0" cy="0" r="5" fill="none" stroke={lineColor} strokeWidth="0.6" opacity="0.6" />
-              <circle cx="0" cy="0" r="3.5" fill="none" stroke={lineColor} strokeWidth="0.4" opacity="0.5" />
-              <circle cx="0" cy="0" r="2" fill="none" stroke={lineColor} strokeWidth="0.3" opacity="0.4" />
-
-              {/* Радиальные линии в центре */}
-              {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((angle) => {
-                const rad = (angle * Math.PI) / 180;
-                const x = Math.cos(rad) * 4;
-                const y = Math.sin(rad) * 4;
-                return (
-                  <line
-                    key={`center-ray-${angle}`}
-                    x1="0"
-                    y1="0"
-                    x2={x}
-                    y2={y}
-                    stroke={lineColor}
-                    strokeWidth="0.2"
-                    opacity="0.3"
-                  />
-                );
-              })}
-
-              {/* Центральная точка */}
-              <circle cx="0" cy="0" r="1" fill={lineColor} opacity="0.6" />
-            </g>
-
-            {/* Внешние технологичные маркеры вокруг цветка */}
-            {[0, 90, 180, 270].map((angle) => {
-              const rad = (angle * Math.PI) / 180;
-              const x = Math.cos(rad) * 20;
-              const y = Math.sin(rad) * 20;
-              return (
-                <g key={`marker-${angle}`} opacity="0.2">
-                  <circle cx={x} cy={y} r="2" fill="none" stroke={lineColor} strokeWidth="0.3" />
-                  <line x1={x * 0.85} y1={y * 0.85} x2={x * 1.15} y2={y * 1.15} stroke={lineColor} strokeWidth="0.2" />
-                </g>
-              );
-            })}
-          </g>
-        )}
-
-        {/* Линия сканирования - более технологичная */}
-        <g transform={`translate(0, ${scanLinePosition})`} opacity="0.6">
-          {/* Основная линия */}
-          <line
-            x1="5"
-            x2="195"
-            y1="0"
-            y2="0"
-            stroke={lineColor}
-            strokeWidth="0.6"
-            opacity="0.5"
-          />
-          {/* Верхняя параллельная */}
-          <line
-            x1="5"
-            x2="195"
-            y1="-1.5"
-            y2="-1.5"
-            stroke={lineColor}
-            strokeWidth="0.2"
-            opacity="0.3"
-          />
-          {/* Нижняя параллельная */}
-          <line
-            x1="5"
-            x2="195"
-            y1="1.5"
-            y2="1.5"
-            stroke={lineColor}
-            strokeWidth="0.2"
-            opacity="0.3"
-          />
-          {/* Маркеры на линии сканирования */}
-          {[20, 50, 100, 150, 180].map((x) => (
-            <circle
-              key={`scan-marker-${x}`}
-              cx={x}
-              cy="0"
-              r="1.5"
-              fill="none"
-              stroke={lineColor}
-              strokeWidth="0.3"
-              opacity="0.4"
-            />
-          ))}
+            );
+          })}
         </g>
 
-        {/* Измерительные маркеры - более детализированные */}
-        <g opacity={gridVisible}>
-          {/* Левая шкала */}
-          <line x1="8" y1="30" x2="8" y2="145" stroke={lineColor} strokeWidth="0.4" opacity="0.3" />
-          {[30, 50, 70, 90, 110, 130, 145].map((y) => (
-            <g key={`left-tick-${y}`}>
-              <line x1="6" y1={y} x2="10" y2={y} stroke={lineColor} strokeWidth="0.4" opacity="0.3" />
-              <line x1="10" y1={y} x2="13" y2={y} stroke={lineColor} strokeWidth="0.2" opacity="0.2" />
-            </g>
+        {/* Контактная тень + диск-земля */}
+        <ellipse cx="100" cy="139" rx={40 + rootBase * 18} ry="5" fill={SAGE_DARK} opacity="0.1" filter="url(#soft)" />
+        <g>
+          <ellipse cx="100" cy="135" rx="58" ry="11" fill="url(#soilGrad)" />
+          <ellipse cx="100" cy="132.5" rx="58" ry="11" fill="none" stroke={SAGE_LIGHT} strokeWidth="0.7" strokeOpacity="0.6" />
+          <ellipse cx="84" cy="134" rx="3.2" ry="1.5" fill={SAGE_DARK} opacity="0.28" />
+          <ellipse cx="96" cy="136.5" rx="2.4" ry="1.2" fill={SAGE_DARK} opacity="0.24" />
+          <ellipse cx="112" cy="134.5" rx="3" ry="1.4" fill={SAGE_DARK} opacity="0.26" />
+          <ellipse cx="124" cy="136" rx="2.2" ry="1.1" fill={SAGE_DARK} opacity="0.22" />
+        </g>
+
+        {/* Растение — качается у основания */}
+        <g className="sprout-sway">
+          {/* Стебель */}
+          {stemGrow > 0.001 && (
+            <>
+              <path d={STEM_D} fill="none" stroke={SAGE_DARK} strokeWidth="2.4" strokeOpacity="0.85" strokeLinecap="round" pathLength={1} strokeDasharray="1 1" strokeDashoffset={1 - stemGrow} />
+              <path d={STEM_D} fill="none" stroke="url(#stemGrad)" strokeWidth="1.1" strokeLinecap="round" pathLength={1} strokeDasharray="1 1" strokeDashoffset={1 - stemGrow} />
+            </>
+          )}
+
+          {/* Листья */}
+          {LEAVES.map((cfg) => (
+            <Leaf key={cfg.id} cfg={cfg} p={p} />
           ))}
 
-          {/* Правая шкала */}
-          <line x1="192" y1="30" x2="192" y2="145" stroke={lineColor} strokeWidth="0.4" opacity="0.3" />
-          {[30, 50, 70, 90, 110, 130, 145].map((y) => (
-            <g key={`right-tick-${y}`}>
-              <line x1="190" y1={y} x2="194" y2={y} stroke={lineColor} strokeWidth="0.4" opacity="0.3" />
-              <line x1="187" y1={y} x2="190" y2={y} stroke={lineColor} strokeWidth="0.2" opacity="0.2" />
-            </g>
+          {/* Бутоны */}
+          {BUDS.map((cfg) => (
+            <Bud key={cfg.id} cfg={cfg} p={p} />
           ))}
 
-          {/* Угловые маркеры */}
-          {[[8, 30], [8, 145], [192, 30], [192, 145]].map(([x, y], i) => (
-            <circle
-              key={`corner-${i}`}
-              cx={x}
-              cy={y}
-              r="2"
-              fill="none"
-              stroke={lineColor}
-              strokeWidth="0.3"
-              opacity="0.3"
-            />
-          ))}
+          {/* Лотос (распускается сверху) */}
+          {bloomT > 0.001 && (
+            <g transform={`translate(100 42) scale(${bloomT})`} style={{ opacity: Math.min(1, bloomT * 1.5) }}>
+              {PETAL_ROWS.map((row, ri) =>
+                row.angles.map((a, i) => {
+                  const ang = a * (0.16 + 0.84 * bloomT);
+                  return (
+                    <g key={`${ri}-${i}`} transform={`rotate(${ang}) scale(${row.scale})`}>
+                      <path d={PETAL} fill={row.fill} fillOpacity={row.opacity} stroke={SAGE_DARK} strokeWidth={0.3} strokeOpacity={0.35} />
+                      <path d="M0 -2 L 0 -22" stroke={SAGE_DARK} strokeWidth={0.25} strokeOpacity={0.3} />
+                    </g>
+                  );
+                })
+              )}
+              {/* Центр цветка */}
+              <circle cx="0" cy="0" r="3" fill={SAGE_LIGHT} opacity="0.8" />
+              <circle cx="0" cy="0" r="3" fill="none" stroke={SAGE_DARK} strokeWidth="0.4" strokeOpacity="0.4" />
+              {[0, 60, 120, 180, 240, 300].map((deg) => {
+                const rad = (deg * Math.PI) / 180;
+                return (
+                  <line key={deg} x1="0" y1="0" x2={Math.cos(rad) * 2.4} y2={Math.sin(rad) * 2.4} stroke={SAGE_DARK} strokeWidth="0.3" strokeOpacity="0.4" />
+                );
+              })}
+            </g>
+          )}
+        </g>
+
+        {/* Блики стекла поверх растения */}
+        <g>
+          <ellipse cx="68" cy="52" rx="16" ry="26" fill="#ffffff" opacity="0.4" filter="url(#soft)" transform="rotate(-24 68 52)" />
+          <ellipse cx="132" cy="150" rx="7" ry="16" fill="#ffffff" opacity="0.22" filter="url(#soft)" transform="rotate(20 132 150)" />
         </g>
       </svg>
+
+      {/* Частицы (капли/споры) — лёгкий дрейф */}
+      <div className="absolute inset-0 pointer-events-none" style={{ opacity: particlesOpacity }} aria-hidden>
+        {PARTICLES.map((pt, i) => (
+          <span
+            key={i}
+            className="sprout-particle absolute rounded-full"
+            style={{
+              left: pt.left,
+              top: pt.top,
+              width: pt.size,
+              height: pt.size,
+              backgroundColor: '#ffffff',
+              boxShadow: `0 0 5px ${SAGE_LIGHT}`,
+              animationDuration: pt.dur,
+              animationDelay: pt.delay,
+            }}
+          />
+        ))}
+      </div>
     </div>
   );
 }

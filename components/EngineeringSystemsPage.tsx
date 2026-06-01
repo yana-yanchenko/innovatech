@@ -554,7 +554,22 @@ export default function EngineeringSystemsPage({ dict }: { dict: EngineeringSyst
               className="text-muted-foreground leading-relaxed max-w-2xl"
               style={{ fontSize: 'clamp(1rem, 1.4vw, 1.2rem)' }}
             >
-              {dict.heroDescription}
+              {(() => {
+                // Вступление до первого двоеточия выводим отдельной строкой,
+                // остальное — с новой строки, чтобы фраза не разрывалась посередине.
+                const desc = dict.heroDescription;
+                const i = desc.indexOf(':');
+                if (i === -1) return desc;
+                return (
+                  <>
+                    <span className="md:whitespace-nowrap">
+                      {desc.slice(0, i + 1)}
+                    </span>
+                    <br />
+                    {desc.slice(i + 1).trimStart()}
+                  </>
+                );
+              })()}
             </p>
           </div>
 
