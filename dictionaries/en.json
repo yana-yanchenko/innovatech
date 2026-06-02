@@ -36,7 +36,7 @@
         "name": "Peat Filling Equipment",
         "description": "Automated systems for filling containers with quality substrate",
         "icon": "📦",
-        "href": "#solutions"
+        "href": "/en/peat-filling-equipment"
       },
       {
         "name": "Seeding Equipment",
@@ -1058,11 +1058,31 @@
           "Anti-wind insect screen"
         ],
         "nodes": [
-          { "id": "arch",       "label": "Roof Arch",          "description": "EVA film with 5+ year service life. Hot-dip galvanized arches. Double-layer covering with air inflation for superior thermal insulation." },
-          { "id": "sideVent",   "label": "Side Ventilation",   "description": "Adjustable side vents with anti-wind insect screen. Provides even airflow along the entire length of the greenhouse." },
-          { "id": "foundation", "label": "Foundation / Posts",  "description": "Embedded posts made of hot-dip galvanized steel. Structure designed for 8–18 m span width and up to 150 m length." },
-          { "id": "ridge",      "label": "Ridge Ventilation",  "description": "Top ridge vents for natural hot-air convection. Double-layer film with air inflation between layers for thermal efficiency." },
-          { "id": "door",       "label": "End Doors",          "description": "End doors for machinery access and personnel passage. Various opening mechanisms available." }
+          {
+            "id": "arch",
+            "label": "Roof Arch",
+            "description": "EVA film with 5+ year service life. Hot-dip galvanized arches. Double-layer covering with air inflation for superior thermal insulation."
+          },
+          {
+            "id": "sideVent",
+            "label": "Side Ventilation",
+            "description": "Adjustable side vents with anti-wind insect screen. Provides even airflow along the entire length of the greenhouse."
+          },
+          {
+            "id": "foundation",
+            "label": "Foundation / Posts",
+            "description": "Embedded posts made of hot-dip galvanized steel. Structure designed for 8–18 m span width and up to 150 m length."
+          },
+          {
+            "id": "ridge",
+            "label": "Ridge Ventilation",
+            "description": "Top ridge vents for natural hot-air convection. Double-layer film with air inflation between layers for thermal efficiency."
+          },
+          {
+            "id": "door",
+            "label": "End Doors",
+            "description": "End doors for machinery access and personnel passage. Various opening mechanisms available."
+          }
         ]
       },
       {
@@ -1079,11 +1099,31 @@
           "Bilateral side and ridge ventilation"
         ],
         "nodes": [
-          { "id": "gutter",    "label": "Block Connecting Gutter", "description": "Aluminum gutter connects adjacent blocks into a single complex. Efficiently drains precipitation." },
-          { "id": "ridgeVent", "label": "Ridge Ventilation",       "description": "Single or double-sided ridge ventilation. Ensures thermal convection and removal of humid air." },
-          { "id": "sideVent",  "label": "Side Ventilation",        "description": "Double-sided side ventilation with insect screen. Ensures even air exchange across the full complex width." },
-          { "id": "door",      "label": "Doors",                   "description": "Type 1: 3.2×2.2 m doors. Type 2: 3.2×3.4 m doors. Designed for small agricultural machinery access." },
-          { "id": "endwall",   "label": "Polycarbonate End Walls", "description": "8 mm cellular polycarbonate. High light transmittance, excellent thermal insulation, long service life." }
+          {
+            "id": "gutter",
+            "label": "Block Connecting Gutter",
+            "description": "Aluminum gutter connects adjacent blocks into a single complex. Efficiently drains precipitation."
+          },
+          {
+            "id": "ridgeVent",
+            "label": "Ridge Ventilation",
+            "description": "Single or double-sided ridge ventilation. Ensures thermal convection and removal of humid air."
+          },
+          {
+            "id": "sideVent",
+            "label": "Side Ventilation",
+            "description": "Double-sided side ventilation with insect screen. Ensures even air exchange across the full complex width."
+          },
+          {
+            "id": "door",
+            "label": "Doors",
+            "description": "Type 1: 3.2×2.2 m doors. Type 2: 3.2×3.4 m doors. Designed for small agricultural machinery access."
+          },
+          {
+            "id": "endwall",
+            "label": "Polycarbonate End Walls",
+            "description": "8 mm cellular polycarbonate. High light transmittance, excellent thermal insulation, long service life."
+          }
         ]
       },
       {
@@ -1100,11 +1140,31 @@
           "Polyester rope 6 mm film fastening"
         ],
         "nodes": [
-          { "id": "arch",   "label": "Arch Frame",         "description": "Galvanized flat-oval tube 80×40 mm. Provides high structural strength with minimal weight and shading." },
-          { "id": "column", "label": "Posts Ø51 mm",       "description": "Galvanized pipe posts Ø51 mm. Resistant to corrosion, mechanical loads and environmental exposure." },
-          { "id": "film",   "label": "Film Covering",      "description": "Single-layer film without anti-condensation coating. Optimal solution for growing berry crops." },
-          { "id": "rope",   "label": "Film Fastening",     "description": "6 mm polyester rope for film attachment. Ensures reliable film tension without damage." },
-          { "id": "ridge",  "label": "Ridge",              "description": "5 m ridge height. Optimal air volume for creating the right microclimate for berry crops." }
+          {
+            "id": "arch",
+            "label": "Arch Frame",
+            "description": "Galvanized flat-oval tube 80×40 mm. Provides high structural strength with minimal weight and shading."
+          },
+          {
+            "id": "column",
+            "label": "Posts Ø51 mm",
+            "description": "Galvanized pipe posts Ø51 mm. Resistant to corrosion, mechanical loads and environmental exposure."
+          },
+          {
+            "id": "film",
+            "label": "Film Covering",
+            "description": "Single-layer film without anti-condensation coating. Optimal solution for growing berry crops."
+          },
+          {
+            "id": "rope",
+            "label": "Film Fastening",
+            "description": "6 mm polyester rope for film attachment. Ensures reliable film tension without damage."
+          },
+          {
+            "id": "ridge",
+            "label": "Ridge",
+            "description": "5 m ridge height. Optimal air volume for creating the right microclimate for berry crops."
+          }
         ]
       },
       {
@@ -1121,10 +1181,26 @@
           "Arches: galvanized 80×40 mm tube"
         ],
         "nodes": [
-          { "id": "gate", "label": "Sliding Doors",   "description": "3.2×3.2 m (or 4.5×4.6 m) sliding doors. Provides convenient access for small machinery and loading operations." },
-          { "id": "wall", "label": "Wall Panels",     "description": "8 mm cellular polycarbonate around perimeter. Provides natural lighting and good thermal insulation." },
-          { "id": "roof", "label": "Dome Roof",       "description": "Polyethylene film in 2 layers with air inflation. High thermal insulation properties with low structural weight." },
-          { "id": "arch", "label": "Arch Frame",      "description": "Flat-oval galvanized steel tube 80×40 mm. High bending strength. Withstands significant snow and wind loads." }
+          {
+            "id": "gate",
+            "label": "Sliding Doors",
+            "description": "3.2×3.2 m (or 4.5×4.6 m) sliding doors. Provides convenient access for small machinery and loading operations."
+          },
+          {
+            "id": "wall",
+            "label": "Wall Panels",
+            "description": "8 mm cellular polycarbonate around perimeter. Provides natural lighting and good thermal insulation."
+          },
+          {
+            "id": "roof",
+            "label": "Dome Roof",
+            "description": "Polyethylene film in 2 layers with air inflation. High thermal insulation properties with low structural weight."
+          },
+          {
+            "id": "arch",
+            "label": "Arch Frame",
+            "description": "Flat-oval galvanized steel tube 80×40 mm. High bending strength. Withstands significant snow and wind loads."
+          }
         ]
       }
     ]
@@ -1137,12 +1213,30 @@
     "comingSoon": "Section Under Development",
     "comingSoonDescription": "Information on shading systems will be added soon. Contact us for current details.",
     "tabs": [
-      { "id": "ventilation", "label": "Ventilation" },
-      { "id": "shading", "label": "Shading" },
-      { "id": "curtain", "label": "Curtain Systems" },
-      { "id": "automation", "label": "Automation" },
-      { "id": "heating", "label": "Heating" },
-      { "id": "airing", "label": "Airing" }
+      {
+        "id": "ventilation",
+        "label": "Ventilation"
+      },
+      {
+        "id": "shading",
+        "label": "Shading"
+      },
+      {
+        "id": "curtain",
+        "label": "Curtain Systems"
+      },
+      {
+        "id": "automation",
+        "label": "Automation"
+      },
+      {
+        "id": "heating",
+        "label": "Heating"
+      },
+      {
+        "id": "airing",
+        "label": "Airing"
+      }
     ],
     "sections": [
       {
@@ -1153,7 +1247,10 @@
         "product": {
           "name": "Circulation Fans",
           "description": "Mix the air mass of the greenhouse in bi-directional mode, or ventilate the greenhouse space in single-direction mode.",
-          "images": ["/images/engineering/fan-photo.png", "/images/engineering/fan-drawing.png"],
+          "images": [
+            "/images/engineering/fan-photo.png",
+            "/images/engineering/fan-drawing.png"
+          ],
           "specs": [
             "Capacity: 8,200–12,000 m³/h",
             "Power supply: 380/400 V",
@@ -1272,7 +1369,10 @@
         "product": {
           "name": "Heat Generators",
           "description": "Heat energy source for industrial greenhouses, floor-standing or suspended, various capacities and fuels.",
-          "images": ["/images/engineering/heater-photo.png", "/images/engineering/heater-diagram.png"],
+          "images": [
+            "/images/engineering/heater-photo.png",
+            "/images/engineering/heater-diagram.png"
+          ],
           "specs": [
             "Capacity: 100–280 kW",
             "Air output: 7,000–16,200 m³/h",
@@ -1302,7 +1402,10 @@
           },
           {
             "name": "Side Ventilation System",
-            "images": ["/images/engineering/side-vent-panels.png", "/images/engineering/side-vent-automated.png"],
+            "images": [
+              "/images/engineering/side-vent-panels.png",
+              "/images/engineering/side-vent-automated.png"
+            ],
             "specs": [
               "Motorized or manual gear opening",
               "Multiple opening types: vertical, side-opening, roll-up",
@@ -1332,9 +1435,18 @@
       "/images/irrigation/control-panel/panel-v2-9.png"
     ],
     "tabs": [
-      { "id": "greenhouse-ramp", "label": "Greenhouse Boom" },
-      { "id": "field-ramp", "label": "Field Growing Boom" },
-      { "id": "control-panel", "label": "Control Panel" }
+      {
+        "id": "greenhouse-ramp",
+        "label": "Greenhouse Boom"
+      },
+      {
+        "id": "field-ramp",
+        "label": "Field Growing Boom"
+      },
+      {
+        "id": "control-panel",
+        "label": "Control Panel"
+      }
     ],
     "sections": [
       {
@@ -1406,12 +1518,30 @@
       "value": "Value"
     },
     "tabs": [
-      { "id": "bale-fluffer", "label": "Big Bale Fluffer" },
-      { "id": "briquette-fluffer", "label": "Briquette Fluffer" },
-      { "id": "mixer", "label": "Substrate Mixer" },
-      { "id": "blender", "label": "Substrate Blender" },
-      { "id": "loosener", "label": "Substrate Loosener" },
-      { "id": "lg2400", "label": "LG2400 Loosener" }
+      {
+        "id": "bale-fluffer",
+        "label": "Big Bale Fluffer"
+      },
+      {
+        "id": "briquette-fluffer",
+        "label": "Briquette Fluffer"
+      },
+      {
+        "id": "mixer",
+        "label": "Substrate Mixer"
+      },
+      {
+        "id": "blender",
+        "label": "Substrate Blender"
+      },
+      {
+        "id": "loosener",
+        "label": "Substrate Loosener"
+      },
+      {
+        "id": "lg2400",
+        "label": "LG2400 Loosener"
+      }
     ],
     "sections": [
       {
@@ -1422,7 +1552,9 @@
         "product": {
           "name": "Big Bale Substrate Fluffer",
           "description": "Specialized equipment for unpacking and fluffing substrate vacuum-pressed into large bales of 6 m³.",
-          "images": ["/images/substrat/__1.png.webp"],
+          "images": [
+            "/images/substrat/__1.png.webp"
+          ],
           "specs": [
             "Suitable for flower, vegetable and forest substrates",
             "Designed for unpacking vacuum-pressed substrate with volume of 6 m³",
@@ -1440,7 +1572,9 @@
         "product": {
           "name": "Briquette Substrate Fluffers",
           "description": "Equipment for unpacking and fluffing substrates vacuum-pressed with volume up to 300 L.",
-          "images": ["/images/substrat/_____2.png.webp"],
+          "images": [
+            "/images/substrat/_____2.png.webp"
+          ],
           "specs": [
             "Suitable for flower, vegetable and forest substrates",
             "Designed for unpacking vacuum-pressed substrates with volume up to 300 L",
@@ -1457,7 +1591,9 @@
         "product": {
           "name": "Substrate Mixer",
           "description": "Equipment for blending various substrate ingredients with automatic lifting and unloading.",
-          "images": ["/images/substrat/3_.png.webp"],
+          "images": [
+            "/images/substrat/3_.png.webp"
+          ],
           "specs": [
             "Designed for mixing various substrate ingredients",
             "Capacity up to 2,000 L per cycle",
@@ -1477,7 +1613,9 @@
         "product": {
           "name": "Substrate Blender",
           "description": "Professional blender for mixing peat, fertilizers, perlite, starch and other bulk components.",
-          "images": ["/images/substrat/4.webp"],
+          "images": [
+            "/images/substrat/4.webp"
+          ],
           "specs": [
             "Suitable for flower, vegetable and forest substrates",
             "Capacity up to 7 m³/hour",
@@ -1495,7 +1633,9 @@
         "product": {
           "name": "Substrate Loosener",
           "description": "Equipment for layer-by-layer loosening of peat substrate with automatic level control in the receiving hopper.",
-          "images": ["/images/substrat/5.webp"],
+          "images": [
+            "/images/substrat/5.webp"
+          ],
           "specs": [
             "Suitable for flower, vegetable and forest substrates",
             "Capacity up to 10 bales/hour",
@@ -1514,11 +1654,31 @@
           "purpose": "The Big Bale fluffer is specifically designed for automatic processing of large compressed bales. Peat is restored to its original structure and volume. Suitable for Big Bales up to 1200×1200×2400 mm. The fluffer has proven its versatility in practice and requires modest investment with rapid return.",
           "image": "/images/substrat/lg2400-lift-loosener.jpg",
           "techSpecs": [
-            { "param": "Maximum hourly output", "unit": "Bales/hour", "value": "5" },
-            { "param": "Maximum bale size", "unit": "mm", "value": "1200×1200" },
-            { "param": "Maximum bale height", "unit": "mm", "value": "2400" },
-            { "param": "Weight", "unit": "kg", "value": "1500" },
-            { "param": "Installed power", "unit": "kW", "value": "3" }
+            {
+              "param": "Maximum hourly output",
+              "unit": "Bales/hour",
+              "value": "5"
+            },
+            {
+              "param": "Maximum bale size",
+              "unit": "mm",
+              "value": "1200×1200"
+            },
+            {
+              "param": "Maximum bale height",
+              "unit": "mm",
+              "value": "2400"
+            },
+            {
+              "param": "Weight",
+              "unit": "kg",
+              "value": "1500"
+            },
+            {
+              "param": "Installed power",
+              "unit": "kW",
+              "value": "3"
+            }
           ],
           "features": [
             "All protruding or rotating machine parts are maximally safe for the operator",
@@ -1531,6 +1691,339 @@
             "Optical sensor for automatic load level monitoring"
           ]
         }
+      }
+    ]
+  },
+  "peatFilling": {
+    "heroTag": "Manufactured by Innovatech",
+    "heroTitle": "Peat Filling Equipment",
+    "heroDescription": "Automated machines and lines for filling seedling pots, trays and containers with peat substrate. Mosa Green and Sedlin equipment delivers even fill density and precise hole drilling for subsequent planting.",
+    "heroStats": [
+      {
+        "value": "5",
+        "label": "equipment models"
+      },
+      {
+        "value": "up to 3000",
+        "label": "pots per hour"
+      },
+      {
+        "value": "2",
+        "label": "leading brands"
+      }
+    ],
+    "getQuote": "Get a consultation",
+    "configurationLabel": "Configuration",
+    "specsLabel": "Technical specifications",
+    "techSpecHeaders": {
+      "param": "Parameter",
+      "value": "Value"
+    },
+    "tabs": [
+      {
+        "id": "mosa-pots",
+        "label": "Mosa Green — pots"
+      },
+      {
+        "id": "mosa-cassette",
+        "label": "Mosa Green — trays"
+      },
+      {
+        "id": "sedlin-large",
+        "label": "Sedlin — large pots"
+      },
+      {
+        "id": "sedlin-pots",
+        "label": "Sedlin — pots"
+      },
+      {
+        "id": "sedlin-p9",
+        "label": "P9 Sedlin"
+      }
+    ],
+    "sections": [
+      {
+        "id": "mosa-pots",
+        "sectionNumber": "01",
+        "title": "Mosa Green Pot Filling Machine",
+        "brand": "Mosa Green",
+        "image": "/images/pot-filling/mosa-green-pots.webp",
+        "description": "An electro-pneumatic machine for filling plastic pots, both round and square, complete with a single-column pot dispenser featuring a rotating head for 4 operations: auger (including a full set of 7 bits of different diameters), ejector arm and transfer conveyor. Machine speed and substrate loading can be adjusted to achieve the desired fill density. Quick and simple setup of the various devices allows fast pot-size changes and a wide range of diameters. Suitable for pots from 8 to 22 cm, with a 1-column pot dispenser, drilling station and a 3 m fixed-speed conveyor.",
+        "highlights": [
+          {
+            "value": "up to 2500",
+            "label": "pots per hour"
+          },
+          {
+            "value": "8–22 cm",
+            "label": "pot diameter"
+          },
+          {
+            "value": "4",
+            "label": "head work operations"
+          },
+          {
+            "value": "1000 l",
+            "label": "hopper capacity"
+          }
+        ],
+        "specs": [
+          {
+            "param": "Length / width / height",
+            "value": "3700 / 2500 / 2280 mm"
+          },
+          {
+            "param": "Weight",
+            "value": "510 kg"
+          },
+          {
+            "param": "Hopper capacity",
+            "value": "1000 litres"
+          },
+          {
+            "param": "Electrical supply",
+            "value": "3×400 V, 50 Hz"
+          },
+          {
+            "param": "Power consumption",
+            "value": "1.9 kW"
+          },
+          {
+            "param": "Air consumption",
+            "value": "150 l/min"
+          },
+          {
+            "param": "Conveyor",
+            "value": "3 m, fixed speed"
+          },
+          {
+            "param": "Conveyor speed",
+            "value": "7 m/min"
+          },
+          {
+            "param": "Output",
+            "value": "up to 2500 pots/hour"
+          },
+          {
+            "param": "Control",
+            "value": "Control panel"
+          }
+        ]
+      },
+      {
+        "id": "mosa-cassette",
+        "sectionNumber": "02",
+        "title": "Mosa Green Tray Filler",
+        "brand": "Mosa Green",
+        "image": "/images/pot-filling/mosa-green-cassette.webp",
+        "description": "A machine for evenly filling seedling trays with peat substrate, featuring a dual compaction system and control over substrate concentration in the trays.",
+        "highlights": [
+          {
+            "value": "up to 600",
+            "label": "trays per hour"
+          },
+          {
+            "value": "1000 l",
+            "label": "hopper capacity"
+          },
+          {
+            "value": "2.72 kW",
+            "label": "power consumption"
+          },
+          {
+            "value": "2-in-1",
+            "label": "dual compaction"
+          }
+        ],
+        "features": [
+          "High-grip conveyor",
+          "Special filler design with fully adjustable speed for controlling substrate concentration in the trays",
+          "Dual compaction system: vibrating table under the tray, compaction propeller above the tray",
+          "Excess substrate return system back to the hopper",
+          "Brush for cleaning the filled tray",
+          "Electric drive and control panel"
+        ],
+        "specs": [
+          {
+            "param": "Length / width / height",
+            "value": "2110 / 2480 / 1900 mm"
+          },
+          {
+            "param": "Power supply",
+            "value": "3×400 V, 50 Hz"
+          },
+          {
+            "param": "Power consumption",
+            "value": "2.72 kW"
+          },
+          {
+            "param": "Hopper capacity",
+            "value": "1000 l"
+          },
+          {
+            "param": "Output",
+            "value": "up to 600 trays/hour"
+          }
+        ]
+      },
+      {
+        "id": "sedlin-large",
+        "sectionNumber": "03",
+        "title": "Sedlin Large Pot Filling Machine",
+        "brand": "Sedlin",
+        "image": "/images/pot-filling/sedlin-large-pots.webp",
+        "description": "Designed for filling large-volume seedling pots with substrate (peat) and drilling holes for subsequent planting.",
+        "highlights": [
+          {
+            "value": "up to 3000",
+            "label": "pots per hour"
+          },
+          {
+            "value": "3–26 l",
+            "label": "pot volume"
+          },
+          {
+            "value": "4.5 kW",
+            "label": "power consumption"
+          },
+          {
+            "value": "950 kg",
+            "label": "weight"
+          }
+        ],
+        "highlightsLayout": "row",
+        "specs": [
+          {
+            "param": "Length / width / height",
+            "value": "3230 / 2215 / 2130 mm"
+          },
+          {
+            "param": "Weight",
+            "value": "950 kg"
+          },
+          {
+            "param": "Mains supply",
+            "value": "380 V, 3-phase, 50 Hz"
+          },
+          {
+            "param": "Power consumption",
+            "value": "4.5 kW"
+          },
+          {
+            "param": "Output",
+            "value": "up to 3000 pots/hour"
+          },
+          {
+            "param": "Pot capacity",
+            "value": "from 3 to 26 litres"
+          }
+        ]
+      },
+      {
+        "id": "sedlin-pots",
+        "sectionNumber": "04",
+        "title": "Sedlin Pot Filling Machine",
+        "brand": "Sedlin",
+        "image": "/images/pot-filling/sedlin-pots.webp",
+        "description": "Designed for filling seedling pots with substrate (peat) and drilling holes for subsequent planting.",
+        "highlights": [
+          {
+            "value": "up to 2500",
+            "label": "pots per hour"
+          },
+          {
+            "value": "80–210 mm",
+            "label": "pot diameter"
+          },
+          {
+            "value": "3.42 kW",
+            "label": "power consumption"
+          },
+          {
+            "value": "990 kg",
+            "label": "weight"
+          }
+        ],
+        "highlightsLayout": "row",
+        "specs": [
+          {
+            "param": "Length / width / height",
+            "value": "3720 / 3500 / 2200 mm"
+          },
+          {
+            "param": "Weight",
+            "value": "990 kg"
+          },
+          {
+            "param": "Mains supply",
+            "value": "380 V, 3-phase, 50 Hz"
+          },
+          {
+            "param": "Power consumption",
+            "value": "3.42 kW"
+          },
+          {
+            "param": "Output",
+            "value": "up to 2500 pots/hour"
+          },
+          {
+            "param": "Pot capacity",
+            "value": "from 80 to 210 mm diameter (round / square)"
+          }
+        ]
+      },
+      {
+        "id": "sedlin-p9",
+        "sectionNumber": "05",
+        "title": "P9 Sedlin Tray and Pot Filler",
+        "brand": "Sedlin",
+        "image": "/images/pot-filling/sedlin-p9.webp",
+        "description": "Designed for filling seedling trays and small seedling pots with substrate (peat). Can be used both as part of a line and as a stand-alone unit.",
+        "highlights": [
+          {
+            "value": "up to 1000",
+            "label": "trays per hour"
+          },
+          {
+            "value": "630 kg",
+            "label": "weight"
+          },
+          {
+            "value": "up to 3 kW",
+            "label": "power consumption"
+          },
+          {
+            "value": "2-in-1",
+            "label": "propeller + vibrating table"
+          }
+        ],
+        "highlightsLayout": "row",
+        "specs": [
+          {
+            "param": "Length / width / height",
+            "value": "2000 / 2500 / 1800 mm"
+          },
+          {
+            "param": "Weight",
+            "value": "630 kg"
+          },
+          {
+            "param": "Mains supply",
+            "value": "380 V, 3-phase, 50 Hz"
+          },
+          {
+            "param": "Power consumption",
+            "value": "up to 3 kW"
+          },
+          {
+            "param": "Output",
+            "value": "up to 1000 trays/hour"
+          },
+          {
+            "param": "Filling type",
+            "value": "propeller + vibrating table"
+          }
+        ]
       }
     ]
   }
