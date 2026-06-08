@@ -48,7 +48,7 @@
         "name": "Cultivation Equipment",
         "description": "Soil processing equipment for quality ground preparation",
         "icon": "🚜",
-        "href": "#solutions"
+        "href": "/en/cultivation-equipment"
       },
       {
         "name": "Forest Restoration Equipment",
@@ -2022,6 +2022,180 @@
           {
             "param": "Filling type",
             "value": "propeller + vibrating table"
+          }
+        ]
+      }
+    ]
+  },
+  "cultivationEquipment": {
+    "heroTag": "Manufactured by Innovatech",
+    "heroTitle": "Cultivation Equipment",
+    "heroDescription": "Cultivation benches and hydroponic insert trays with an ebb-and-flow (flood-and-drain) system for growing flowers, ornamental plants and seedlings in nurseries, garden centres and greenhouses.",
+    "heroStats": [
+      {
+        "value": "4",
+        "label": "bench configurations"
+      },
+      {
+        "value": "4200×1800 mm",
+        "label": "tabletop size"
+      },
+      {
+        "value": "up to 10 years",
+        "label": "tray service life"
+      }
+    ],
+    "getQuote": "Get a consultation",
+    "variantsLabel": "Configuration options",
+    "featuresLabel": "Design features",
+    "specsLabel": "Technical specifications",
+    "techSpecHeaders": {
+      "param": "Parameter",
+      "value": "Value"
+    },
+    "tabs": [
+      {
+        "id": "tables",
+        "label": "Cultivation benches"
+      },
+      {
+        "id": "trays",
+        "label": "Insert trays"
+      }
+    ],
+    "sections": [
+      {
+        "id": "tables",
+        "sectionNumber": "01",
+        "title": "Cultivation units (benches)",
+        "images": [
+          "/images/cultivation/table-1.jpg",
+          "/images/cultivation/table-2.jpg",
+          "/images/cultivation/table-3.jpg"
+        ],
+        "description": "Cultivation units (benches) are designed for placing and tending plants: growing flowers and ornamental plants in nurseries, holding pots with seedlings in garden centres, and organising seedling and lettuce sections in greenhouses.",
+        "principle": {
+          "label": "How it works",
+          "intro": "Plants in pots or trays are placed on the tabletop. Watering is carried out through an ebb-and-flow (flood-and-drain) system.",
+          "steps": [
+            {
+              "title": "Flood",
+              "text": "Water is supplied into the tray through valves, filling it to a set level with a pump."
+            },
+            {
+              "title": "Drain",
+              "text": "Water drains away through a valve and hose into the drainage system."
+            }
+          ]
+        },
+        "variants": [
+          "Rolling bench with a plastic hydroponic tray and ebb-and-flow system",
+          "Stationary bench with a plastic hydroponic tray and ebb-and-flow system",
+          "Rolling bench with a galvanised grid (mesh)",
+          "Stationary bench with a galvanised grid (mesh)"
+        ],
+        "highlights": [
+          {
+            "value": "4200×1800 mm",
+            "label": "tabletop size"
+          },
+          {
+            "value": "700–800 mm",
+            "label": "bench height"
+          },
+          {
+            "value": "150 kg/m³",
+            "label": "permissible load"
+          },
+          {
+            "value": "3 mm",
+            "label": "UV-protected ABS liner"
+          }
+        ],
+        "specs": [
+          {
+            "param": "Dimensions (L×W×H)",
+            "value": "4200×1800×(700–800) mm"
+          },
+          {
+            "param": "Base",
+            "value": "galvanised steel"
+          },
+          {
+            "param": "Tabletop",
+            "value": "aluminium"
+          },
+          {
+            "param": "Permissible load",
+            "value": "150 kg/m³"
+          },
+          {
+            "param": "Liner",
+            "value": "3 mm ABS plastic with UV protection"
+          }
+        ]
+      },
+      {
+        "id": "trays",
+        "sectionNumber": "02",
+        "title": "Insert trays for cultivation units",
+        "images": [
+          "/images/cultivation/tray-1.jpg",
+          "/images/cultivation/tray-2.jpg",
+          "/images/cultivation/tray-3.jpg",
+          "/images/cultivation/tray-4.jpg"
+        ],
+        "description": "Insert trays are designed to be placed on top of cultivation benches as a hydroponic tray with an ebb-and-flow system. They hold pots and trays, supply and drain water, protect the bench from moisture, and distribute moisture evenly to the roots.",
+        "features": [
+          "Longitudinal and transverse channels for even water distribution",
+          "Drain channels for complete water removal",
+          "Protection against ultraviolet radiation",
+          "Standard 3 mm thickness — service life of at least 5 years",
+          "Reinforced 4 mm version — service life of up to 10 years",
+          "Transported disassembled"
+        ],
+        "highlights": [
+          {
+            "value": "3 / 4 mm",
+            "label": "standard / reinforced"
+          },
+          {
+            "value": "up to 10 years",
+            "label": "service life"
+          },
+          {
+            "value": "ABS",
+            "label": "UV-protected plastic"
+          },
+          {
+            "value": "knock-down",
+            "label": "easy transport"
+          }
+        ],
+        "specs": [
+          {
+            "param": "Material",
+            "value": "ABS plastic"
+          },
+          {
+            "param": "Thickness (standard version)",
+            "value": "3 mm"
+          },
+          {
+            "param": "Thickness (reinforced version)",
+            "value": "4 mm"
+          },
+          {
+            "param": "UV protection",
+            "value": "yes"
+          },
+          {
+            "param": "Service life",
+            "value": "up to 10 years"
+          },
+          {
+            "param": "Transport",
+            "value": "disassembled"
           }
         ]
       }

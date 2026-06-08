@@ -1,5 +1,5 @@
 import React from 'react';
-import { LayoutGrid, Factory, Home, Wind, Droplets, Cpu, Sprout, Package, ArrowUpRight } from 'lucide-react';
+import { LayoutGrid, Factory, Wind, Droplets, Cpu, Sprout, Package, ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 
@@ -30,7 +30,7 @@ const Solutions = ({ dict, lang }: { dict: SolutionDict; lang: string }) => {
     { icon: <Cpu className="w-8 h-8" />, link: `/${lang}/substrate-equipment`, color: 'bg-purple-500/10 text-purple-500' },
     { icon: <Package className="w-8 h-8" />, link: `/${lang}/peat-filling-equipment`, color: 'bg-green-500/10 text-green-500' },
     { icon: <LayoutGrid className="w-8 h-8" />, link: '/solutions/materials', color: 'bg-orange-500/10 text-orange-500' },
-    { icon: <Home className="w-8 h-8" />, link: '/solutions/specialized', color: 'bg-amber-500/10 text-amber-500' },
+    { icon: <Sprout className="w-8 h-8" />, link: `/${lang}/cultivation-equipment`, color: 'bg-emerald-500/10 text-emerald-500' },
   ];
 
   const solutions: SolutionWithMeta[] = dict.items.map((item, i) => ({
