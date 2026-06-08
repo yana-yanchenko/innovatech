@@ -147,12 +147,15 @@ function SectionHeader({
 
 function Gallery({ images, alt }: { images: string[]; alt: string }) {
   const [active, setActive] = useState(0);
+  const [prevImages, setPrevImages] = useState(images);
   const safeImages = images.length > 0 ? images : [];
 
-  // Keep selection valid if the image set ever changes
-  useEffect(() => {
+  // Keep selection valid if the image set ever changes — reset during render
+  // instead of in an effect to avoid a cascading re-render.
+  if (images !== prevImages) {
+    setPrevImages(images);
     setActive(0);
-  }, [images]);
+  }
 
   if (safeImages.length === 0) return null;
 
