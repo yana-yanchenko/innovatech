@@ -1,11 +1,13 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { useContactDialog } from './ContactDialogProvider';
+import ProductHero from './ProductHero';
+import StickyCategoryTabs from './StickyCategoryTabs';
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -59,50 +61,6 @@ interface SubstratEquipmentDict {
   techSpecHeaders: TechSpecHeaders;
   tabs: TabItem[];
   sections: Section[];
-}
-
-// ── Sticky Tab Navigation ────────────────────────────────────────────────────
-
-function StickyTabNav({
-  tabs,
-  activeId,
-}: {
-  tabs: TabItem[];
-  activeId: string;
-}) {
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      const offset = 84 + 56;
-      const top = el.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
-  };
-
-  return (
-    <div
-      className="sticky z-40 bg-background/95 backdrop-blur-md border-b border-border"
-      style={{ top: '84px' }}
-    >
-      <div className="container mx-auto px-3 md:px-4 lg:px-6">
-        <div className="flex overflow-x-auto scrollbar-hide gap-1 py-2">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => scrollToSection(tab.id)}
-              className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 whitespace-nowrap ${
-                activeId === tab.id
-                  ? 'bg-primary text-primary-foreground'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
 }
 
 // ── Spec List ────────────────────────────────────────────────────────────────
@@ -337,8 +295,6 @@ export default function SubstrateEquipmentPage({
 }: {
   dict: SubstratEquipmentDict;
 }) {
-  const [activeId, setActiveId] = useState(dict.tabs[0]?.id ?? '');
-
   useEffect(() => {
     window.scrollTo(0, 0);
     const timer1 = requestAnimationFrame(() => {
@@ -353,67 +309,17 @@ export default function SubstrateEquipmentPage({
     };
   }, []);
 
-  useEffect(() => {
-    const sectionIds = dict.sections.map((s) => s.id);
-    const observers: IntersectionObserver[] = [];
-
-    const timer = setTimeout(() => {
-      sectionIds.forEach((id) => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        const obs = new IntersectionObserver(
-          ([entry]) => {
-            if (entry.isIntersecting) setActiveId(id);
-          },
-          { rootMargin: '-30% 0px -60% 0px', threshold: 0 }
-        );
-        obs.observe(el);
-        observers.push(obs);
-      });
-    }, 0);
-
-    return () => {
-      clearTimeout(timer);
-      observers.forEach((obs) => obs.disconnect());
-    };
-  }, [dict.sections]);
-
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-gradient-to-b from-primary/5 via-background to-background">
-        <div className="container mx-auto px-3 md:px-4 lg:px-6">
-          <div className="max-w-3xl space-y-6">
-            <Badge
-              variant="outline"
-              className="text-primary border-primary/30 bg-primary/5 rounded-full px-4 py-1.5 text-xs font-semibold tracking-widest uppercase"
-            >
-              {dict.heroTag}
-            </Badge>
-            <h1
-              className="font-bold tracking-tight text-foreground leading-tight"
-              style={{
-                fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
-                overflowWrap: 'break-word',
-              }}
-            >
-              {dict.heroTitle}
-            </h1>
-            <p
-              className="text-muted-foreground leading-relaxed"
-              style={{
-                fontSize: 'clamp(1rem, 1.4vw, 1.2rem)',
-                overflowWrap: 'break-word',
-              }}
-            >
-              {dict.heroDescription}
-            </p>
-          </div>
-        </div>
-      </section>
+      <ProductHero
+        tag={dict.heroTag}
+        title={dict.heroTitle}
+        description={dict.heroDescription}
+      />
 
       {/* Sticky tabs */}
-      <StickyTabNav tabs={dict.tabs} activeId={activeId} />
+      <StickyCategoryTabs tabs={dict.tabs} sectionIds={dict.sections.map((s) => s.id)} />
 
       {/* Sections */}
       <div className="container mx-auto px-3 md:px-4 lg:px-6">

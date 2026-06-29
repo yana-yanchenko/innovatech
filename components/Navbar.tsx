@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, Building2, Droplets, Sun, Bot, Sprout, Package, Salad, Wrench, MessageCircle, Settings2 } from 'lucide-react';
+import { Menu, Factory, Wind, Droplets, Cpu, Sprout, Package, Layers, TreePine, Wrench, Leaf, MessageCircle } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 import Logo from './Logo';
 import { Button } from '@/components/ui/button';
@@ -42,7 +42,11 @@ interface NavbarDict {
   solutions: string;
   solutionsList: NavbarSolutionItem[];
   getQuote: string;
+  comingSoon?: string;
 }
+
+// Раздел без реализованной страницы (href-заглушка)
+const isSolutionDisabled = (href: string) => !href || href.startsWith('#');
 
 const Navbar = ({ lang, dict }: { lang: string, dict: NavbarDict }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -77,17 +81,18 @@ const Navbar = ({ lang, dict }: { lang: string, dict: NavbarDict }) => {
     { code: 'kk', label: 'KK' },
   ];
 
-  // Icons mapping for solutions
+  // Иконки разделов — те же, что в блоке «Комплексные решения для выращивания» (Solutions.tsx)
   const solutionIcons: Record<number, React.ReactNode> = {
-    0: <Building2 className="w-5 h-5" />,      // Greenhouse Structures
-    1: <Sun className="w-5 h-5" />,            // Climate Systems
-    2: <Droplets className="w-5 h-5" />,       // Irrigation
-    3: <Bot className="w-5 h-5" />,            // Automation
-    4: <Sprout className="w-5 h-5" />,         // Seedling Equipment
-    5: <Package className="w-5 h-5" />,        // Materials
-    6: <Salad className="w-5 h-5" />,          // Specialized Equipment
-    7: <Wrench className="w-5 h-5" />,         // Service & Installation
-    8: <Settings2 className="w-5 h-5" />,      // Engineering Greenhouse Systems
+    0: <Factory className="w-5 h-5" />,        // Тепличные конструкции
+    1: <Wind className="w-5 h-5" />,           // Инженерные решения для теплиц
+    2: <Droplets className="w-5 h-5" />,       // Системы полива и фертигации
+    3: <Cpu className="w-5 h-5" />,            // Подготовка торфяного субстрата
+    4: <Package className="w-5 h-5" />,        // Наполнение торфом
+    5: <Layers className="w-5 h-5" />,         // PaperPot
+    6: <Sprout className="w-5 h-5" />,         // Культивационное оборудование
+    7: <TreePine className="w-5 h-5" />,       // Лесовосстановление
+    8: <Wrench className="w-5 h-5" />,         // Комплектующие для теплиц
+    9: <Leaf className="w-5 h-5" />,           // Оборудование для овощных культур
   };
 
   return (
@@ -120,13 +125,15 @@ const Navbar = ({ lang, dict }: { lang: string, dict: NavbarDict }) => {
                     {dict.solutions}
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[500px] gap-2 p-4 md:grid-cols-2">
+                    <ul className="grid w-[520px] auto-rows-fr gap-2 p-4 md:grid-cols-2">
                       {dict.solutionsList.map((solution, index) => (
                         <ListItem
                           key={index}
                           title={solution.name}
                           href={resolveHref(solution.href)}
                           icon={solutionIcons[index]}
+                          disabled={isSolutionDisabled(solution.href)}
+                          comingSoonLabel={dict.comingSoon}
                         >
                           {solution.description}
                         </ListItem>
@@ -236,26 +243,54 @@ const Navbar = ({ lang, dict }: { lang: string, dict: NavbarDict }) => {
                         {dict.solutions}
                       </h3>
                       <div className="space-y-1">
-                        {dict.solutionsList.map((solution, index) => (
-                          <DrawerClose key={index} asChild>
-                            <Link
-                              href={resolveHref(solution.href)}
-                              className="flex items-start gap-3 py-2.5 px-3 rounded-lg hover:bg-muted/50 transition-colors group"
-                            >
-                              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 group-hover:bg-primary/20 transition-colors">
+                        {dict.solutionsList.map((solution, index) => {
+                          const disabled = isSolutionDisabled(solution.href);
+                          const content = (
+                            <>
+                              <div className={`w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 transition-colors ${disabled ? 'grayscale' : 'group-hover:bg-primary/20'}`}>
                                 {solutionIcons[index]}
                               </div>
                               <div className="text-sm flex-1 min-w-0">
-                                <div className="font-medium text-foreground group-hover:text-primary transition-colors">
-                                  {solution.name}
+                                <div className="flex items-start gap-1.5">
+                                  <div className={`font-medium transition-colors min-w-0 ${disabled ? 'text-muted-foreground' : 'text-foreground group-hover:text-primary'}`}>
+                                    {solution.name}
+                                  </div>
+                                  {disabled && dict.comingSoon && (
+                                    <span className="flex-shrink-0 whitespace-nowrap rounded-full bg-muted px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-muted-foreground leading-none mt-0.5">
+                                      {dict.comingSoon}
+                                    </span>
+                                  )}
                                 </div>
                                 <div className="text-xs text-muted-foreground line-clamp-2 mt-0.5">
                                   {solution.description}
                                 </div>
                               </div>
-                            </Link>
-                          </DrawerClose>
-                        ))}
+                            </>
+                          );
+
+                          if (disabled) {
+                            return (
+                              <div
+                                key={index}
+                                aria-disabled="true"
+                                className="flex items-start gap-3 py-2.5 px-3 rounded-lg opacity-50 cursor-not-allowed"
+                              >
+                                {content}
+                              </div>
+                            );
+                          }
+
+                          return (
+                            <DrawerClose key={index} asChild>
+                              <Link
+                                href={resolveHref(solution.href)}
+                                className="flex items-start gap-3 py-2.5 px-3 rounded-lg hover:bg-muted/50 transition-colors group"
+                              >
+                                {content}
+                              </Link>
+                            </DrawerClose>
+                          );
+                        })}
                       </div>
                     </div>
 
@@ -332,31 +367,59 @@ function ListItem({
   children,
   href,
   icon,
+  disabled,
+  comingSoonLabel,
   ...props
 }: React.ComponentPropsWithoutRef<"li"> & {
   href: string;
   icon?: React.ReactNode;
+  disabled?: boolean;
+  comingSoonLabel?: string;
 }) {
+  const inner = (
+    <div className="flex h-full items-start gap-2.5">
+      {icon && (
+        <div className={`w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 transition-colors ${disabled ? 'grayscale' : 'group-hover:bg-primary/20'}`}>
+          {icon}
+        </div>
+      )}
+      <div className="flex-1 space-y-0.5 min-w-0">
+        <div className="flex items-start gap-1.5">
+          <div className="text-[13px] font-medium leading-snug min-w-0">{title}</div>
+          {disabled && comingSoonLabel && (
+            <span className="flex-shrink-0 whitespace-nowrap rounded-full bg-muted px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-muted-foreground leading-none mt-px">
+              {comingSoonLabel}
+            </span>
+          )}
+        </div>
+        <p className="text-[11px] leading-snug text-muted-foreground line-clamp-2">
+          {children}
+        </p>
+      </div>
+    </div>
+  );
+
+  if (disabled) {
+    return (
+      <li className="h-full" {...props}>
+        <div
+          aria-disabled="true"
+          className="flex h-full select-none rounded-lg p-2 no-underline opacity-50 cursor-not-allowed"
+        >
+          {inner}
+        </div>
+      </li>
+    );
+  }
+
   return (
-    <li {...props}>
+    <li className="h-full" {...props}>
       <NavigationMenuLink asChild>
         <Link
           href={href}
-          className="block select-none rounded-lg p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground group"
+          className="flex h-full select-none rounded-lg p-2 no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground group"
         >
-          <div className="flex items-start gap-3">
-            {icon && (
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 group-hover:bg-primary/20 transition-colors">
-                {icon}
-              </div>
-            )}
-            <div className="flex-1 space-y-1 min-w-0">
-              <div className="text-sm font-medium leading-none">{title}</div>
-              <p className="text-xs leading-snug text-muted-foreground line-clamp-2">
-                {children}
-              </p>
-            </div>
-          </div>
+          {inner}
         </Link>
       </NavigationMenuLink>
     </li>

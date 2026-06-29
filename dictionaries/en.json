@@ -39,10 +39,10 @@
         "href": "/en/peat-filling-equipment"
       },
       {
-        "name": "Seeding Equipment",
-        "description": "Automatic seeding systems for uniform seed distribution",
+        "name": "Paper Pot Production Machines (PaperPot)",
+        "description": "Production, filling and seeding of biodegradable paper pots",
         "icon": "🌾",
-        "href": "#solutions"
+        "href": "/en/paperpot-equipment"
       },
       {
         "name": "Cultivation Equipment",
@@ -68,7 +68,8 @@
         "icon": "🥬",
         "href": "#solutions"
       }
-    ]
+    ],
+    "comingSoon": "Coming soon"
   },
   "hero": {
     "title": "The Future of Agrotechnology. Today.",
@@ -169,8 +170,8 @@
         "description": "Automated systems for filling containers and pots with quality substrate"
       },
       {
-        "title": "Seeding Equipment",
-        "description": "Automatic seeding systems for uniform seed distribution and resource saving"
+        "title": "Paper Pot Production Machines (PaperPot)",
+        "description": "Full cycle: forming paper pots, filling with substrate, seeding and placing into trays."
       },
       {
         "title": "Cultivation Equipment",
@@ -188,7 +189,8 @@
         "title": "Vegetable Crop Equipment",
         "description": "Specialized equipment for growing vegetables and other crops in controlled environments"
       }
-    ]
+    ],
+    "comingSoon": "Coming soon"
   },
   "innovation": {
     "tag": "Innovation & R&D",
@@ -2197,6 +2199,1038 @@
             "param": "Transport",
             "value": "disassembled"
           }
+        ]
+      }
+    ]
+  },
+  "paperPot": {
+    "heroTag": "PaperPot — paper seedling pots",
+    "heroTitle": "Machines for producing paper pots (PaperPot)",
+    "heroDescription": "The complete INNOVATECH equipment range for making biodegradable paper pots (plugs), filling them with substrate, sowing seeds and arranging them into trays — from compact machines to fully automated lines.",
+    "heroStats": [
+      {
+        "value": "12",
+        "label": "machine and line models"
+      },
+      {
+        "value": "54,000",
+        "label": "pcs/h max. capacity"
+      },
+      {
+        "value": "15–60 mm",
+        "label": "pot diameter"
+      },
+      {
+        "value": "3–6 mo",
+        "label": "full paper decomposition"
+      }
+    ],
+    "benefits": {
+      "tag": "Why PaperPot",
+      "title": "Advantages of paper pots",
+      "subtitle": "PaperPot technology means healthy seedlings, even emergence and transplanting without stress. The paper pot goes into the ground together with the plant and fully decomposes, leaving no plastic behind.",
+      "items": [
+        {
+          "icon": "leaf",
+          "title": "100% biodegradable",
+          "text": "The pot fully decomposes in the soil within 3–6 months. Plant straight into the ground — no plastic trays, disposal or waste."
+        },
+        {
+          "icon": "sprout",
+          "title": "Transplanting without stress",
+          "text": "The plant is set out together with its pot, so the root system stays intact. Survival rate is close to 100%, with no seedling losses."
+        },
+        {
+          "icon": "roots",
+          "title": "Healthy root system",
+          "text": "Air root pruning prevents roots from spiralling and builds a strong, fibrous root system before the plant is ever transplanted."
+        },
+        {
+          "icon": "yield",
+          "title": "Earlier, even harvest",
+          "text": "Seedlings start growing right after planting and develop uniformly — reaching marketable produce sooner."
+        },
+        {
+          "icon": "labor",
+          "title": "Labour savings",
+          "text": "Automatic forming, substrate filling and planting together with the pot speed up planting work several times over."
+        },
+        {
+          "icon": "eco",
+          "title": "Eco-friendly image",
+          "text": "Eliminating plastic cuts logistics and disposal costs and underlines the sustainability of your production."
+        }
+      ],
+      "applicationsLabel": "Where it's used:",
+      "applications": [
+        "Flower seedlings",
+        "Berries & strawberries",
+        "Vegetable crops",
+        "Forest seedlings",
+        "Fruit trees",
+        "Ornamental plants"
+      ]
+    },
+    "getQuote": "Get a consultation",
+    "nodesLabel": "Main line components",
+    "configsLabel": "Configuration options",
+    "featuresLabel": "Technical advantages",
+    "specsLabel": "Technical specifications",
+    "techSpecHeaders": {
+      "param": "Parameter",
+      "value": "Value"
+    },
+    "detailsLabel": "View details",
+    "breadcrumbParent": "Solutions",
+    "filters": {
+      "title": "Filter",
+      "all": "All",
+      "single": "Single-channel",
+      "dual": "Dual-channel",
+      "multi": "Multi-channel",
+      "sortLabel": "Sort",
+      "sortDefault": "By category",
+      "sortThroughput": "By throughput",
+      "results": "Found",
+      "empty": "Nothing found",
+      "reset": "Reset"
+    },
+    "categories": [
+      {
+        "id": "production",
+        "title": "Pot-making machines",
+        "sectionIds": [
+          "agib",
+          "agib202"
+        ]
+      },
+      {
+        "id": "layers",
+        "title": "Cassette tray loaders",
+        "sectionIds": [
+          "ati",
+          "atib",
+          "atib-turbo"
+        ]
+      },
+      {
+        "id": "lines",
+        "title": "Production & seeding lines",
+        "sectionIds": [
+          "pal",
+          "palb",
+          "palb-turbo",
+          "mae"
+        ]
+      },
+      {
+        "id": "minilines",
+        "title": "Turnkey mini-lines",
+        "sectionIds": [
+          "miniline-1",
+          "miniline-2"
+        ]
+      },
+      {
+        "id": "materials",
+        "title": "Consumables",
+        "sectionIds": [
+          "paper"
+        ]
+      }
+    ],
+    "tabs": [
+      {
+        "id": "agib",
+        "label": "AGIB"
+      },
+      {
+        "id": "agib202",
+        "label": "AGIB202"
+      },
+      {
+        "id": "ati",
+        "label": "ATI"
+      },
+      {
+        "id": "atib",
+        "label": "ATIB"
+      },
+      {
+        "id": "atib-turbo",
+        "label": "ATIB TURBO"
+      },
+      {
+        "id": "pal",
+        "label": "PAL"
+      },
+      {
+        "id": "palb",
+        "label": "PALB"
+      },
+      {
+        "id": "palb-turbo",
+        "label": "PALB TURBO"
+      },
+      {
+        "id": "mae",
+        "label": "MAE"
+      },
+      {
+        "id": "paper",
+        "label": "Paper"
+      },
+      {
+        "id": "miniline-1",
+        "label": "Mini-line 1"
+      },
+      {
+        "id": "miniline-2",
+        "label": "Mini-line 2"
+      }
+    ],
+    "sections": [
+      {
+        "id": "agib",
+        "sectionNumber": "01",
+        "title": "Single-channel paper pot making machine (AGIB)",
+        "images": [
+          "/images/paperpot/agib/img-1.jpg",
+          "/images/paperpot/agib/img-2.jpg",
+          "/images/paperpot/agib/img-3.jpg"
+        ],
+        "description": "The INNOVATECH single-channel machine is designed to make paper pots (plugs) for seedlings of flowers, berries, fruit trees and forest seedlings, filling them with soil or substrate at the same time. It automatically forms a pot of the required size and fills it immediately. Suitable for use with both special paper (85% cotton, 15% polyester) and nonwoven material.",
+        "principle": {
+          "label": "Operating principle",
+          "text": "The machine automatically makes paper seedling pots from roll material while filling them with substrate at the same time. It forms pots of the set diameter and length, fills them evenly with substrate and feeds the finished products onto a conveyor or into a pot tray loader (optional)."
+        },
+        "features": [
+          "remote monitoring and control",
+          "can be used with a pot arranging unit",
+          "automatic fault self-diagnostics",
+          "hopper clogging prevention",
+          "convenient operation",
+          "large storage capacity",
+          "easy monitoring of remaining material",
+          "low maintenance cost"
+        ],
+        "highlights": [
+          {
+            "value": "9,000 pcs/h",
+            "label": "maximum capacity"
+          },
+          {
+            "value": "15–60 mm",
+            "label": "pot diameter"
+          },
+          {
+            "value": "20–300 mm",
+            "label": "pot length"
+          },
+          {
+            "value": "527 kg",
+            "label": "equipment weight"
+          }
+        ],
+        "specs": [
+          {
+            "param": "Dimensions (L×W×H)",
+            "value": "2481×1089×2164 mm"
+          },
+          {
+            "param": "Weight",
+            "value": "527 kg"
+          },
+          {
+            "param": "Working pressure",
+            "value": "6 bar"
+          },
+          {
+            "param": "Air consumption",
+            "value": "287 l/min"
+          },
+          {
+            "param": "Maximum power",
+            "value": "4.8 kW / 3×400 V AC + N + PE, 50 Hz"
+          },
+          {
+            "param": "Paper pot diameter",
+            "value": "15–60 mm"
+          },
+          {
+            "param": "Pot length",
+            "value": "20–300 mm"
+          },
+          {
+            "param": "Maximum capacity",
+            "value": "9,000 pcs/h"
+          },
+          {
+            "param": "Biodegradable paper",
+            "value": "85% cotton, 15% polyester"
+          }
+        ]
+      },
+      {
+        "id": "agib202",
+        "sectionNumber": "02",
+        "title": "Dual-channel paper pot making machine (AGIB202)",
+        "images": [
+          "/images/paperpot/agib202/img-1.jpg",
+          "/images/paperpot/agib202/img-2.jpg",
+          "/images/paperpot/agib202/img-3.jpg"
+        ],
+        "description": "The INNOVATECH dual-channel machine is designed for automatic making and filling of paper pots from biodegradable paper (85% cotton, 15% polyester) for growing seedlings of flowers, berries, fruit trees and forest seedlings. The equipment delivers high capacity and uniform pot formation, and works with both paper and nonwoven material. The package includes a sorting conveyor that allows paper pots to be packed into trays by hand.",
+        "principle": {
+          "label": "Operating principle",
+          "text": "The machine automatically makes paper seedling pots from roll material and then fills them with substrate. It forms pots of the set diameter and length, fills them evenly with peat and feeds the finished products to the arranging or sowing line. The dual-channel system delivers high capacity and the ability to work with different pot diameters at the same time."
+        },
+        "features": [
+          "remote monitoring and control",
+          "can be used with a pot arranging unit",
+          "supports two tube diameters",
+          "hopper clogging prevention",
+          "easy monitoring of remaining material",
+          "sorting conveyor at the outfeed"
+        ],
+        "highlights": [
+          {
+            "value": "18,000 pcs/h",
+            "label": "maximum capacity"
+          },
+          {
+            "value": "15–60 mm",
+            "label": "pot diameter"
+          },
+          {
+            "value": "20–300 mm",
+            "label": "pot length"
+          },
+          {
+            "value": "600 kg",
+            "label": "equipment weight"
+          }
+        ],
+        "specs": [
+          {
+            "param": "Dimensions (L×W×H)",
+            "value": "2850×1190×2170 mm"
+          },
+          {
+            "param": "Weight",
+            "value": "600 kg"
+          },
+          {
+            "param": "Working pressure",
+            "value": "6 bar"
+          },
+          {
+            "param": "Air consumption",
+            "value": "300 l/min"
+          },
+          {
+            "param": "Maximum power",
+            "value": "4.55 kW / 3×400 V AC + N + PE, 50 Hz"
+          },
+          {
+            "param": "Paper pot diameter",
+            "value": "15–60 mm"
+          },
+          {
+            "param": "Pot length",
+            "value": "20–300 mm"
+          },
+          {
+            "param": "Maximum capacity",
+            "value": "18,000 pcs/h"
+          },
+          {
+            "param": "Biodegradable paper",
+            "value": "85% cotton, 15% polyester"
+          }
+        ]
+      },
+      {
+        "id": "ati",
+        "sectionNumber": "03",
+        "title": "Paper pot tray loading machine (ATI)",
+        "images": [
+          "/images/paperpot/ati/img-1.jpg",
+          "/images/paperpot/ati/img-2.jpg",
+          "/images/paperpot/ati/img-3.jpg",
+          "/images/paperpot/ati/img-4.jpg"
+        ],
+        "description": "The machine is designed for the automatic loading of finished paper seedling pots into trays. It can operate either as a standalone unit or as part of a line.",
+        "principle": {
+          "label": "Operating principle",
+          "text": "Finished paper pots (plugs) are loaded into the machine; the device positions each pot and places them into the tray cells. The machine counts the paper pots and has a convenient, simple interface."
+        },
+        "features": [
+          "quick and easy diameter changeover",
+          "automatic fault self-diagnostics",
+          "convenient, intuitive interface",
+          "counting of finished pots",
+          "remote operation monitoring"
+        ],
+        "highlights": [
+          {
+            "value": "6,000 pcs/h",
+            "label": "maximum capacity"
+          },
+          {
+            "value": "15–60 mm",
+            "label": "pot diameter"
+          },
+          {
+            "value": "20–120 mm",
+            "label": "pot length"
+          },
+          {
+            "value": "480 kg",
+            "label": "equipment weight"
+          }
+        ],
+        "specs": [
+          {
+            "param": "Dimensions (L×W×H)",
+            "value": "3550×2050×1860 mm"
+          },
+          {
+            "param": "Weight",
+            "value": "480 kg"
+          },
+          {
+            "param": "Working pressure",
+            "value": "6 bar"
+          },
+          {
+            "param": "Air consumption",
+            "value": "160 l/min"
+          },
+          {
+            "param": "Maximum power",
+            "value": "1.75 kW / 220 V AC + PE, 50 Hz"
+          },
+          {
+            "param": "Paper pot diameter",
+            "value": "15–60 mm"
+          },
+          {
+            "param": "Pot length",
+            "value": "20–120 mm"
+          },
+          {
+            "param": "Maximum capacity",
+            "value": "6,000 pcs/h"
+          },
+          {
+            "param": "Biodegradable paper",
+            "value": "85% cotton, 15% polyester"
+          }
+        ]
+      },
+      {
+        "id": "atib",
+        "sectionNumber": "04",
+        "title": "Paper pot tray loader (ATIB)",
+        "images": [
+          "/images/paperpot/atib/img-4.jpg",
+          "/images/paperpot/atib/img-1.jpg",
+          "/images/paperpot/atib/img-2.jpg",
+          "/images/paperpot/atib/img-3.jpg"
+        ],
+        "description": "The machine is designed for the automated loading of paper pots (plugs) into trays. It is an upgraded version of the ATI with higher capacity and compatibility with equipment for automatic tray feeding and removal.",
+        "principle": {
+          "label": "Operating principle",
+          "text": "Finished paper pots filled with substrate are loaded into the machine, which then automatically places them into trays."
+        },
+        "features": [
+          "adjustable parameters for different pot sizes and soil types",
+          "higher capacity than the ATI",
+          "high adaptability",
+          "counting of finished products",
+          "convenient, intuitive control interface"
+        ],
+        "highlights": [
+          {
+            "value": "9,000 pcs/h",
+            "label": "maximum capacity"
+          },
+          {
+            "value": "15–60 mm",
+            "label": "pot diameter"
+          },
+          {
+            "value": "20–120 mm",
+            "label": "pot length"
+          },
+          {
+            "value": "582 kg",
+            "label": "equipment weight"
+          }
+        ],
+        "specs": [
+          {
+            "param": "Dimensions (L×W×H)",
+            "value": "3526×2280×1927 mm"
+          },
+          {
+            "param": "Weight",
+            "value": "582 kg"
+          },
+          {
+            "param": "Working pressure",
+            "value": "6 bar"
+          },
+          {
+            "param": "Air consumption",
+            "value": "136 l/min"
+          },
+          {
+            "param": "Maximum power",
+            "value": "2 kW / 220 V AC + N + PE, 50 Hz"
+          },
+          {
+            "param": "Paper pot diameter",
+            "value": "15–60 mm"
+          },
+          {
+            "param": "Pot length",
+            "value": "20–120 mm"
+          },
+          {
+            "param": "Maximum capacity",
+            "value": "9,000 pcs/h"
+          },
+          {
+            "param": "Biodegradable paper",
+            "value": "85% cotton, 15% polyester"
+          }
+        ]
+      },
+      {
+        "id": "atib-turbo",
+        "sectionNumber": "05",
+        "title": "Dual-channel paper pot loader (ATIB TURBO)",
+        "images": [
+          "/images/paperpot/atib-turbo/img-4.jpg",
+          "/images/paperpot/atib-turbo/img-1.jpg",
+          "/images/paperpot/atib-turbo/img-2.jpg",
+          "/images/paperpot/atib-turbo/img-3.jpg"
+        ],
+        "description": "The ATIB TURBO is the dual-channel version of the ATIB, designed to fill two rows of paper pots with substrate at the same time and then arrange them into trays.",
+        "principle": {
+          "label": "Operating principle",
+          "text": "Finished paper pots are loaded into the machine's two parallel channels. Both channels run in sync and the finished pots are placed into trays. A dibbler can then be added (optional) and the pots moved onto a conveyor."
+        },
+        "features": [
+          "double the speed",
+          "remote monitoring via IoT",
+          "counting of finished products",
+          "compatible with automatic tray feeding and removal equipment",
+          "fault self-diagnostics"
+        ],
+        "highlights": [
+          {
+            "value": "18,000 pcs/h",
+            "label": "maximum capacity"
+          },
+          {
+            "value": "15–60 mm",
+            "label": "pot diameter"
+          },
+          {
+            "value": "20–120 mm",
+            "label": "pot length"
+          },
+          {
+            "value": "2 channels",
+            "label": "parallel operation"
+          }
+        ],
+        "specs": [
+          {
+            "param": "Dimensions (L×W×H)",
+            "value": "3526×2280×1927 mm"
+          },
+          {
+            "param": "Weight",
+            "value": "582 kg"
+          },
+          {
+            "param": "Working pressure",
+            "value": "6 bar"
+          },
+          {
+            "param": "Air consumption",
+            "value": "204 l/min"
+          },
+          {
+            "param": "Maximum power",
+            "value": "2 kW / 220 V AC + PE, 50 Hz"
+          },
+          {
+            "param": "Paper pot diameter",
+            "value": "15–60 mm"
+          },
+          {
+            "param": "Pot length",
+            "value": "20–120 mm"
+          },
+          {
+            "param": "Maximum capacity",
+            "value": "18,000 pcs/h"
+          },
+          {
+            "param": "Biodegradable paper",
+            "value": "85% cotton, 15% polyester"
+          }
+        ]
+      },
+      {
+        "id": "pal",
+        "sectionNumber": "06",
+        "title": "Automated line for making and sowing into paper pots (PAL)",
+        "images": [
+          "/images/paperpot/pal/img-1.jpg",
+          "/images/paperpot/pal/img-2.jpg"
+        ],
+        "description": "The line is designed for highly precise automated sowing of seeds into paper pots. Its key difference from the multi-channel sowing line is lower capacity and the fact that this line is not equipped with automatic tray feeding and removal.",
+        "principle": {
+          "label": "Operating principle",
+          "text": "The line makes paper pots (plugs). After filling with substrate and pre-watering with dibbling, seeds are sown into the pots (the line self-adjusts depth and spacing for different seed types). After additional mulching and watering, the trays of pots are fed onto the final roller table."
+        },
+        "nodes": [
+          "AGIB single-channel paper pot making machine",
+          "Paper pot tray loading unit",
+          "Touchscreen",
+          "Tray conveyor",
+          "Pre-watering unit",
+          "Dibbler",
+          "Seeder",
+          "Mulching unit",
+          "Watering tunnel",
+          "Roller table"
+        ],
+        "features": [
+          "high sowing precision",
+          "adaptable to all seed types",
+          "fault self-diagnostics",
+          "convenient, intuitive interface",
+          "remote operation"
+        ],
+        "highlights": [
+          {
+            "value": "6,000 pcs/h",
+            "label": "maximum capacity"
+          },
+          {
+            "value": "15–60 mm",
+            "label": "pot diameter"
+          },
+          {
+            "value": "20–120 mm",
+            "label": "pot length"
+          },
+          {
+            "value": "1700 kg",
+            "label": "line weight"
+          }
+        ],
+        "specs": [
+          {
+            "param": "Dimensions (L×W×H)",
+            "value": "11300×4350×2200 mm"
+          },
+          {
+            "param": "Weight",
+            "value": "1700 kg"
+          },
+          {
+            "param": "Working pressure",
+            "value": "6 bar"
+          },
+          {
+            "param": "Air consumption",
+            "value": "580 l/min"
+          },
+          {
+            "param": "Maximum power",
+            "value": "7.3 kW / 3×400 V AC + N + PE, 50 Hz"
+          },
+          {
+            "param": "Paper pot diameter",
+            "value": "15–60 mm"
+          },
+          {
+            "param": "Pot length",
+            "value": "20–120 mm"
+          },
+          {
+            "param": "Maximum capacity",
+            "value": "6,000 pcs/h"
+          },
+          {
+            "param": "Biodegradable paper",
+            "value": "85% cotton, 15% polyester"
+          }
+        ]
+      },
+      {
+        "id": "palb",
+        "sectionNumber": "07",
+        "title": "Automated line for sowing into paper pots (PALB)",
+        "images": [
+          "/images/paperpot/palb/img-1.jpg",
+          "/images/paperpot/palb/img-2.jpg"
+        ],
+        "description": "PALB is a fully automatic line for making paper pots (plugs) and sowing seeds into them, performing the following functions: filling with substrate, arranging the finished pots into trays, dibbling, precise seed sowing, mulching and moistening. PALB differs from PAL in its high capacity and compatibility with automatic tray feeding and removal.",
+        "principle": {
+          "label": "Operating principle",
+          "text": "The line makes and loads finished paper pots (plugs), after which each pot is placed into trays. Then, after pre-moistening and dibbling, precise spot sowing takes place (the line self-adjusts depth and spacing for different seed types). The sown trays of pots are additionally mulched and moistened and fed onto the final conveyor."
+        },
+        "nodes": [
+          "AGIB single-channel paper pot making machine",
+          "Paper pot tray loading unit",
+          "Touchscreen",
+          "Tray conveyor",
+          "Pre-watering unit",
+          "Dibbler",
+          "Seeder",
+          "Mulching unit",
+          "Watering tunnel",
+          "Roller table"
+        ],
+        "features": [
+          "high sowing precision",
+          "adaptable to all seed types",
+          "fault self-diagnostics",
+          "convenient, intuitive interface",
+          "remote monitoring via IoT"
+        ],
+        "highlights": [
+          {
+            "value": "9,000 pcs/h",
+            "label": "maximum capacity"
+          },
+          {
+            "value": "15–60 mm",
+            "label": "pot diameter"
+          },
+          {
+            "value": "20–120 mm",
+            "label": "pot length"
+          },
+          {
+            "value": "1808 kg",
+            "label": "line weight"
+          }
+        ],
+        "specs": [
+          {
+            "param": "Dimensions (L×W×H)",
+            "value": "11917×2390×2164 mm"
+          },
+          {
+            "param": "Weight",
+            "value": "1808 kg"
+          },
+          {
+            "param": "Working pressure",
+            "value": "6 bar"
+          },
+          {
+            "param": "Air consumption",
+            "value": "759 l/min"
+          },
+          {
+            "param": "Maximum power",
+            "value": "8 kW / 3×400 V AC + N + PE, 50 Hz"
+          },
+          {
+            "param": "Paper pot diameter",
+            "value": "15–60 mm"
+          },
+          {
+            "param": "Pot length",
+            "value": "20–120 mm"
+          },
+          {
+            "param": "Maximum capacity",
+            "value": "9,000 pcs/h"
+          },
+          {
+            "param": "Biodegradable paper",
+            "value": "85% cotton, 15% polyester"
+          }
+        ]
+      },
+      {
+        "id": "palb-turbo",
+        "sectionNumber": "08",
+        "title": "Dual-channel line for sowing into paper pots (PALB TURBO)",
+        "images": [
+          "/images/paperpot/palb-turbo/img-1.jpg",
+          "/images/paperpot/palb-turbo/img-2.jpg"
+        ],
+        "description": "PALB TURBO is a dual-channel, fully automatic line for making and sowing seeds into paper pots, performing the following functions: making paper pots (plugs), arranging the finished pots into trays, dibbling, precise seed sowing, mulching and moistening. PALB TURBO differs from PALB in its doubled capacity thanks to two channels working in parallel.",
+        "principle": {
+          "label": "Operating principle",
+          "text": "The line makes and loads finished paper pots (plugs), after which each pot is placed into trays. Then, after pre-moistening and dibbling, precise spot sowing takes place (the line self-adjusts depth and spacing for different seed types). The sown trays of pots are additionally mulched and moistened and fed onto the final conveyor."
+        },
+        "nodes": [
+          "AGIB202 dual-channel paper pot making machine",
+          "Paper pot tray loading unit",
+          "Touchscreen",
+          "Tray conveyor",
+          "Pre-watering unit",
+          "Dibbler",
+          "Seeder",
+          "Mulching unit",
+          "Watering tunnel",
+          "Roller table"
+        ],
+        "features": [
+          "high sowing precision",
+          "two parallel channels for filling and sowing",
+          "adaptable to all seed types",
+          "fault self-diagnostics",
+          "convenient, intuitive interface",
+          "adjustable parameters for different crops"
+        ],
+        "highlights": [
+          {
+            "value": "2 channels",
+            "label": "parallel operation"
+          },
+          {
+            "value": "15–60 mm",
+            "label": "pot diameter"
+          },
+          {
+            "value": "20–120 mm",
+            "label": "pot length"
+          },
+          {
+            "value": "1881 kg",
+            "label": "line weight"
+          }
+        ],
+        "specs": [
+          {
+            "param": "Dimensions (L×W×H)",
+            "value": "11917×2427×2164 mm"
+          },
+          {
+            "param": "Weight",
+            "value": "1881 kg"
+          },
+          {
+            "param": "Working pressure",
+            "value": "6 bar"
+          },
+          {
+            "param": "Air consumption",
+            "value": "906 l/min"
+          },
+          {
+            "param": "Maximum power",
+            "value": "8.4 kW / 3×400 V AC + N + PE, 50 Hz"
+          },
+          {
+            "param": "Paper pot diameter",
+            "value": "15–60 mm"
+          },
+          {
+            "param": "Pot length",
+            "value": "20–120 mm"
+          },
+          {
+            "param": "Maximum capacity",
+            "value": "9,000 pcs/h"
+          },
+          {
+            "param": "Biodegradable paper",
+            "value": "85% cotton, 15% polyester"
+          }
+        ]
+      },
+      {
+        "id": "mae",
+        "sectionNumber": "09",
+        "title": "Multi-channel automated line for sowing into paper pots (MAE)",
+        "images": [
+          "/images/paperpot/mae/img-1.jpg",
+          "/images/paperpot/mae/img-2.jpg"
+        ],
+        "description": "The line is designed for making paper pots (plugs) and fully automated sowing of seeds into them. It performs the following operations: multi-channel making and filling of pots with substrate, precise seed sowing, and arranging the finished pots into trays. The line is fitted with IoT sensors, enabling control and monitoring from any device.",
+        "principle": {
+          "label": "Operating principle",
+          "text": "The line makes paper pots (plugs) using a multi-channel machine. A substrate feeding unit (peat fluffer) is connected to it. The pots filled with substrate are automatically arranged into trays. Seeds are sown into the pots at a set depth and spacing using a drum seeder. The trays of pots are then additionally mulched, watered and discharged onto the final conveyor. Empty trays are fed automatically and filled trays are removed automatically."
+        },
+        "nodes": [
+          "Multi-channel paper pot making machine",
+          "Paper pot filling and tray loading unit",
+          "Touchscreen",
+          "Tray conveyor",
+          "Pre-watering unit",
+          "Dibbler",
+          "Precision drum seeder",
+          "Mulching unit",
+          "Watering tunnel",
+          "Roller table",
+          "PB600 substrate feeding unit",
+          "Automatic tray unloader",
+          "Tray conveyor"
+        ],
+        "features": [
+          "multi-channel design",
+          "automatic tray feeding and removal",
+          "automatic fault self-diagnostics",
+          "adjustable parameters, high adaptability",
+          "convenient, intuitive interface",
+          "remote operation monitoring"
+        ],
+        "highlights": [
+          {
+            "value": "54,000 pcs/h",
+            "label": "maximum capacity"
+          },
+          {
+            "value": "15–60 mm",
+            "label": "pot diameter"
+          },
+          {
+            "value": "20–120 mm",
+            "label": "pot length"
+          },
+          {
+            "value": "4500 kg",
+            "label": "line weight"
+          }
+        ],
+        "specs": [
+          {
+            "param": "Dimensions (L×W×H)",
+            "value": "16200×4600×2900 mm"
+          },
+          {
+            "param": "Weight",
+            "value": "4500 kg"
+          },
+          {
+            "param": "Working pressure",
+            "value": "6 bar"
+          },
+          {
+            "param": "Air consumption",
+            "value": "1400 l/min"
+          },
+          {
+            "param": "Maximum power",
+            "value": "25.5 kW / 3×400 V AC + N + PE, 50 Hz"
+          },
+          {
+            "param": "Paper pot diameter",
+            "value": "15–60 mm"
+          },
+          {
+            "param": "Pot length",
+            "value": "20–120 mm"
+          },
+          {
+            "param": "Maximum capacity",
+            "value": "54,000 pcs/h"
+          },
+          {
+            "param": "Biodegradable paper",
+            "value": "85% cotton, 15% polyester"
+          }
+        ]
+      },
+      {
+        "id": "paper",
+        "sectionNumber": "10",
+        "title": "Paper for making paper pots (plugs)",
+        "images": [
+          "/images/paperpot/paper/img-1.jpg",
+          "/images/paperpot/paper/img-2.jpg",
+          "/images/paperpot/paper/img-3.jpg"
+        ],
+        "description": "The paper is designed for making paper pots (plugs) for seedlings. It has an adhesive layer on one side. It is used for growing flowers, berries, vegetables, forest seedlings and fruit crops. Paper pots have high water-holding capacity, create a favorable environment for root system development and hold their shape throughout the entire seedling stage. The paper fully decomposes in 3–6 months.",
+        "principle": {
+          "label": "Operating principle",
+          "text": "The paper is loaded into the paper pot making machine, which then forms a sleeve of the set diameter and length while filling it with peat (substrate). The sleeve is then cut into pots (plugs) of the set size. They are suitable for sowing seeds or rooting cuttings, either after transplanting into trays or on their own. Once the seedlings reach the required size, the plant is set into the ground together with the pot. Over 3–6 months the paper decomposes in the soil, with no removal required."
+        },
+        "features": [
+          "biodegradable paper (fabric)",
+          "suitable for all plant types",
+          "paper composition: 85% cotton, 15% polyester",
+          "excellent root aeration",
+          "rolls of various widths, 1400 m long",
+          "decomposition period: 3–6 months"
+        ],
+        "highlights": [
+          {
+            "value": "3–6 mo",
+            "label": "decomposition period"
+          },
+          {
+            "value": "85/15",
+            "label": "cotton / polyester"
+          },
+          {
+            "value": "1400 m",
+            "label": "roll length"
+          },
+          {
+            "value": "100%",
+            "label": "for all crops"
+          }
+        ]
+      },
+      {
+        "id": "miniline-1",
+        "sectionNumber": "11",
+        "title": "Mini-line 1 (AGIB + ATIB)",
+        "images": [
+          "/images/paperpot/miniline-1/img-1.jpg",
+          "/images/paperpot/miniline-1/img-2.jpg",
+          "/images/paperpot/miniline-1/img-3.jpg"
+        ],
+        "description": "The line is designed for the fully automated production of paper pots (plugs) filled with substrate, dibbling, and arranging the finished pots into trays with discharge onto a distribution roller table. Available in two configurations — with or without a peat fluffer.",
+        "configs": [
+          "INNOVATECH AGIB + ATIB — single-channel paper pot making (AGIB), filling the pots with substrate (ATIB), creating a planting hole in each pot, automatic tray feeding, touchscreen, final roller table.",
+          "INNOVATECH AGIB + ATIB + PB600 — automatic feeding of fluffed peat (PB600), single-channel paper pot making (AGIB), single-channel filling with substrate (ATIB), creating a planting hole in each pot, automatic tray feeding, touchscreen, final roller table."
+        ],
+        "features": [
+          "fully automated production cycle",
+          "single-channel making and filling of pots",
+          "dibbling in each pot",
+          "automatic tray feeding",
+          "optional PB600 peat fluffer"
+        ]
+      },
+      {
+        "id": "miniline-2",
+        "sectionNumber": "12",
+        "title": "Mini-line 2 (AGIB202 + ATIB TURBO)",
+        "images": [
+          "/images/paperpot/miniline-2/img-1.jpg",
+          "/images/paperpot/miniline-2/img-2.jpg",
+          "/images/paperpot/miniline-2/img-3.jpg"
+        ],
+        "description": "The line is designed for the fully automated production of paper pots (plugs) filled with substrate, dibbling, and arranging the finished pots into trays with discharge onto a distribution roller table. Available in two configurations — with or without a peat fluffer.",
+        "configs": [
+          "INNOVATECH AGIB202 + ATIB TURBO — dual-channel paper pot making (AGIB202), dual-channel filling of the pots with substrate (ATIB TURBO), creating a planting hole in each pot, automatic tray feeding, touchscreen, final roller table.",
+          "INNOVATECH AGIB202 + ATIB TURBO + PB600 — INNOVATECH peat fluffer (PB600), dual-channel paper pot making (AGIB202), dual-channel filling with substrate (ATIB TURBO), creating a planting hole in each pot, automatic tray feeding, touchscreen, final roller table."
+        ],
+        "features": [
+          "doubled capacity thanks to two channels",
+          "dual-channel making and filling of pots",
+          "dibbling in each pot",
+          "automatic tray feeding",
+          "optional PB600 peat fluffer"
         ]
       }
     ]

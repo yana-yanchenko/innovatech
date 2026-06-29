@@ -6,6 +6,8 @@ import { CheckCircle2, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-reac
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { useContactDialog } from './ContactDialogProvider';
+import ProductHero from './ProductHero';
+import StickyCategoryTabs from './StickyCategoryTabs';
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -49,47 +51,6 @@ interface IrrigationSystemsDict {
   controlPanelImages: string[];
   tabs: TabItem[];
   sections: Section[];
-}
-
-// ── Sticky Tab Navigation ────────────────────────────────────────────────────
-
-function StickyTabNav({
-  tabs,
-  activeId,
-}: {
-  tabs: TabItem[];
-  activeId: string;
-}) {
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      const offset = 84 + 56;
-      const top = el.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
-  };
-
-  return (
-    <div className="sticky z-40 bg-background/95 backdrop-blur-md border-b border-border" style={{ top: '84px' }}>
-      <div className="container mx-auto px-3 md:px-4 lg:px-6">
-        <div className="flex overflow-x-auto scrollbar-hide gap-1 py-2">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => scrollToSection(tab.id)}
-              className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 whitespace-nowrap ${
-                activeId === tab.id
-                  ? 'bg-primary text-primary-foreground'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
 }
 
 // ── Spec List ────────────────────────────────────────────────────────────────
@@ -336,14 +297,8 @@ function ControlPanelGallery({
         {/* Slider column */}
         <div className="w-full max-w-[984px] mx-auto">
           <div className="relative">
-            {/* Ambient gradient glow behind the panel */}
-            <div aria-hidden className="pointer-events-none absolute -inset-16 -z-10 overflow-hidden">
-              <div className="absolute left-1/3 -top-8 h-48 w-48 -translate-x-1/2 rounded-full bg-primary/20 blur-3xl" />
-              <div className="absolute right-1/3 -bottom-8 h-48 w-48 translate-x-1/2 rounded-full bg-primary/10 blur-3xl" />
-            </div>
-
             {/* Frosted-glass backing */}
-            <div className="relative rounded-[2.25rem] p-8 sm:p-16 border border-border/50 bg-gradient-to-br from-primary/[0.06] via-background/40 to-muted/20 backdrop-blur-xl shadow-[0_24px_70px_-20px_rgba(0,0,0,0.35)]">
+            <div className="relative rounded-[2.25rem] p-8 sm:p-16 border border-border/50 bg-background/40 backdrop-blur-xl shadow-[0_24px_70px_-20px_rgba(0,0,0,0.35)]">
               {/* Main slide */}
               <div
                 className="group relative rounded-2xl overflow-hidden border border-border/60 bg-muted/30 shadow-lg ring-1 ring-black/5 select-none cursor-grab active:cursor-grabbing"
@@ -439,8 +394,6 @@ function ControlPanelGallery({
 // ── Main Page ─────────────────────────────────────────────────────────────────
 
 export default function IrrigationSystemsPage({ dict }: { dict: IrrigationSystemsDict }) {
-  const [activeId, setActiveId] = useState(dict.tabs[0]?.id ?? '');
-
   useEffect(() => {
     // Reset scroll position on page load - multiple times to ensure it works
     window.scrollTo(0, 0);
@@ -459,62 +412,20 @@ export default function IrrigationSystemsPage({ dict }: { dict: IrrigationSystem
     };
   }, []);
 
-  useEffect(() => {
-    const sectionIds = [...dict.sections.map((s) => s.id), 'control-panel'];
-    const observers: IntersectionObserver[] = [];
-
-    // Delay observer setup to prevent initial scroll issues
-    const timer = setTimeout(() => {
-      sectionIds.forEach((id) => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        const obs = new IntersectionObserver(
-          ([entry]) => {
-            if (entry.isIntersecting) setActiveId(id);
-          },
-          { rootMargin: '-30% 0px -60% 0px', threshold: 0 }
-        );
-        obs.observe(el);
-        observers.push(obs);
-      });
-    }, 0);
-
-    return () => {
-      clearTimeout(timer);
-      observers.forEach((obs) => obs.disconnect());
-    };
-  }, [dict.sections]);
-
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-gradient-to-b from-primary/5 via-background to-background">
-        <div className="container mx-auto px-3 md:px-4 lg:px-6">
-          <div className="max-w-3xl space-y-6">
-            <Badge
-              variant="outline"
-              className="text-primary border-primary/30 bg-primary/5 rounded-full px-4 py-1.5 text-xs font-semibold tracking-widest uppercase"
-            >
-              {dict.heroTag}
-            </Badge>
-            <h1
-              className="font-bold tracking-tight text-foreground leading-tight"
-              style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)' }}
-            >
-              {dict.heroTitle}
-            </h1>
-            <p
-              className="text-muted-foreground leading-relaxed"
-              style={{ fontSize: 'clamp(1rem, 1.4vw, 1.2rem)' }}
-            >
-              {dict.heroDescription}
-            </p>
-          </div>
-        </div>
-      </section>
+      <ProductHero
+        tag={dict.heroTag}
+        title={dict.heroTitle}
+        description={dict.heroDescription}
+      />
 
       {/* Sticky tabs */}
-      <StickyTabNav tabs={dict.tabs} activeId={activeId} />
+      <StickyCategoryTabs
+        tabs={dict.tabs}
+        sectionIds={[...dict.sections.map((s) => s.id), 'control-panel']}
+      />
 
       {/* Sections */}
       <div className="container mx-auto px-3 md:px-4 lg:px-6">

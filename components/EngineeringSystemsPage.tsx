@@ -1,11 +1,12 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { CheckCircle2, ArrowRight, Clock } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { useContactDialog } from './ContactDialogProvider';
+import StickyCategoryTabs from './StickyCategoryTabs';
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -68,47 +69,6 @@ interface EngineeringSystemsDict {
   comingSoonDescription: string;
   tabs: TabItem[];
   sections: Section[];
-}
-
-// ── Sticky Tab Navigation ────────────────────────────────────────────────────
-
-function StickyTabNav({
-  tabs,
-  activeId,
-}: {
-  tabs: TabItem[];
-  activeId: string;
-}) {
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      const offset = 84 + 56; // navbar + tab bar height
-      const top = el.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
-  };
-
-  return (
-    <div className="sticky z-40 bg-background/95 backdrop-blur-md border-b border-border" style={{ top: '84px' }}>
-      <div className="container mx-auto px-3 md:px-4 lg:px-6">
-        <div className="flex overflow-x-auto scrollbar-hide gap-1 py-2">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => scrollToSection(tab.id)}
-              className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 whitespace-nowrap ${
-                activeId === tab.id
-                  ? 'bg-primary text-primary-foreground'
-                  : 'text-muted-foreground hover:text-foreground hover:bg-muted'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
 }
 
 // ── Spec List ────────────────────────────────────────────────────────────────
@@ -495,30 +455,6 @@ function ComingSoonSection({
 // ── Main Page Component ──────────────────────────────────────────────────────
 
 export default function EngineeringSystemsPage({ dict }: { dict: EngineeringSystemsDict }) {
-  const [activeId, setActiveId] = useState(dict.tabs[0]?.id ?? '');
-
-  // Intersection Observer to highlight active tab
-  useEffect(() => {
-    const sectionEls = dict.sections.map((s) => document.getElementById(s.id)).filter(Boolean) as HTMLElement[];
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((e) => e.isIntersecting);
-        if (visible.length > 0) {
-          // Pick the topmost visible section
-          const topmost = visible.reduce((a, b) =>
-            a.boundingClientRect.top < b.boundingClientRect.top ? a : b
-          );
-          setActiveId((topmost.target as HTMLElement).id);
-        }
-      },
-      { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
-    );
-
-    sectionEls.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, [dict.sections]);
-
   return (
     <div className="flex min-h-screen flex-col">
       {/* Hero */}
@@ -578,7 +514,7 @@ export default function EngineeringSystemsPage({ dict }: { dict: EngineeringSyst
       </section>
 
       {/* Sticky Tab Navigation */}
-      <StickyTabNav tabs={dict.tabs} activeId={activeId} />
+      <StickyCategoryTabs tabs={dict.tabs} sectionIds={dict.sections.map((s) => s.id)} rootMargin="-40% 0px -55% 0px" />
 
       {/* Sections */}
       {dict.sections.map((section, index) => {
