@@ -767,27 +767,20 @@ function ProductModal({
 
 // ── Benefits section ─────────────────────────────────────────────────────────
 
-// Intro text shown on the right side of the hero block.
-function BenefitsHeroAside({ data }: { data: BenefitsDict }) {
-  return (
-    <div className="rounded-2xl border border-primary/20 bg-card/60 backdrop-blur p-6 sm:p-7 shadow-sm">
-      <h2
-        className="font-bold tracking-tight text-foreground leading-tight"
-        style={{ fontSize: 'clamp(1.3rem, 2.2vw, 1.8rem)' }}
-      >
-        {data.title}
-      </h2>
-      <p className="mt-3 text-muted-foreground leading-relaxed text-sm sm:text-base">
-        {data.subtitle}
-      </p>
-    </div>
-  );
-}
-
 function BenefitsSection({ data }: { data: BenefitsDict }) {
   return (
     <section className="border-b border-border bg-gradient-to-b from-primary/[0.06] to-transparent">
       <div className="container mx-auto px-3 md:px-4 lg:px-6 py-12 md:py-16">
+        {/* Heading */}
+        <Reveal className="max-w-3xl mb-8 md:mb-12">
+          <h2
+            className="font-bold tracking-tight text-foreground leading-tight"
+            style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)' }}
+          >
+            {data.title}
+          </h2>
+        </Reveal>
+
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {data.items.map((item, i) => {
@@ -809,21 +802,6 @@ function BenefitsSection({ data }: { data: BenefitsDict }) {
             );
           })}
         </div>
-
-        {/* Applications — bottom, full width */}
-        {data.applications.length > 0 && (
-          <Reveal delay={120} className="mt-10 md:mt-14 pt-8 border-t border-border flex flex-wrap items-center gap-2.5">
-            <span className="text-sm font-semibold text-foreground mr-1">{data.applicationsLabel}</span>
-            {data.applications.map((app, i) => (
-              <span
-                key={i}
-                className="rounded-full border border-primary/30 bg-primary/5 px-3.5 py-1.5 text-sm font-medium text-foreground"
-              >
-                {app}
-              </span>
-            ))}
-          </Reveal>
-        )}
       </div>
     </section>
   );
@@ -880,7 +858,6 @@ export default function PaperPotPage({ dict }: { dict: PaperPotDict }) {
         title={dict.heroTitle}
         description={dict.heroDescription}
         stats={dict.heroStats}
-        aside={dict.benefits ? <BenefitsHeroAside data={dict.benefits} /> : undefined}
       />
 
       {/* Advantages of paper pots */}

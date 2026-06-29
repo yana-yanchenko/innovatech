@@ -2207,24 +2207,6 @@
     "heroTag": "PaperPot — paper seedling pots",
     "heroTitle": "Machines for producing paper pots (PaperPot)",
     "heroDescription": "The complete INNOVATECH equipment range for making biodegradable paper pots (plugs), filling them with substrate, sowing seeds and arranging them into trays — from compact machines to fully automated lines.",
-    "heroStats": [
-      {
-        "value": "12",
-        "label": "machine and line models"
-      },
-      {
-        "value": "54,000",
-        "label": "pcs/h max. capacity"
-      },
-      {
-        "value": "15–60 mm",
-        "label": "pot diameter"
-      },
-      {
-        "value": "3–6 mo",
-        "label": "full paper decomposition"
-      }
-    ],
     "benefits": {
       "tag": "Why PaperPot",
       "title": "Advantages of paper pots",
